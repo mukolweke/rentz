@@ -14,10 +14,20 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Users/Index', [
-        'label' => 'Testing Inertia',
+Route::get('/dashboard', function () {
+    return Inertia::render('Home/Index', [
+        'label' => 'Home'
     ]);
-});
+})->name('dashboard');
 
-Route::get('/second-route', fn () => 'Second Route')->name('second-route');
+Route::get('/units', function () {
+    return Inertia::render('Units/Index', [
+        'label' => 'Units'
+    ]);
+})->name('units');
+
+Route::get('/settings', function () {
+    return Inertia::render('Settings/Index', [
+        'label' => 'Settings'
+    ]);
+})->name('settings');
