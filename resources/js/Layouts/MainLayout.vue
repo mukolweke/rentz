@@ -9,7 +9,6 @@
 
         <div class="flex items-center space-x-4">
           <div>Profile</div>
-          <div>Logout</div>
         </div>
       </div>
     </div>
@@ -27,30 +26,29 @@
               class="cursor-pointer hover:text-primaryGreen transition-all"
               :class="{
                 'rounded-t-lg': index === 0,
-                'font-semibold text-primaryGreen': getActiveRoute.includes(
-                  item.routeName
+                'font-semibold text-primaryGreen': $page.url.includes(
+                  item.label
                 ),
               }"
             >
               <!-- fa-bounce -->
-              <a
+              <Link
+                preserve-scroll
                 :href="route(item.routeName)"
                 class="inline-block space-x-2 w-full h-full p-4 px-6"
               >
                 <span><i :class="'fa-light ' + item.icon"></i></span>
                 <span>{{ item.name }}</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
-        <div>
-          <p>Logout</p>
-        </div>
+        <div></div>
       </div>
 
       <!-- Right Side: Main Body -->
-      <div class="w-full h-inherit p-4 px-8">
+      <div class="w-full h-inherit px-8">
         <slot />
       </div>
     </div>
@@ -66,19 +64,19 @@ let routes = ref([
   {
     name: 'Dashboard',
     routeName: 'dashboard',
-    activeUrl: true,
+    label: 'dashboard',
     icon: 'fa-house',
   },
   {
     name: 'Units',
-    routeName: 'units',
-    activeUrl: false,
+    routeName: 'units.index',
+    label: 'units',
     icon: 'fa-house',
   },
   {
     name: 'Settings',
     routeName: 'settings',
-    activeUrl: false,
+    label: 'settings',
     icon: 'fa-cog',
   },
 ])

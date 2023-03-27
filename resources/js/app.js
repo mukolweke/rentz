@@ -3,12 +3,14 @@ import {
     h
 } from 'vue';
 import {
-    createInertiaApp
+    createInertiaApp,
+    Link
 } from '@inertiajs/vue3';
 import {
     resolvePageComponent
 } from 'laravel-vite-plugin/inertia-helpers';
 import '../css/app.css';
+import Modal from './Components/Modal.vue';
 
 createInertiaApp({
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`,
@@ -27,6 +29,8 @@ createInertiaApp({
                     route
                 }
             })
+            .component('Link', Link)
+            .component('Modal', Modal)
             .use(plugin)
             .mount(el)
     },

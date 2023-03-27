@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UnitsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,6 +14,9 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Home/Index', [
@@ -20,14 +24,8 @@ Route::get('/dashboard', function () {
     ]);
 })->name('dashboard');
 
-Route::get('/units', function () {
-    return Inertia::render('Units/Index', [
-        'label' => 'Units'
-    ]);
-})->name('units');
+Route::resource('units', UnitsController::class);
 
 Route::get('/settings', function () {
-    return Inertia::render('Settings/Index', [
-        'label' => 'Settings'
-    ]);
+    return Inertia::render('Settings/Index', []);
 })->name('settings');
