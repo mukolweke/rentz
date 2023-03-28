@@ -10,4 +10,5 @@ import MainLayout from '../../Layouts/MainLayout.vue';
 defineProps({
   label: String,
 });
+
 </script>
