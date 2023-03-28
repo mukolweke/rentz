@@ -2,31 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\AppDataModelsCategory;
+use App\Data\Models\Category;
 use Illuminate\Http\Request;
 
-class AppDataModelsCategoryController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,29 +15,16 @@ class AppDataModelsCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // Validate the request
+        $attributes = $request->validate([
+            'name' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\AppDataModelsCategory  $appDataModelsCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AppDataModelsCategory $appDataModelsCategory)
-    {
-        //
-    }
+        // Create the category
+        Category::create($attributes);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\AppDataModelsCategory  $appDataModelsCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AppDataModelsCategory $appDataModelsCategory)
-    {
-        //
+        // redirect
+        return redirect('/units');
     }
 
     /**

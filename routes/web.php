@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UnitsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,6 +15,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return redirect('/dashboard');
 });
@@ -25,6 +27,8 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('units', UnitsController::class);
+
+Route::post('category', [CategoryController::class, 'store'])->name('category.store');
 
 Route::get('/settings', function () {
     return Inertia::render('Settings/Index', []);

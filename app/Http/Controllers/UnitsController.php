@@ -16,7 +16,7 @@ class UnitsController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(5)->through(fn ($category) => [
+        $categories = Category::latest()->paginate(5)->through(fn ($category) => [
             'id' => $category->id,
             'name' => $category->name,
             'slug' => $category->slug,
