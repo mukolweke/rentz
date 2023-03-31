@@ -2,11 +2,11 @@
   <div>
     <div class="relative overflow-x-auto sm:rounded-lg">
       <table
-        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left text-gray-500"
         aria-describedby="Display Table"
       >
         <thead
-          class="text-xs text-gray-700 uppercase border-b-2 border-primaryGreen bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          class="text-xs text-gray-700 uppercase border-b-2 border-primaryGreen bg-gray-50"
         >
           <tr>
             <th
@@ -24,7 +24,7 @@
           <tr
             v-for="(dataItem, index) in datum.data"
             :key="index"
-            class="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+            class="bg-white border-b"
           >
             <td
               v-for="field in fields"
@@ -35,7 +35,10 @@
             </td>
             <td class="px-6 py-4">
               <!-- Actions Slot -->
-              <slot name="actions"></slot>
+              <slot
+                name="actions"
+                :onActionClick="() => actionClicked(dataItem)"
+              ></slot>
             </td>
           </tr>
         </tbody>
@@ -56,4 +59,10 @@
 import Pagination from "./Pagination.vue"
 
 defineProps({ datum: Object, fields: Array });
+
+let emit = defineEmits(['activeRow']);
+
+let actionClicked = (data) => {
+  emit('activeRow', data)
+}
 </script>

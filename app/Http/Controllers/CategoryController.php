@@ -31,22 +31,37 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AppDataModelsCategory  $appDataModelsCategory
+     * @param  \App\Data\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AppDataModelsCategory $appDataModelsCategory)
+    public function update(Request $request, Category $category)
     {
-        //
+        // Validate the request
+        $attributes = $request->validate([
+            'name' => 'required',
+        ]);
+
+        // update the category
+        $category->update(['name' => $attributes['name']]);
+        // dd('updated', $category->fresh());
+        // redirect
+        return redirect('/units');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\AppDataModelsCategory  $appDataModelsCategory
+     * @param  \App\Data\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AppDataModelsCategory $appDataModelsCategory)
+    public function destroy(Category $category)
     {
-        //
+        //TODO we should check if unit is attached, cant' delete
+
+        // delete action
+        $category->delete();
+
+        // redirect
+        return redirect('/units');
     }
 }

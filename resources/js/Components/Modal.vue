@@ -15,23 +15,34 @@
     <div class="flex flex-col max-w-5xl rounded-lg shadow-lg bg-white">
       <div class="p-5 h-full">
         <div class="flex items-center justify-between h-full">
-          <h3 class="text-lg font-semibold">
+          <h3 class="text-base font-semibold text-gray-500">
             <slot name="header"></slot>
           </h3>
           <button class="p-1 leading-none" @click="isVisible = false">
-            <div class="text-xl font-semibold h-6 w-6">
+            <div class="text-xl font-semibold h-6 w-6 text-gray-300">
               <span>X</span>
             </div>
           </button>
         </div>
       </div>
-      <div class="p-6 pb-0">
+      <div class="pb-6 px-6">
         <slot name="body"></slot>
       </div>
       <div class="p-6">
-        <div class="flex items-center justify-end">
-          <Button label="Cancel" outline @click="isVisible = false" />
-          <Button class="ml-4" label="Confirm" @click="confirm" />
+        <div
+          class="flex items-center"
+          :class="{
+            'justify-end': !deleteModal,
+            'justify-center': deleteModal,
+          }"
+        >
+          <Button label="Cancel" @click="isVisible = false" outline />
+          <Button
+            class="ml-4"
+            label="Confirm"
+            @click="confirm"
+            :danger="deleteModal"
+          />
         </div>
       </div>
     </div>
@@ -50,7 +61,8 @@ let props = defineProps({
   submitSuccess: {
     type: Boolean,
     default: false,
-  }
+  },
+  deleteModal: Boolean
 })
 
 let isVisible = ref(false);
@@ -68,6 +80,9 @@ watch(() => props.submitSuccess, async (value) => {
 const slots = useSlots()
 const showToggleBtn = () => {
   return !!slots.toggleBtn
+}
+const showHeader = () => {
+  return !!slots.header
 }
 </script>
 
