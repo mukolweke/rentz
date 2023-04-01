@@ -3,28 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Data\Models\Category;
-use Illuminate\Http\Request;
+use App\Data\Repositories\Category\CategoryRepository;
+use App\Http\Requests\CategoryPostRequest;
 
 class CategoryController extends Controller
 {
+    protected static $unitsHomeUrl = '/units';
+    /**
+     * CategoryController constructor.
+     * @param CategoryRepository $categoryRepo
+     */
+    public function __construct(
+        protected CategoryRepository $categoryRepo,
+    ) {
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryPostRequest $request)
     {
-        // Validate the request
-        $attributes = $request->validate([
-            'name' => 'required',
-        ]);
+        // valid request
+        $attributes = $request->safe()->only(['name']);
 
         // Create the category
-        Category::create($attributes);
+        $this->categoryRepo->store($attributes);
 
         // redirect
-        return redirect('/units');
+        return redirect(self::$unitsHomeUrl);
     }
 
     /**
@@ -34,18 +43,16 @@ class CategoryController extends Controller
      * @param  \App\Data\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryPostRequest $request, Category $category)
     {
-        // Validate the request
-        $attributes = $request->validate([
-            'name' => 'required',
-        ]);
+        // valid request
+        $attributes = $request->safe()->only(['name']);
 
         // update the category
-        $category->update(['name' => $attributes['name']]);
-        // dd('updated', $category->fresh());
+        $this->categoryRepo->update($attributes, $category);
+
         // redirect
-        return redirect('/units');
+        return redirect(self::$unitsHomeUrl);
     }
 
     /**
@@ -59,9 +66,9 @@ class CategoryController extends Controller
         //TODO we should check if unit is attached, cant' delete
 
         // delete action
-        $category->delete();
+        $this->categoryRepo->delete($category);
 
         // redirect
-        return redirect('/units');
+        return redirect(self::$unitsHomeUrl);
     }
 }
