@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <div class="h-full">
+    <div class="h-full min-h-[500px]">
       <!-- Page Content -->
       <div class="mt-8 bg-white p-8 shadow-lg rounded-lg">
         <div class="mb-8">
@@ -22,7 +22,7 @@
           :datum="houses"
           show-route="houses.show"
           edit-route="houses.edit"
-          :fields="['id', 'name', 'slug', 'location', 'category']"
+          :fields="['id', 'name', 'slug', 'category']"
         />
       </div>
     </div>

@@ -38,7 +38,7 @@
     <div class="py-4 shadow-lg rounded-lg bg-white">
       <!-- Page Content -->
       <div class="mt-8 px-8">
-        <div class="max-w-md w-full">
+        <div class="w-full">
           <div aria-describedby="House Details Table">
             <div
               v-for="(value, key) in house"

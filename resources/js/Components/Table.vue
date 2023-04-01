@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative overflow-x-auto sm:rounded-lg">
+    <div class="relative overflow-x-auto sm:rounded-lg min-h-[300px]">
       <table
         class="w-full text-sm text-left text-gray-500"
         aria-describedby="Display Table"
