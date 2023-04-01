@@ -16,9 +16,11 @@ class HouseRepository implements InterfaceHouseRepository
      *
      * @param  Boolean  $paginate
      */
-    public function getAll()
+    public function getAll($paginate = true)
     {
-        $houses = House::latest('id')->paginate(5);
+        $housesQ = House::with('category')->latest('id');
+
+        $houses = $paginate ? $housesQ->paginate(5) : $housesQ->get();
 
         HouseTransformer::transformCollection($houses);
         return $houses;

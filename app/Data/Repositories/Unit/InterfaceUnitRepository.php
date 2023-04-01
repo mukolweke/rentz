@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Data\Repositories\House;
+namespace App\Data\Repositories\Unit;
 
 /**
- * Interface HouseRepository
- * @package App\Data\Repositories\House
+ * InterfaceUnitRepository
+ * @package App\Data\Repositories\Unit
  */
-interface InterfaceHouseRepository
+interface InterfaceUnitRepository
 {
     /**
      * Retrieve all resource in storage.

@@ -78,6 +78,12 @@ let routes = ref([
     routeName: 'houses.index',
     label: 'houses',
     icon: 'fa-list-alt',
+    },
+    {
+    name: 'Units',
+    routeName: 'units.index',
+    label: 'units',
+    icon: 'fa-building',
   },
   {
     name: 'Settings',

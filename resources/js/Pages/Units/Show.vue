@@ -2,18 +2,18 @@
   <MainLayout>
     <div class="mb-4">
       <div class="flex items-center justify-between py-4">
-        <p class="text-2xl">House Details</p>
+        <p class="text-2xl">Unit Details</p>
 
         <div class="flex items-center space-x-4">
           <Link
-            :href="route('houses.edit', house.id)"
+            :href="route('units.edit', unit.id)"
             class="p-2 px-4 bg-blue-500 rounded text-white"
             >Edit</Link
           >
           <Modal
             deleteModal
             :submitSuccess="isSubmitSuccess"
-            @confirm="deleteCategory"
+            @confirm="deleteUnit"
           >
             <template v-slot:toggleBtn="{ onClick }">
               <Button label="Delete" danger @click="onClick" />
@@ -39,9 +39,9 @@
       <!-- Page Content -->
       <div class="mt-8 px-8">
         <div class="w-full max-w-xl">
-          <div aria-describedby="House Details Table">
+          <div aria-describedby="Unit Details Table">
             <div
-              v-for="(value, key) in house"
+              v-for="(value, key) in unit"
               :key="value"
               class="flex items-center mb-4"
             >
@@ -55,8 +55,24 @@
       </div>
     </div>
 
-    <!-- Units Sections -->
-    <UnitsIndex />
+    <!-- Unit History Sections -->
+    <div class="mt-16">
+      <p class="text-lg">Tenants History</p>
+      <ul>
+        <li>Tenant One</li>
+        <li>Tenant Two</li>
+      </ul>
+    </div>
+
+    <!-- Unit Repairs History Sections -->
+    <div class="mt-16">
+        <p class="text-lg">Repairs History</p>
+        <ul>
+          <li>Repairs One</li>
+          <li>Repairs Two</li>
+        </ul>
+      </div>
+
   </MainLayout>
 </template>
 
@@ -66,23 +82,17 @@ import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
 
-import UnitsIndex from './Units/Index.vue'
 let props = defineProps({
-  house: Object
+  unit: Object
 })
 
-const back = () => {
-  history.back();
-  return false;
-}
-
-const houseForm = useForm(props.house);
+const unitForm = useForm(props.unit);
 
 let isSubmitSuccess = ref(false);
 
-let deleteCategory = () => {
+let deleteUnit = () => {
   isSubmitSuccess.value = false;
-  houseForm.delete('/houses/' + houseForm.id, {
+  unitForm.delete('/units/' + unitForm.id, {
     preserveScroll: true,
     onSuccess: () => {
       isSubmitSuccess.value = true;

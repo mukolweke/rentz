@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -27,6 +28,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('houses', HouseController::class);
+Route::resource('units', UnitController::class);
 
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');

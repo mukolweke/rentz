@@ -32,8 +32,8 @@ class CategoryTransformer
             'id'    => $category->id,
             'name'  => $category->name,
             'slug'  => $category->slug,
-            'created_on' => Carbon::parse($category->created_at)->format('d-m-Y'),
-            'updated_on' => Carbon::parse($category->updated_at)->format('d-m-Y'),
+            'created on' => Carbon::parse($category->created_at)->format('d-m-Y'),
+            'updated on' => Carbon::parse($category->updated_at)->format('d-m-Y'),
         ];
     }
 }
