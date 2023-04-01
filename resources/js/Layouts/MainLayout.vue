@@ -68,9 +68,9 @@ let routes = ref([
     icon: 'fa-house',
   },
   {
-    name: 'Units',
-    routeName: 'units.index',
-    label: 'units',
+    name: 'Houses',
+    routeName: 'houses.index',
+    label: 'houses',
     icon: 'fa-house',
   },
   {

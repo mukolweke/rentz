@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UnitsController;
+use App\Http\Controllers\HousesController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
     ]);
 })->name('dashboard');
 
-Route::resource('units', UnitsController::class);
+Route::resource('houses', HousesController::class);
 
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
 Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');

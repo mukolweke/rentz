@@ -8,11 +8,11 @@
         <div
           class="cursor-pointer"
           :class="{
-            'underline underline-offset-4 font-semibold': activeTab === 'units',
+            'underline underline-offset-4 font-semibold': activeTab === 'houses',
           }"
-          @click="activeTab = 'units'"
+          @click="activeTab = 'houses'"
         >
-          Units
+          Houses
         </div>
         <div
           class="cursor-pointer"
@@ -29,7 +29,16 @@
       <!-- Tabs Content -->
       <div class="mt-8 bg-white p-8 shadow-lg rounded-lg">
         <div v-if="activeTab == 'units'" class="h-[450px]">
-          <!-- <TableView :title="activeTab" :datum="[1, 2, 3, 4, 5]" /> -->
+            <div class="mb-8">
+                <div class="flex items-center justify-between">
+                  <p class="font-semibold text-sm text-gray-500">
+                    List of houses
+                  </p>
+
+                  <Modal btnLabel="Add a Unit"/>
+
+                </div>
+              </div>
         </div>
 
         <div v-if="activeTab == 'categories'" class="h-[450px]">

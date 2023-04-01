@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Data\Models\Category;
 use Carbon\Carbon;
 
-class UnitsController extends Controller
+class HousesController extends Controller
 {
     /**
      * Display a listing of the resource.
