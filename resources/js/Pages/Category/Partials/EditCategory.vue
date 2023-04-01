@@ -6,7 +6,7 @@
           onActionClick();
           onClick();
         "
-        class="font-medium text-blue-600 cursor-pointer hover:underline"
+        class="font-medium text-pink-400 cursor-pointer hover:underline"
       >
         Edit
       </div>

@@ -6,7 +6,7 @@
         <div class="mb-8">
           <div class="flex items-center justify-between">
             <p class="font-semibold text-sm text-gray-500">
-              List of categories
+              List of house types
             </p>
 
             <CreateCategory />
@@ -20,7 +20,7 @@
               categoryForm.id = data.id;
             }
           "
-          title="Category"
+          title="House Types"
           :datum="categories"
           :fields="['id', 'name', 'slug', 'created_on']"
         >

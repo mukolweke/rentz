@@ -1,6 +1,6 @@
 <template>
   <Modal
-    btnLabel="Add a house"
+    btnLabel="Add House"
     :submitSuccess="isSubmitSuccess"
     @confirm="createHouse"
   >

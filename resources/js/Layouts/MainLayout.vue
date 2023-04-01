@@ -35,7 +35,9 @@
                 :href="route(item.routeName)"
                 class="inline-block space-x-2 w-full h-full p-4 px-6"
               >
-                <span><i :class="'fa-light ' + item.icon"></i></span>
+                <span>
+                  <i :class="'fa ' + item.icon" aria-hidden="true"></i>
+                </span>
                 <span>{{ item.name }}</span>
               </Link>
             </li>
@@ -63,19 +65,19 @@ let routes = ref([
     name: 'Dashboard',
     routeName: 'dashboard',
     label: 'dashboard',
-    icon: 'fa-house',
+    icon: 'fa-home',
   },
   {
-    name: 'Category',
+    name: 'House Types',
     routeName: 'category.index',
     label: 'category',
-    icon: 'fa-house',
+    icon: 'fa-list',
   },
   {
     name: 'Houses',
     routeName: 'houses.index',
     label: 'houses',
-    icon: 'fa-house',
+    icon: 'fa-list-alt',
   },
   {
     name: 'Settings',

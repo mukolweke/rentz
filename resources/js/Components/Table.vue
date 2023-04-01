@@ -44,14 +44,14 @@
                 <Link
                   preserve-scroll
                   :href="route(showRoute, dataItem['id'])"
-                  class="text-blue-600 font-medium hover:underline"
+                  class="text-pink-400 font-medium hover:underline"
                 >
                   View
                 </Link>
                 <Link
                   preserve-scroll
                   :href="route(editRoute, dataItem['id'])"
-                  class="text-blue-600 font-medium hover:underline"
+                  class="text-pink-400 font-medium hover:underline"
                 >
                   Edit
                 </Link>

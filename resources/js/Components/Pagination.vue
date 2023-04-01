@@ -8,7 +8,7 @@
           :disabled="prev_url == null"
           class="block px-3 text-sm py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
         >
-          {{ "<<" }}
+          <span><i class="fa fa-chevron-left"></i></span>
         </Link>
       </li>
 
@@ -33,7 +33,7 @@
           :disabled="next_url == null"
           class="block px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
         >
-          {{ ">>" }}
+          <span><i class="fa fa-chevron-right"></i></span>
         </Link>
       </li>
     </ul>
