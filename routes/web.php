@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('houses', HouseController::class);
 
+Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
 Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');

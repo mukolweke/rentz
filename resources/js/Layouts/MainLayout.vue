@@ -15,9 +15,7 @@
     <!-- Main Section -->
     <div class="max-w-[1200px] mx-auto flex py-4 h-[90vh]">
       <!-- Left Side: Navigation -->
-      <div
-        class="w-[25%] h-full rounded-lg flex flex-col justify-between"
-      >
+      <div class="w-[25%] h-full rounded-lg flex flex-col justify-between">
         <div>
           <ul>
             <li
@@ -65,6 +63,12 @@ let routes = ref([
     name: 'Dashboard',
     routeName: 'dashboard',
     label: 'dashboard',
+    icon: 'fa-house',
+  },
+  {
+    name: 'Category',
+    routeName: 'category.index',
+    label: 'category',
     icon: 'fa-house',
   },
   {

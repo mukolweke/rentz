@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Data\Models\Category;
 use App\Data\Repositories\Category\CategoryRepository;
 use App\Http\Requests\CategoryPostRequest;
 
 class CategoryController extends Controller
 {
-    protected static $unitsHomeUrl = '/houses';
+    protected static $unitsHomeUrl = '/category';
     /**
      * CategoryController constructor.
      * @param CategoryRepository $categoryRepo
@@ -16,6 +17,18 @@ class CategoryController extends Controller
     public function __construct(
         protected CategoryRepository $categoryRepo,
     ) {
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return Inertia::render('Category/Index', [
+            'categories' => $this->categoryRepo->getAll(true),
+        ]);
     }
 
     /**
