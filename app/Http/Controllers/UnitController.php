@@ -29,8 +29,12 @@ class UnitController extends Controller
      */
     public function index()
     {
+        $houseId = request()->has('house') ? request()->get('house') : null;
+        $units = is_null($houseId) ? $this->unitRepo->getAll() : $this->unitRepo->getUnitsByHouse($houseId);
+
         return Inertia::render('Units/Index', [
-            'units' => $this->unitRepo->getAll(),
+            'units' => $units,
+            'houseId' => $houseId,
         ]);
     }
 
@@ -42,7 +46,7 @@ class UnitController extends Controller
     public function create()
     {
         return Inertia::render('Units/Create', [
-            'house_id' => request()->has('house') ? request()->get('house') : null,
+            'houseId' => request()->has('house') ? request()->get('house') : null,
             'housesOptions' => $this->houseRepo->getAll(false),
         ]);
     }

@@ -8,10 +8,14 @@
             <p class="font-semibold text-sm text-gray-500">List of units</p>
 
             <Link
-              :href="route('units.create')"
+              :href="
+                houseId
+                  ? route('units.create', { house: houseId })
+                  : route('units.create')
+              "
               class="text-white bg-primaryGreen p-2 px-4 rounded"
             >
-              Create New Unit
+              {{ houseId ? "Link a new unit" : "Create a new unit" }}
             </Link>
           </div>
         </div>
@@ -21,7 +25,7 @@
           :datum="units"
           show-route="units.show"
           edit-route="units.edit"
-          :fields="['id', 'name', 'block', 'house']"
+          :fields="['id', 'name', 'block', 'house', 'created_on', 'updated_on']"
         />
       </div>
     </div>
@@ -34,6 +38,7 @@ import TableView from '../../Components/Table.vue';
 
 let props = defineProps({
   units: Object,
+  houseId: Number | null
 });
 
   </script>

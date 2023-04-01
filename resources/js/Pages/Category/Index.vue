@@ -22,7 +22,7 @@
           "
           title="House Types"
           :datum="categories"
-          :fields="['id', 'name', 'slug', 'created_on']"
+          :fields="['id', 'name', 'slug', 'created on', 'updated on']"
         >
           <!-- Actions Slot -->
           <template v-slot:actions="{ onActionClick }">

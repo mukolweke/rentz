@@ -26,8 +26,8 @@
               placeholder="Choose a type"
               class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
               required
-              :disabled="house_id"
-              :class="{'bg-gray-200':house_id}"
+              :disabled="houseId"
+              :class="{ 'bg-gray-200': houseId }"
             >
               <option selected class="text-gray-300" value="">
                 Choose a type
@@ -135,14 +135,14 @@ import Button from '../../Components/Button.vue';
 
 let props = defineProps({
   housesOptions: Array,
-  house_id: Number | null,
+  houseId: Number | null,
 })
 
 const unitForm = useForm({
   name: null,
   block: null,
   description: null,
-  house_id: props.house_id ?? '',
+  house_id: props.houseId ?? '',
 });
 
 

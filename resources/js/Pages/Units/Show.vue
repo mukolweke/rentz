@@ -40,39 +40,69 @@
       <div class="mt-8 px-8">
         <div class="w-full max-w-xl">
           <div aria-describedby="Unit Details Table">
-            <div
-              v-for="(value, key) in unit"
-              :key="value"
-              class="flex items-center mb-4"
-            >
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">Id</div>
+              <div class="w-full">{{ unit.id }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">Name</div>
+              <div class="w-full">{{ unit.name }}</div>
+            </div>
+            <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
-                {{ key }}
+                Block
               </div>
-              <div class="w-full">{{ value }}</div>
+              <div class="w-full">{{ unit.block }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                Description
+              </div>
+              <div class="w-full">{{ unit.description }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                House
+              </div>
+              <div class="w-full">
+                <Link
+                  :href="route('houses.show', unit.house_id)"
+                  class="font-bold text-blue-500"
+                >
+                  {{ unit.house }}
+                </Link>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                Created
+              </div>
+              <div class="w-full">{{ unit.created_on }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                Updated
+              </div>
+              <div class="w-full">{{ unit.updated_on }}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Unit History Sections -->
+    <!-- Units Actions -->
     <div class="mt-16">
-      <p class="text-lg">Tenants History</p>
-      <ul>
-        <li>Tenant One</li>
-        <li>Tenant Two</li>
-      </ul>
-    </div>
+      <p class="text-lg mb-4">Units Actions</p>
+      <div class="flex items-center space-x-4">
+        <div class="p-2 px-4 bg-green-500 rounded text-white">
+          Tenant History
+        </div>
 
-    <!-- Unit Repairs History Sections -->
-    <div class="mt-16">
-        <p class="text-lg">Repairs History</p>
-        <ul>
-          <li>Repairs One</li>
-          <li>Repairs Two</li>
-        </ul>
+        <div class="p-2 px-4 bg-yellow-500 rounded text-white">
+          Repair History
+        </div>
       </div>
-
+    </div>
   </MainLayout>
 </template>
 

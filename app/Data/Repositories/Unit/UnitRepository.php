@@ -27,6 +27,22 @@ class UnitRepository implements InterfaceUnitRepository
     }
 
     /**
+     * Retrieve all units based on house in storage.
+     *
+     * @param  Integer  $houseId
+     * @param  Boolean  $paginate
+     */
+    public function getUnitsByHouse($houseId, $paginate = true)
+    {
+        $unitQ = Unit::with('house')->latest('id')->where('house_id', $houseId);
+
+        $units = $paginate ? $unitQ->paginate(5) : $unitQ->get();
+
+        UnitTransformer::transformCollection($units);
+        return $units;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Array  $attributes

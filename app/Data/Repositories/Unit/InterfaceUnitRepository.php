@@ -16,6 +16,14 @@ interface InterfaceUnitRepository
     public function getAll($paginate = true);
 
     /**
+     * Retrieve all units based on house in storage.
+     *
+     * @param  Integer  $houseId
+     * @param  Boolean  $paginate
+     */
+    public function getUnitsByHouse($houseId, $paginate = true);
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Array  $attributes

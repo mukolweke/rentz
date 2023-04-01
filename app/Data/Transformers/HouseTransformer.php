@@ -34,8 +34,8 @@ class HouseTransformer
             'slug' => $house->slug,
             'location' => $house->location,
             'category' => $house->category->name,
-            'created on' => Carbon::parse($house->created_at)->format('d-m-Y'),
-            'updated on' => Carbon::parse($house->updated_at)->format('d-m-Y'),
+            'created_on' => Carbon::parse($house->created_at)->format('d-m-Y'),
+            'updated_on' => Carbon::parse($house->updated_at)->format('d-m-Y'),
         ];
     }
 

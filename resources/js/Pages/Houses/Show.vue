@@ -40,23 +40,60 @@
       <div class="mt-8 px-8">
         <div class="w-full max-w-xl">
           <div aria-describedby="House Details Table">
-            <div
-              v-for="(value, key) in house"
-              :key="value"
-              class="flex items-center mb-4"
-            >
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">Id</div>
+              <div class="w-full">{{ house.id }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">Name</div>
+              <div class="w-full">{{ house.name }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">Slug</div>
+              <div class="w-full">{{ house.slug }}</div>
+            </div>
+            <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
-                {{ key }}
+                Location
               </div>
-              <div class="w-full">{{ value }}</div>
+              <div class="w-full">{{ house.location }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                Category
+              </div>
+              <div class="w-full">{{ house.category }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                Created
+              </div>
+              <div class="w-full">{{ house.created_on }}</div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 capitalize font-medium text-gray-400">
+                Updated
+              </div>
+              <div class="w-full">{{ house.updated_on }}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Units Sections -->
-    <UnitsIndex v-if="units.total > 0" :units="units" :house-id="house.id" />
+    <!-- House Actions -->
+    <div class="mt-16">
+      <p class="text-lg mb-4">House Actions</p>
+      <div class="flex items-center space-x-4">
+        <Link
+          :href="route('units.index', { house: house.id })"
+          class="p-2 px-4 bg-green-500 rounded text-white"
+          >Units</Link
+        >
+
+        <div class="p-2 px-4 bg-yellow-500 rounded text-white">Staff</div>
+      </div>
+    </div>
   </MainLayout>
 </template>
 
@@ -66,16 +103,10 @@ import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
 
-import UnitsIndex from './Units/Index.vue'
 let props = defineProps({
   house: Object,
   units: Array,
-})
-
-const back = () => {
-  history.back();
-  return false;
-}
+});
 
 const houseForm = useForm(props.house);
 

@@ -34,8 +34,9 @@ class UnitTransformer
             'block' => $unit->block ?? '-',
             'description' => $unit->description,
             'house' => $unit->house->name,
-            'created on' => Carbon::parse($unit->created_at)->format('d-m-Y'),
-            'updated on' => Carbon::parse($unit->updated_at)->format('d-m-Y'),
+            'house_id' => $unit->house_id,
+            'created_on' => Carbon::parse($unit->created_at)->format('d-m-Y'),
+            'updated_on' => Carbon::parse($unit->updated_at)->format('d-m-Y'),
         ];
     }
 
