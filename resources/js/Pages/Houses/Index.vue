@@ -6,21 +6,26 @@
         class="bg-white p-4 py-8 shadow-lg rounded-lg flex items-center space-x-4"
       >
         <div
-          class="cursor-pointer"
+          class="cursor-pointer p-2 px-4 rounded"
           :class="{
-            'underline underline-offset-4 font-semibold': activeTab === 'houses',
+            'bg-pink-600 text-white': activeTab == 'houses',
+            ' bg-pink-300 text-white': activeTab != 'houses',
           }"
           @click="activeTab = 'houses'"
+          title="Houses"
+          aria-label="Houses"
         >
           Houses
         </div>
         <div
-          class="cursor-pointer"
+          class="cursor-pointer p-2 px-4 rounded"
           :class="{
-            'underline underline-offset-4 font-semibold':
-              activeTab === 'categories',
+            'bg-pink-600 text-white': activeTab == 'categories',
+            ' bg-pink-300 text-white': activeTab != 'categories',
           }"
           @click="activeTab = 'categories'"
+          title="Categories"
+          aria-label="Categories"
         >
           Categories
         </div>
