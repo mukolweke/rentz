@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Data\Repositories\Category;
+namespace App\Data\Repositories\House;
 
 /**
- * Interface CategoryRepository
- * @package App\Data\Repositories\Category
+ * Interface HouseRepository
+ * @package App\Data\Repositories\House
  */
-interface InterfaceCategoryRepository
+interface InterfaceHouseRepository
 {
     /**
      * Retrieve all resource in storage.
      *
      * @param  Boolean  $paginate
      */
-    public function getAll($paginate = false);
+    public function getAll();
 
     /**
      * Store a newly created resource in storage.
@@ -26,14 +26,14 @@ interface InterfaceCategoryRepository
      * Update the specified resource in storage.
      *
      * @param  Array  $attributes
-     * @param  \App\Data\Models\Category  $category
+     * @param  \App\Data\Models\House  $house
      */
-    public function update($attributes, $category);
+    public function update($attributes, $house);
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Data\Models\Category  $category
+     * @param  \App\Data\Models\House  $house
      */
-    public function delete($category);
+    public function delete($house);
 }

@@ -3,6 +3,7 @@
 namespace App\Data\Repositories\Category;
 
 use App\Data\Models\Category;
+use App\Data\Transformers\CategoryTransformer;
 
 /**
  * Class CategoryRepository
@@ -10,6 +11,20 @@ use App\Data\Models\Category;
  */
 class CategoryRepository implements InterfaceCategoryRepository
 {
+    /**
+     * Retrieve all resource in storage.
+     *
+     * @param  Boolean  $paginate
+     */
+    public function getAll($paginate = false)
+    {
+        $categoriesQ = Category::latest('id');
+
+        $categories = $paginate ? $categoriesQ->paginate(5) : $categoriesQ->get();
+
+        CategoryTransformer::transformCollection($categories);
+        return $categories;
+    }
     /**
      * Store a newly created resource in storage.
      *
