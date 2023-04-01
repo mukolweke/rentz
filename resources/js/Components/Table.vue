@@ -36,9 +36,26 @@
             <td class="px-6 py-4">
               <!-- Actions Slot -->
               <slot
+                v-if="showSlotActions()"
                 name="actions"
                 :onActionClick="() => actionClicked(dataItem)"
               ></slot>
+              <div v-else class="flex items-center space-x-4">
+                <Link
+                  preserve-scroll
+                  :href="route(showRoute, dataItem['id'])"
+                  class="text-blue-600 font-medium hover:underline"
+                >
+                  View
+                </Link>
+                <Link
+                  preserve-scroll
+                  :href="route(editRoute, dataItem['id'])"
+                  class="text-blue-600 font-medium hover:underline"
+                >
+                  Edit
+                </Link>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -56,13 +73,19 @@
 </template>
 
 <script setup>
+import { useSlots } from 'vue'
 import Pagination from "./Pagination.vue"
 
-defineProps({ datum: Object, fields: Array });
+defineProps({ datum: Object, fields: Array, showRoute: String, editRoute: String, });
 
 let emit = defineEmits(['activeRow']);
 
 let actionClicked = (data) => {
   emit('activeRow', data)
+}
+
+const slots = useSlots()
+const showSlotActions = () => {
+  return !!slots.actions
 }
 </script>
