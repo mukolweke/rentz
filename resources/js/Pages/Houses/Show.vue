@@ -54,6 +54,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Units Sections -->
+    <UnitsIndex />
   </MainLayout>
 </template>
 
@@ -63,6 +66,7 @@ import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
 
+import UnitsIndex from './Units/Index.vue'
 let props = defineProps({
   house: Object
 })

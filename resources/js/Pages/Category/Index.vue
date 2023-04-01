@@ -2,7 +2,7 @@
   <MainLayout>
     <div class="h-full">
       <!-- Page Content -->
-      <div class="mt-8 bg-white p-8 shadow-lg rounded-lg">
+      <div class="mt-4 bg-white p-8 shadow-lg rounded-lg">
         <div class="mb-8">
           <div class="flex items-center justify-between">
             <p class="font-semibold text-sm text-gray-500">

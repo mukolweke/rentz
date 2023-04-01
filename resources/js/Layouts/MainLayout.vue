@@ -1,7 +1,7 @@
 <template>
-  <div class="m-0 p-0 bg-[#f8fafc]">
+  <div class="m-0 p-0 bg-[#f8fafc] min-h-screen">
     <!-- Top Navigation -->
-    <div class="h-[10vh] shadow-sm bg-white">
+    <div class="h-[70px] shadow-sm bg-white fixed w-full">
       <div
         class="max-w-[1200px] mx-auto h-full flex items-center justify-between"
       >
@@ -13,9 +13,9 @@
       </div>
     </div>
     <!-- Main Section -->
-    <div class="max-w-[1200px] mx-auto flex py-4 h-[90vh]">
+    <div class="max-w-[1200px] mx-auto flex py-4 h-full]">
       <!-- Left Side: Navigation -->
-      <div class="w-[15%] h-full rounded-lg flex flex-col justify-between">
+      <div class="w-[15%] h-full rounded-lg flex flex-col justify-between fixed mt-[70px]">
         <div>
           <ul>
             <li
@@ -48,7 +48,7 @@
       </div>
 
       <!-- Right Side: Main Body -->
-      <div class="w-[85%] h-inherit px-8">
+      <div class="w-[85%] h-full px-8 ml-[15%] mt-[70px]">
         <slot />
       </div>
     </div>
