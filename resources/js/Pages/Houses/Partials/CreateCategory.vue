@@ -19,7 +19,8 @@
             v-model="categoryForm.name"
             type="text"
             name="name"
-            class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
+            placeholder="Enter a category name"
+            class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primaryGreen"
             id="name"
             required
           />

@@ -7,17 +7,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class House extends Model
 {
     use HasFactory, SoftDeletes, SlugifyTrait;
 
     protected $fillable = [
-        'name', 'slug',
+        'name', 'slug', 'location', 'category_id'
     ];
 
     protected $cast = [
         'name' => 'string',
         'slug' => 'string',
+        'location' => 'string',
+        'category_id' => 'integer',
     ];
 
     protected $dates = [
@@ -31,5 +33,10 @@ class Category extends Model
         parent::boot();
 
         self::handleObserver();
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

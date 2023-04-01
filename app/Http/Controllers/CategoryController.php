@@ -8,7 +8,7 @@ use App\Http\Requests\CategoryPostRequest;
 
 class CategoryController extends Controller
 {
-    protected static $unitsHomeUrl = '/units';
+    protected static $unitsHomeUrl = '/houses';
     /**
      * CategoryController constructor.
      * @param CategoryRepository $categoryRepo

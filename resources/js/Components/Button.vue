@@ -1,9 +1,9 @@
 <template>
   <button
-    class="p-2 px-4 rounded hover:shadow-lg transition"
+    class="px-4 rounded hover:shadow-lg transition"
     :class="{
-      'border border-primaryGreen text-gray-500': outline && !danger,
-      'bg-primaryGreen text-white hover:opacity-90': !outline,
+      'p-1.5 border border-primaryGreen text-gray-500': outline && !danger,
+      'p-2 bg-primaryGreen text-white hover:opacity-90': !outline,
       'bg-red-500': danger,
     }"
   >

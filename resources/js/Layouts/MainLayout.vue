@@ -16,7 +16,7 @@
     <div class="max-w-[1200px] mx-auto flex py-4 h-[90vh]">
       <!-- Left Side: Navigation -->
       <div
-        class="w-[25%] bg-white h-[80vh] rounded-lg shadow-lg flex flex-col justify-between"
+        class="w-[25%] h-full rounded-lg flex flex-col justify-between"
       >
         <div>
           <ul>

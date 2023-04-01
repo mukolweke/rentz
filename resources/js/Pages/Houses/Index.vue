@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <div>
+    <div class="h-full">
       <!-- Tabs Title -->
       <div
         class="bg-white p-4 py-8 shadow-lg rounded-lg flex items-center space-x-4"
@@ -33,17 +33,28 @@
 
       <!-- Tabs Content -->
       <div class="mt-8 bg-white p-8 shadow-lg rounded-lg">
-        <div v-if="activeTab == 'units'" class="h-[450px]">
-            <div class="mb-8">
-                <div class="flex items-center justify-between">
-                  <p class="font-semibold text-sm text-gray-500">
-                    List of houses
-                  </p>
+        <div v-if="activeTab == 'houses'" class="h-[450px]">
+          <div class="mb-8">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold text-sm text-gray-500">List of houses</p>
 
-                  <Modal btnLabel="Add a Unit"/>
-
-                </div>
-              </div>
+              <CreateHouse :categories="categoryOptions" />
+            </div>
+          </div>
+          <!-- Houses Listing -->
+          <TableView
+            @activeRow="
+              (data) => {
+                houseForm.name = data.name;
+                houseForm.id = data.id;
+              }
+            "
+            :title="activeTab"
+            :datum="houses"
+            show-route="houses.show"
+            edit-route="houses.edit"
+            :fields="['id', 'name', 'slug', 'location', 'category']"
+          />
         </div>
 
         <div v-if="activeTab == 'categories'" class="h-[450px]">
@@ -56,6 +67,7 @@
               <CreateCategory />
             </div>
           </div>
+          <!-- Category Listing -->
           <TableView
             @activeRow="
               (data) => {
@@ -65,7 +77,7 @@
             "
             :title="activeTab"
             :datum="categories"
-            :fields="['name', 'slug', 'created_on', 'updated_on']"
+            :fields="['id', 'name', 'slug', 'created_on']"
           >
             <!-- Actions Slot -->
             <template v-slot:actions="{ onActionClick }">
@@ -98,14 +110,23 @@ import { useForm } from '@inertiajs/vue3'
 import CreateCategory from './Partials/CreateCategory.vue';
 import DeleteCategory from './Partials/DeleteCategory.vue';
 import EditCategory from './Partials/EditCategory.vue';
+import CreateHouse from './Partials/CreateHouse.vue';
 
 let props = defineProps({
   categories: Object,
+  categoryOptions: Array,
+  houses: Object,
 });
 
-const activeTab = ref('categories')
+const activeTab = ref('houses')
 
 const categoryForm = useForm({
   name: null,
 });
+
+// const houseForm = useForm({
+//   name: null,
+//   location: null,
+//   category_id: null,
+// })
 </script>
