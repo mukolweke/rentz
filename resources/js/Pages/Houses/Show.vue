@@ -56,7 +56,7 @@
     </div>
 
     <!-- Units Sections -->
-    <UnitsIndex />
+    <UnitsIndex v-if="units.total > 0" :units="units" :house-id="house.id" />
   </MainLayout>
 </template>
 
@@ -68,7 +68,8 @@ import { useForm } from '@inertiajs/vue3'
 
 import UnitsIndex from './Units/Index.vue'
 let props = defineProps({
-  house: Object
+  house: Object,
+  units: Array,
 })
 
 const back = () => {

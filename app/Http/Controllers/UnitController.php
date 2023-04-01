@@ -42,6 +42,7 @@ class UnitController extends Controller
     public function create()
     {
         return Inertia::render('Units/Create', [
+            'house_id' => request()->has('house') ? request()->get('house') : null,
             'housesOptions' => $this->houseRepo->getAll(false),
         ]);
     }

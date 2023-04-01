@@ -26,6 +26,8 @@
               placeholder="Choose a type"
               class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
               required
+              :disabled="house_id"
+              :class="{'bg-gray-200':house_id}"
             >
               <option selected class="text-gray-300" value="">
                 Choose a type
@@ -131,16 +133,18 @@ import { useForm } from '@inertiajs/vue3'
 import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 
+let props = defineProps({
+  housesOptions: Array,
+  house_id: Number | null,
+})
+
 const unitForm = useForm({
   name: null,
   block: null,
   description: null,
-  house_id: '',
+  house_id: props.house_id ?? '',
 });
 
-defineProps({
-    housesOptions: Array,
-})
 
 let isSubmitSuccess = ref(false);
 

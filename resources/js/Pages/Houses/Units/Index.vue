@@ -4,26 +4,33 @@
       <p class="text-lg">List of house Units</p>
 
       <div>
-        <Modal
-          btnLabel="Add a unit"
-          :submitSuccess="isSubmitSuccess"
-          @confirm="deleteCategory"
+        <Link
+          :href="route('units.create', { house: houseId })"
+          class="text-white bg-primaryGreen p-2 px-4 rounded"
         >
-          <template v-slot:header> Add a unit </template>
-          <template v-slot:body>
-            <div class="w-[400px]">The unit form</div>
-          </template>
-        </Modal>
+          Add a unit
+        </Link>
       </div>
     </div>
 
-    <div class="mt-8 py-4 shadow-lg rounded-lg bg-white min-h-[500px]">
-
+    <div class="mt-8 p-4 shadow-lg rounded-lg bg-white">
+      <TableView
+        title="House Units Listing"
+        :datum="units"
+        show-route="units.show"
+        edit-route="units.edit"
+        :fields="['id', 'name', 'block', 'house']"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
+import TableView from '@/Components/Table.vue';
 
+defineProps({
+  houseId: Number,
+  units: Array
+})
 </script>
 

@@ -7,6 +7,7 @@ use App\Data\Models\House;
 use App\Data\Repositories\Category\CategoryRepository;
 use App\Data\Repositories\House\HouseRepository;
 use App\Data\Transformers\HouseTransformer;
+use App\Data\Transformers\UnitTransformer;
 use App\Http\Requests\HousePostRequest;
 
 class HouseController extends Controller
@@ -72,8 +73,12 @@ class HouseController extends Controller
      */
     public function show(House $house)
     {
+        $units = $house->units()->paginate(5);
+        UnitTransformer::transformCollection($units);
+
         return Inertia::render('Houses/Show', [
             'house' => HouseTransformer::transform($house),
+            'units' => $units,
         ]);
     }
 
