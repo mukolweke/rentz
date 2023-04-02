@@ -2,16 +2,15 @@
   <MainLayout>
     <div class="mb-4">
       <div class="flex items-center justify-between py-4">
-        <p class="text-2xl">Unit Details</p>
+        <p class="text-2xl">Tenant Details</p>
 
         <div class="flex items-center space-x-4">
           <Link
-            :href="route('units.edit', unit.id)"
+            :href="route('tenants.edit', tenant.id)"
             class="p-2 px-4 bg-blue-500 rounded text-white"
             >Edit</Link
           >
-          <Modal
-            v-if="!tenant"
+          <!-- <Modal
             deleteModal
             :submitSuccess="isSubmitSuccess"
             @confirm="deleteUnit"
@@ -32,7 +31,7 @@
                 </div>
               </div>
             </template>
-          </Modal>
+          </Modal> -->
         </div>
       </div>
     </div>
@@ -43,34 +42,32 @@
           <div aria-describedby="Unit Details Table">
             <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">Id</div>
-              <div class="w-full">{{ unit.id }}</div>
+              <div class="w-full">{{ tenant.id }}</div>
             </div>
             <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">Name</div>
-              <div class="w-full">{{ unit.name }}</div>
+              <div class="w-full">{{ tenant.name }}</div>
             </div>
             <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
-                Block
+                Email
               </div>
-              <div class="w-full">{{ unit.block }}</div>
+              <div class="w-full">{{ tenant.email }}</div>
             </div>
             <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
-                Description
+                Phone
               </div>
-              <div class="w-full">{{ unit.description }}</div>
+              <div class="w-full">{{ tenant.phone }}</div>
             </div>
             <div class="flex items-center mb-4">
-              <div class="w-1/3 capitalize font-medium text-gray-400">
-                House
-              </div>
+              <div class="w-1/3 capitalize font-medium text-gray-400">Unit</div>
               <div class="w-full">
                 <Link
-                  :href="route('houses.show', unit.house_id)"
+                  :href="route('units.show', tenant.unit_id)"
                   class="font-bold text-blue-500"
                 >
-                  {{ unit.house }}
+                  {{ tenant.unit }}
                 </Link>
               </div>
             </div>
@@ -78,76 +75,26 @@
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 Created
               </div>
-              <div class="w-full">{{ unit.created_on }}</div>
+              <div class="w-full">{{ tenant.created_on }}</div>
             </div>
             <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 Updated
               </div>
-              <div class="w-full">{{ unit.updated_on }}</div>
+              <div class="w-full">{{ tenant.updated_on }}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Current Tenant Details -->
+    <!-- Tenants Actions -->
     <div class="mt-16">
-      <p class="text-lg mb-4">Current Tenant</p>
-
-      <div class="bg-white p-8 shadow-lg">
-        <!-- If Assigned -->
-        <div v-if="tenant">
-          <div class="flex items-start">
-            <div class="w-1/2 space-y-4">
-              <p>
-                <span class="font-bold mr-4"> Name: </span>{{ tenant["name"] }}
-              </p>
-
-              <p>
-                <span class="font-bold mr-4">Email: </span>{{ tenant["email"] }}
-              </p>
-
-              <p>
-                <span class="font-bold mr-4">Phone: </span>{{ tenant["phone"] }}
-              </p>
-            </div>
-
-            <div class="w-1/2 space-y-4">
-              <p><span class="font-bold mr-4">Reference: </span>N/A</p>
-
-              <p><span class="font-bold mr-4">Next of Kin: </span>N/A</p>
-
-              <p><span class="font-bold mr-4">Parking Spot:</span> N/A</p>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <Link
-              :href="route('tenants.show', tenant['id'])"
-              class="font-bold text-sm text-green-500 cursor-pointer"
-            >
-              View Profile <span><i class="fa fa-link"></i></span>
-            </Link>
-          </div>
-        </div>
-
-        <!-- If not assigned -->
-        <div v-else class="text-red-400 font-bold text-lg">Unit Available</div>
-      </div>
-    </div>
-
-    <!-- Units Actions -->
-    <div class="mt-8">
-      <p class="text-lg mb-4">Units Actions</p>
+      <p class="text-lg mb-4">Tenants Actions</p>
       <div class="flex items-center space-x-4">
-        <div class="p-2 px-4 bg-green-500 rounded text-white">
-          Tenant History
-        </div>
+        <div class="p-2 px-4 bg-green-500 rounded text-white">Billing</div>
 
-        <div class="p-2 px-4 bg-yellow-500 rounded text-white">
-          Repair History
-        </div>
+        <div class="p-2 px-4 bg-yellow-500 rounded text-white">History</div>
       </div>
     </div>
   </MainLayout>
@@ -160,17 +107,16 @@ import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
 
 let props = defineProps({
-  unit: Object,
-  tenant: Array | null,
+  tenant: Object
 })
 
-const unitForm = useForm(props.unit);
+const tenantForm = useForm(props.tenant);
 
 let isSubmitSuccess = ref(false);
 
 let deleteUnit = () => {
   isSubmitSuccess.value = false;
-  unitForm.delete('/units/' + unitForm.id, {
+  tenantForm.delete('/units/' + tenantForm.id, {
     preserveScroll: true,
     onSuccess: () => {
       isSubmitSuccess.value = true;

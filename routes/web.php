@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,14 +27,20 @@ Route::get('/dashboard', function () {
         'label' => 'Home'
     ]);
 })->name('dashboard');
-
+/** Houses */
 Route::resource('houses', HouseController::class);
+
+/** Units */
 Route::resource('units', UnitController::class);
 
+/** Categories */
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
 Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+/** Tenants */
+Route::resource('tenants', TenantController::class);
 
 Route::get('/settings', function () {
     return Inertia::render('Settings/Index', []);

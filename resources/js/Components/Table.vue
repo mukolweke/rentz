@@ -30,9 +30,8 @@
               v-for="field in fields"
               :key="field"
               class="px-6 py-4 font-medium whitespace-nowrap"
-            >
-              {{ dataItem[field] }}
-            </td>
+              v-html="dataItem[field]"
+            ></td>
             <td class="px-6 py-4">
               <!-- Actions Slot -->
               <slot

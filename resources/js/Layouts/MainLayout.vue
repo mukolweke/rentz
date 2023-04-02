@@ -15,7 +15,9 @@
     <!-- Main Section -->
     <div class="max-w-[1200px] mx-auto flex py-4 h-full]">
       <!-- Left Side: Navigation -->
-      <div class="w-[15%] h-full rounded-lg flex flex-col justify-between fixed mt-[70px]">
+      <div
+        class="w-[15%] h-full rounded-lg flex flex-col justify-between fixed mt-[70px]"
+      >
         <div>
           <ul>
             <li
@@ -78,12 +80,18 @@ let routes = ref([
     routeName: 'houses.index',
     label: 'houses',
     icon: 'fa-list-alt',
-    },
-    {
+  },
+  {
     name: 'Units',
     routeName: 'units.index',
     label: 'units',
     icon: 'fa-building',
+  },
+  {
+    name: 'Tenants',
+    routeName: 'tenants.index',
+    label: 'tenants',
+    icon: 'fa-users',
   },
   {
     name: 'Settings',

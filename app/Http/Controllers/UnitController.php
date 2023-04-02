@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Data\Models\Unit;
 use App\Data\Repositories\House\HouseRepository;
 use App\Data\Repositories\Unit\UnitRepository;
+use App\Data\Transformers\TenantTransformer;
 use App\Data\Transformers\UnitTransformer;
 use App\Http\Requests\UnitPostRequest;
 
@@ -79,6 +80,7 @@ class UnitController extends Controller
     {
         return Inertia::render('Units/Show', [
             'unit' => UnitTransformer::transform($unit),
+            'tenant' => $unit->tenant ? TenantTransformer::transform($unit->tenant) : null
         ]);
     }
 
