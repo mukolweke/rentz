@@ -20,7 +20,7 @@
             type="text"
             name="name"
             placeholder="Enter a category name"
-            class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primaryGreen"
+            class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
             id="name"
             required
           />

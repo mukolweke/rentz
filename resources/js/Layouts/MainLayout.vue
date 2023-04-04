@@ -23,12 +23,10 @@
             <li
               v-for="(item, index) in routes"
               :key="item.routeName"
-              class="cursor-pointer hover:text-primaryGreen transition-all"
+              class="cursor-pointer hover:text-purple-700 transition-all"
               :class="{
                 'rounded-t-lg': index === 0,
-                'font-semibold text-primaryGreen': $page.url.includes(
-                  item.label
-                ),
+                'font-semibold text-purple-700': $page.url.includes(item.label),
               }"
             >
               <!-- fa-bounce -->

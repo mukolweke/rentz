@@ -21,10 +21,12 @@
             name="category"
             id="category"
             placeholder="Choose a type"
-            class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
+            class="border border-gray-400 p-2 w-full rounded outline-purple-700"
             required
           >
-            <option selected class="text-gray-300" value="">Choose a type</option>
+            <option selected class="text-gray-300" value="">
+              Choose a type
+            </option>
             <option
               v-for="(category, index) in categories"
               :key="index"
@@ -54,7 +56,7 @@
             type="text"
             name="name"
             placeholder="Enter the house name"
-            class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primaryGreen"
+            class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
             id="name"
             required
           />
@@ -76,7 +78,7 @@
             type="text"
             name="location"
             placeholder="Enter the house location"
-            class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-primaryGreen"
+            class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-purple-700"
             id="location"
             required
           />

@@ -6,7 +6,7 @@
           onActionClick();
           onClick();
         "
-        class="font-medium text-pink-400 cursor-pointer hover:underline"
+        class="font-medium text-purple-400 cursor-pointer hover:underline"
       >
         Edit
       </div>
@@ -26,7 +26,7 @@
             v-model="categoryForm.name"
             type="text"
             name="name"
-            class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
+            class="border border-gray-400 p-2 w-full rounded outline-purple-700"
             id="name"
             required
           />

@@ -6,18 +6,18 @@
         aria-describedby="Display Table"
       >
         <thead
-          class="text-xs text-gray-700 uppercase border-b-2 border-primaryGreen bg-gray-50"
+          class="text-xs text-gray-700 uppercase border-b-2 border-purple-700 bg-gray-50"
         >
           <tr>
             <th
               v-for="field in fields"
               :key="field"
               scope="col"
-              class="px-6 py-3 text-primaryGreen"
+              class="px-6 py-3 text-purple-700"
             >
               {{ field.replace("_", " ") }}
             </th>
-            <th scope="col" class="px-6 py-3 text-primaryGreen">Actions</th>
+            <th scope="col" class="px-6 py-3 text-purple-700">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -43,14 +43,14 @@
                 <Link
                   preserve-scroll
                   :href="route(showRoute, dataItem['id'])"
-                  class="text-pink-400 font-medium hover:underline"
+                  class="text-green-700 font-medium hover:underline"
                 >
                   View
                 </Link>
                 <Link
                   preserve-scroll
                   :href="route(editRoute, dataItem['id'])"
-                  class="text-pink-400 font-medium hover:underline"
+                  class="text-blue-700 font-medium hover:underline"
                 >
                   Edit
                 </Link>

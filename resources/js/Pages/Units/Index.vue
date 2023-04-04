@@ -13,7 +13,7 @@
                   ? route('units.create', { house: houseId })
                   : route('units.create')
               "
-              class="text-white bg-primaryGreen p-2 px-4 rounded"
+              class="text-white bg-purple-700 p-2 px-4 rounded"
             >
               {{ houseId ? "Link a new unit" : "Create a new unit" }}
             </Link>

@@ -24,7 +24,7 @@
               name="category"
               id="category"
               placeholder="Choose a type"
-              class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
+              class="border border-gray-400 p-2 w-full rounded outline-purple-700"
               required
             >
               <option selected class="text-gray-300" value="">
@@ -59,7 +59,7 @@
               type="text"
               name="name"
               placeholder="Enter the house name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primaryGreen"
+              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
               id="name"
               required
             />
@@ -81,7 +81,7 @@
               type="text"
               name="block name"
               placeholder="Enter the block name"
-              class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-primaryGreen"
+              class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-purple-700"
               id="block_name"
             />
             <div class="text-xs text-red-500 mt-1" v-if="unitForm.errors.block">
@@ -103,7 +103,7 @@
               id="unit_description"
               rows="4"
               name="description"
-              class="block p-2.5 w-full placeholder:text-sm outline-primaryGreen rounded-lg border border-gray-300 focus:ring-primaryGreen focus:border-primaryGreen"
+              class="block p-2.5 w-full placeholder:text-sm outline-purple-700 rounded-lg border border-gray-300 focus:ring-purple-700 focus:border-purple-700"
               placeholder="Write a small unit description"
             ></textarea>
             <div

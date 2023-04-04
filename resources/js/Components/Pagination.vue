@@ -19,7 +19,7 @@
           preserve-scroll
           :href="link.url"
           aria-current="page"
-          :class="{ 'text-primaryGreen font-bold': link.active }"
+          :class="{ 'text-purple-700 font-bold': link.active }"
           class="px-3 py-2 text leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
         >
           {{ link.label }}
