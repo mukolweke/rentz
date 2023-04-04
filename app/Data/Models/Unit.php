@@ -36,4 +36,9 @@ class Unit extends Model
     {
         return $this->hasOne(Tenant::class);
     }
+
+    public function scopeIsAssigned($query, $assigned = true)
+    {
+        return $assigned ? $query->whereHas('tenant') : $query->whereDoesntHave('tenant');
+    }
 }

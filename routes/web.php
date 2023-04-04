@@ -41,6 +41,7 @@ Route::delete('category/{category}', [CategoryController::class, 'destroy'])->na
 
 /** Tenants */
 Route::resource('tenants', TenantController::class);
+Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('tenants.remove');
 
 Route::get('/settings', function () {
     return Inertia::render('Settings/Index', []);

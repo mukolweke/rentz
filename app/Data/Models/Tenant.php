@@ -40,4 +40,9 @@ class Tenant extends Model
     {
         return $this->user->email . '<br/><br/>' . $this->phone;
     }
+
+    public function scopeIsActive($query, $active = true)
+    {
+        return $query->where('is_active', $active);
+    }
 }

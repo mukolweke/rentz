@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Data\Models\Tenant;
+use App\Data\Models\Unit;
 use App\Data\Models\User;
 use App\Data\Repositories\Unit\UnitRepository;
 use App\Data\Transformers\TenantTransformer;
@@ -45,8 +46,11 @@ class TenantController extends Controller
      */
     public function create()
     {
+        $unitId = request()->has('unit') ? request()->get('unit') : null;
+
         return Inertia::render('Tenants/Create', [
-            'unitsOptions' => $this->unitRepo->getAll(false)
+            'unitsOptions' => $this->unitRepo->getAll(false),
+            'unitId' => $unitId,
         ]);
     }
 
@@ -140,5 +144,21 @@ class TenantController extends Controller
     public function destroy(Tenant $tenant)
     {
         //
+    }
+
+    /**
+     * Remove the link of a tenant to a unit.
+     *
+     * @param  \App\Data\Models\Unit  $unit
+     * @param  \App\Data\Models\Tenant  $tenant
+     * @return \Illuminate\Http\Response
+     */
+    public function removeTenant(Unit $unit, Tenant $tenant)
+    {
+        // remove tenant from a unit
+        $tenant->update(['is_active' => false]);
+
+        // redirect
+        return redirect()->route('units.show', $unit->id);
     }
 }

@@ -20,7 +20,7 @@ class UnitRepository implements InterfaceUnitRepository
     {
         $unitQ = Unit::with('house')->latest('id');
 
-        $units = $paginate ? $unitQ->paginate(5) : $unitQ->get();
+        $units = $paginate ? $unitQ->paginate(5) : $unitQ->isAssigned(false)->get();
 
         UnitTransformer::transformCollection($units);
         return $units;

@@ -25,7 +25,7 @@
           :datum="units"
           show-route="units.show"
           edit-route="units.edit"
-          :fields="['id', 'name', 'block', 'house', 'created_on', 'updated_on']"
+          :fields="['id', 'name', 'block', 'house', 'available']"
         />
       </div>
     </div>

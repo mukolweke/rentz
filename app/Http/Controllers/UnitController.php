@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Models\Tenant;
 use Inertia\Inertia;
 use App\Data\Models\Unit;
 use App\Data\Repositories\House\HouseRepository;
@@ -78,9 +79,13 @@ class UnitController extends Controller
      */
     public function show(Unit $unit)
     {
+        $activeTenant = $unit->tenant()->isActive()->first();
+
         return Inertia::render('Units/Show', [
             'unit' => UnitTransformer::transform($unit),
-            'tenant' => $unit->tenant ? TenantTransformer::transform($unit->tenant) : null
+            'tenant' => $activeTenant
+                ? TenantTransformer::transform($activeTenant)
+                : null
         ]);
     }
 
@@ -125,7 +130,11 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
-        $this->unitRepo->delete($unit);
+        if ($unit->tenant) {
+            $this->unitRepo->delete($unit);
+        }
+
+        // todo add an alert back if unit has a tenant
 
         // redirect
         return redirect()->route('units.index');

@@ -28,6 +28,10 @@ class UnitTransformer
      */
     public static function transform($unit)
     {
+        $available = empty($unit->tenant)
+            ? '<div class="text-gray-500 font-medium p-1 px-4 rounded text-center">Not Assigned</div>'
+            : '<div class="bg-primaryGreen text-white p-1 px-4 rounded text-center">Assigned</div>';
+
         return [
             'id' => $unit->id,
             'name' => $unit->name,
@@ -35,6 +39,7 @@ class UnitTransformer
             'description' => $unit->description,
             'house' => $unit->house->name,
             'house_id' => $unit->house_id,
+            'available' => $available,
             'created_on' => Carbon::parse($unit->created_at)->format('d-m-Y'),
             'updated_on' => Carbon::parse($unit->updated_at)->format('d-m-Y'),
         ];

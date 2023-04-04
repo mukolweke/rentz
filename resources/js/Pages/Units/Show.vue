@@ -93,9 +93,25 @@
 
     <!-- Current Tenant Details -->
     <div class="mt-16">
-      <p class="text-lg mb-4">Current Tenant</p>
+      <div class="flex items-center justify-between">
+        <p class="text-lg">Current Tenant</p>
 
-      <div class="bg-white p-8 shadow-lg">
+        <Button
+          v-if="tenant"
+          label="Remove Tenant"
+          danger
+          @click="removeTenant"
+        />
+        <Link
+          v-else
+          :href="route('tenants.create', { unit: unit.id })"
+          class="p-2 px-4 bg-pink-500 rounded text-white"
+        >
+          Add Tenant
+        </Link>
+      </div>
+
+      <div class="bg-white p-8 shadow-lg mt-4">
         <!-- If Assigned -->
         <div v-if="tenant">
           <div class="flex items-start">
@@ -176,5 +192,16 @@ let deleteUnit = () => {
       isSubmitSuccess.value = true;
     },
   });
+}
+
+const revokeForm = useForm({
+  unitId: props.unit.id,
+  tenantId: props.tenant ? props.tenant.id : null,
+})
+
+let removeTenant = () => {
+  revokeForm.get(`/units/${revokeForm.unitId}/tenant/${revokeForm.tenantId}/remove`, {
+    preserveScroll: true,
+  })
 }
 </script>

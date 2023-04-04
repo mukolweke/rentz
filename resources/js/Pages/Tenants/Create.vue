@@ -26,8 +26,8 @@
               placeholder="Choose a unit"
               class="border border-gray-400 p-2 w-full rounded outline-primaryGreen"
               required
-              :disabled="houseId"
-              :class="{ 'bg-gray-200': houseId }"
+              :disabled="unitId"
+              :class="{ 'bg-gray-200': unitId }"
             >
               <option selected class="text-gray-300" value="">
                 Choose a unit
@@ -168,6 +168,7 @@ import Button from '../../Components/Button.vue';
 
 let props = defineProps({
   unitsOptions: Array,
+  unitId: Number | null
 });
 
 const tenantForm = useForm({
@@ -175,7 +176,7 @@ const tenantForm = useForm({
   last_name: null,
   email: null,
   phone: null,
-  unit_id: '',
+  unit_id: props.unitId ?? '',
 });
 
 
