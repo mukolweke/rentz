@@ -105,7 +105,7 @@
         <Link
           v-else
           :href="route('tenants.create', { unit: unit.id })"
-          class="p-2 px-4 bg-pink-500 rounded text-white"
+          class="p-2 px-4 bg-purple-500 rounded text-white"
         >
           Add Tenant
         </Link>
@@ -149,7 +149,7 @@
         </div>
 
         <!-- If not assigned -->
-        <div v-else class="text-red-400 font-bold text-lg">Unit Available</div>
+        <div v-else class="text-purple-400 font-bold text-lg">Unit Available</div>
       </div>
     </div>
 
