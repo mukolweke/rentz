@@ -17,7 +17,13 @@
             >
               {{ field.replace("_", " ") }}
             </th>
-            <th scope="col" class="px-6 py-3 text-purple-700">Actions</th>
+            <th
+              v-if="displayAction"
+              scope="col"
+              class="px-6 py-3 text-purple-700"
+            >
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +38,7 @@
               class="px-6 py-4 font-medium whitespace-nowrap"
               v-html="dataItem[field]"
             ></td>
-            <td class="px-6 py-4">
+            <td v-if="displayAction" class="px-6 py-4">
               <!-- Actions Slot -->
               <slot
                 v-if="showSlotActions()"
@@ -75,7 +81,15 @@
 import { useSlots } from 'vue'
 import Pagination from "./Pagination.vue"
 
-defineProps({ datum: Object, fields: Array, showRoute: String, editRoute: String, });
+defineProps({
+  datum: Object,
+  fields: Array,
+  showRoute: String,
+  editRoute: String,
+  displayAction: {
+    type: Boolean, default: true,
+  },
+});
 
 let emit = defineEmits(['activeRow']);
 

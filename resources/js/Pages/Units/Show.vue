@@ -92,7 +92,7 @@
     </div>
 
     <!-- Current Tenant Details -->
-    <div class="mt-16">
+    <div class="mt-8">
       <div class="flex items-center justify-between">
         <p class="text-lg">Current Tenant</p>
 
@@ -127,6 +127,11 @@
               <p>
                 <span class="font-bold mr-4">Phone: </span>{{ tenant["phone"] }}
               </p>
+
+              <p>
+                <span class="font-bold mr-4">Joined: </span>
+                {{ tenant["created_on"] }}
+              </p>
             </div>
 
             <div class="w-1/2 space-y-4">
@@ -159,13 +164,49 @@
     <div class="mt-8">
       <p class="text-lg mb-4">Units Actions</p>
       <div class="flex items-center space-x-4">
-        <div class="p-2 px-4 bg-green-500 rounded text-white">
-          Tenant History
+        <div
+          class="font-medium cursor-pointer"
+          :class="{
+            'border-b-2 border-purple-600':
+              isActiveUnitActionTab('tenant-history'),
+            'text-gray-400 hover:text-purple-600':
+              !isActiveUnitActionTab('tenant-history'),
+          }"
+          @click="activeUnitActionTab = 'tenant-history'"
+        >
+          Tenants History
         </div>
 
-        <div class="p-2 px-4 bg-yellow-500 rounded text-white">
+        <div
+          class="font-medium cursor-pointer"
+          :class="{
+            'border-b-2 border-purple-600':
+              isActiveUnitActionTab('repair-history'),
+            'text-gray-400 hover:text-purple-600':
+              !isActiveUnitActionTab('repair-history'),
+          }"
+          @click="activeUnitActionTab = 'repair-history'"
+        >
           Repair History
         </div>
+      </div>
+    </div>
+
+    <div class="mt-8 bg-white shadow-lg w-full p-8">
+      <div v-if="isActiveUnitActionTab('tenant-history')">
+        <p class="font-medium">Previous Tenants</p>
+
+        <div class="mt-4" v-if="prevTenants.total > 0">
+          <TableView
+            :displayAction="false"
+            :fields="['id', 'name', 'email', 'phone', 'removed_on']"
+            :datum="prevTenants"
+          />
+        </div>
+      </div>
+
+      <div v-if="isActiveUnitActionTab('repair-history')">
+        <p>Repair History</p>
       </div>
     </div>
   </MainLayout>
@@ -176,10 +217,12 @@ import { ref } from 'vue';
 import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
+import TableView from '../../Components/Table.vue';
 
 let props = defineProps({
   unit: Object,
   tenant: Array | null,
+  prevTenants: Array,
 })
 
 const unitForm = useForm(props.unit);
@@ -205,5 +248,11 @@ let removeTenant = () => {
   revokeForm.get(`/units/${revokeForm.unitId}/tenant/${revokeForm.tenantId}/remove`, {
     preserveScroll: true,
   })
+}
+
+let activeUnitActionTab = ref('tenant-history');
+
+let isActiveUnitActionTab = (tabName) => {
+  return activeUnitActionTab.value == tabName
 }
 </script>

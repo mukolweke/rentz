@@ -2,6 +2,7 @@
 
 namespace App\Data\Repositories\Unit;
 
+use App\Data\Models\Tenant;
 use App\Data\Models\Unit;
 use App\Data\Transformers\UnitTransformer;
 

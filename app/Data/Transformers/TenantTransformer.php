@@ -38,6 +38,9 @@ class TenantTransformer
             'unit_id' => $tenant->unit_id,
             'created_on' => Carbon::parse($tenant->created_at)->format('d-m-Y'),
             'updated_on' => Carbon::parse($tenant->updated_at)->format('d-m-Y'),
+            'removed_on' => !($tenant->is_active)
+                ? Carbon::parse($tenant->updated_at)->format('d-m-Y')
+                : null,
         ];
     }
 

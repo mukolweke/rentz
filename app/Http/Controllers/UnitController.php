@@ -81,11 +81,15 @@ class UnitController extends Controller
     {
         $activeTenant = $unit->tenant()->isActive()->first();
 
+        $prevTenants = $unit->tenant()->isActive(false)->paginate(5);
+        TenantTransformer::transformCollection($prevTenants);
+
         return Inertia::render('Units/Show', [
             'unit' => UnitTransformer::transform($unit),
             'tenant' => $activeTenant
                 ? TenantTransformer::transform($activeTenant)
-                : null
+                : null,
+            'prevTenants' => $prevTenants,
         ]);
     }
 
