@@ -27,6 +27,8 @@ class Unit extends Model
         'deleted_at',
     ];
 
+    protected $appends = array('has_tenant');
+
     public function house()
     {
         return $this->belongsTo(House::class);
@@ -40,5 +42,10 @@ class Unit extends Model
     public function scopeIsAssigned($query, $assigned = true)
     {
         return $assigned ? $query->whereHas('tenant') : $query->whereDoesntHave('tenant');
+    }
+
+    public function getHasTenantAttribute()
+    {
+        return $this->tenant()->exists();
     }
 }

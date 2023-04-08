@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative overflow-x-auto sm:rounded-lg min-h-[300px]">
+    <div class="relative overflow-x-auto sm:rounded-lg">
       <table
         class="w-full text-sm text-left text-gray-500"
         aria-describedby="Display Table"
@@ -68,7 +68,6 @@
     </div>
 
     <Pagination
-      v-if="datum.total > 5"
       class="mt-8 text-right"
       :links="datum.links"
       :prev_url="datum.prev_page_url"

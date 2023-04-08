@@ -19,7 +19,7 @@ class UnitRepository implements InterfaceUnitRepository
      */
     public function getAll($paginate = true)
     {
-        $unitQ = Unit::with('house')->latest('id');
+        $unitQ = $this->unitQuery();
 
         $units = $paginate ? $unitQ->paginate(5) : $unitQ->isAssigned(false)->get();
 
@@ -35,12 +35,23 @@ class UnitRepository implements InterfaceUnitRepository
      */
     public function getUnitsByHouse($houseId, $paginate = true)
     {
-        $unitQ = Unit::with('house')->latest('id')->where('house_id', $houseId);
+        $unitQ = $this->unitQuery($houseId);
 
         $units = $paginate ? $unitQ->paginate(5) : $unitQ->get();
 
         UnitTransformer::transformCollection($units);
         return $units;
+    }
+
+    private function unitQuery($houseId = null)
+    {
+        $query = Unit::with('tenant', 'house')
+            ->leftJoin('tenants', 'units.id', '=', 'tenants.unit_id')
+            ->select('units.*', 'tenants.created_at as tenant_created_date', 'tenants.is_active as tenant_active')
+            ->orderByDesc('tenant_active')
+            ->orderByDesc('tenant_created_date');
+
+        return empty($houseId) ? $query : $query->where('house_id', $houseId);
     }
 
     /**

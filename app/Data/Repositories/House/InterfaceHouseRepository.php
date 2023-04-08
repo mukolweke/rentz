@@ -16,6 +16,13 @@ interface InterfaceHouseRepository
     public function getAll($paginate = true);
 
     /**
+     * Retrieve the resource in storage by id.
+     *
+     * @param  Number  $id
+     */
+    public function getById($id);
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Array  $attributes

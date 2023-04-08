@@ -27,6 +27,16 @@ class HouseRepository implements InterfaceHouseRepository
     }
 
     /**
+     * Retrieve the resource in storage by id.
+     *
+     * @param  Number  $id
+     */
+    public function getById($id)
+    {
+        return HouseTransformer::transform(House::with('category')->whereId($id)->first());
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Array  $attributes

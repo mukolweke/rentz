@@ -88,8 +88,9 @@
         <Link
           :href="route('units.index', { house: house.id })"
           class="p-2 px-4 bg-green-500 rounded text-white"
-          >Units</Link
         >
+          Units
+        </Link>
 
         <div class="p-2 px-4 bg-yellow-500 rounded text-white">Staff</div>
       </div>
@@ -105,7 +106,7 @@ import { useForm } from '@inertiajs/vue3'
 
 let props = defineProps({
   house: Object,
-  units: Array,
+  units: Object,
 });
 
 const houseForm = useForm(props.house);

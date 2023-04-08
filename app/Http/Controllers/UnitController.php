@@ -36,7 +36,7 @@ class UnitController extends Controller
 
         return Inertia::render('Units/Index', [
             'units' => $units,
-            'houseId' => $houseId,
+            'house' => $this->houseRepo->getById($houseId),
         ]);
     }
 

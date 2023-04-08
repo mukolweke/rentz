@@ -194,14 +194,19 @@
 
     <div class="mt-8 bg-white shadow-lg w-full p-8">
       <div v-if="isActiveUnitActionTab('tenant-history')">
-        <p class="font-medium">Previous Tenants</p>
+        <p v-if="prevTenants.total > 0" class="font-medium">Previous Tenants</p>
 
         <div class="mt-4" v-if="prevTenants.total > 0">
           <TableView
+            class="h-full"
             :displayAction="false"
             :fields="['id', 'name', 'email', 'phone', 'removed_on']"
             :datum="prevTenants"
           />
+        </div>
+
+        <div v-else class="text-purple-400 font-medium text-lg">
+          No tenants history available
         </div>
       </div>
 
