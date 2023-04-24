@@ -10,16 +10,26 @@
               <span v-else>List of units</span>
             </p>
 
-            <Link
-              :href="
-                house
-                  ? route('units.create', { house: house.id })
-                  : route('units.create')
-              "
-              class="text-white bg-purple-700 p-2 px-4 rounded"
-            >
-              {{ house ? "Link a new unit" : "Create a new unit" }}
-            </Link>
+            <div class="space-x-6 flex items-center">
+              
+              <input
+                v-model="search"
+                type="text"
+                placeholder="Search..."
+                class="border rounded px-4 py-1.5 outline-purple-400"
+              />
+
+              <Link
+                :href="
+                  house
+                    ? route('units.create', { house: house.id })
+                    : route('units.create')
+                "
+                class="text-white bg-purple-700 p-2 px-4 rounded"
+              >
+                {{ house ? "Link a new unit" : "Create a new unit" }}
+              </Link>
+            </div>
           </div>
         </div>
         <!-- Units Listing -->
@@ -38,10 +48,19 @@
   <script setup>
 import MainLayout from '../../Layouts/MainLayout.vue';
 import TableView from '../../Components/Table.vue';
+import { ref, watch } from 'vue';
+import { router } from '@inertiajs/vue3';
+import debounce from 'lodash/debounce';
 
 let props = defineProps({
   units: Object,
-  house: Object | null
+  house: Object | null,
+  filters: Object
 });
 
+let search = ref(props.filters.search);
+
+watch(search, debounce(function (value) {
+  router.get('/units', { search: value }, { preserveState: true, replace: true })
+}, 300));
   </script>

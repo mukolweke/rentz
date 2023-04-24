@@ -31,12 +31,14 @@ class UnitController extends Controller
      */
     public function index()
     {
+        // Set Filters
         $houseId = request()->has('house') ? request()->get('house') : null;
         $units = is_null($houseId) ? $this->unitRepo->getAll() : $this->unitRepo->getUnitsByHouse($houseId);
 
         return Inertia::render('Units/Index', [
             'units' => $units,
-            'house' => $this->houseRepo->getById($houseId),
+            'house' => $houseId ? $this->houseRepo->getById($houseId) : null,
+            'filters' => request()->only(['search'])
         ]);
     }
 
