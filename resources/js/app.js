@@ -6,15 +6,10 @@ import {
     createInertiaApp,
     Link
 } from '@inertiajs/vue3';
-import {
-    resolvePageComponent
-} from 'laravel-vite-plugin/inertia-helpers';
-import '../css/app.css';
 import Modal from './Components/Modal.vue';
 
 createInertiaApp({
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`,
-        import.meta.glob('./Pages/**/*.vue')),
+    resolve: (name) => require(`./Pages/${name}.vue`),
     setup({
         el,
         App,

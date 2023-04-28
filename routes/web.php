@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\TenantController;
@@ -18,31 +19,39 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/dashboard');
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'authenticate']);
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/', function () {
+        return redirect('/dashboard');
+    });
+
+    Route::get('/dashboard', function () {
+        return Inertia::render('Home/Index', [
+            'label' => 'Home'
+        ]);
+    })->name('dashboard');
+    /** Houses */
+    Route::resource('houses', HouseController::class);
+
+    /** Units */
+    Route::resource('units', UnitController::class);
+
+    /** Categories */
+    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+    Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+    /** Tenants */
+    Route::resource('tenants', TenantController::class);
+    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('tenants.remove');
+
+    Route::get('/settings', function () {
+        return Inertia::render('Settings/Index', []);
+    })->name('settings');
 });
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Home/Index', [
-        'label' => 'Home'
-    ]);
-})->name('dashboard');
-/** Houses */
-Route::resource('houses', HouseController::class);
-
-/** Units */
-Route::resource('units', UnitController::class);
-
-/** Categories */
-Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-Route::post('category', [CategoryController::class, 'store'])->name('category.store');
-Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
-Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
-
-/** Tenants */
-Route::resource('tenants', TenantController::class);
-Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('tenants.remove');
-
-Route::get('/settings', function () {
-    return Inertia::render('Settings/Index', []);
-})->name('settings');

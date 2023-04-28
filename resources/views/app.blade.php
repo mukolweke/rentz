@@ -7,12 +7,14 @@
     <title>Rentz: Tenant Management System</title>
 
     {{-- Custom Links --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        referrerpolicy="no-referrer" />
 
     <script src="https://unpkg.com/feather-icons"></script>
 
     @routes
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="{{ mix('js/app.js') }}" defer></script>
     @inertiaHead
 </head>
 

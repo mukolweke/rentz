@@ -8,7 +8,7 @@
         <div class="font-bold text-[32px] leading-loose uppercase">RentZ</div>
 
         <div class="flex items-center space-x-4">
-          <div>Profile</div>
+          <div class="cursor-pointer" @click="logout">Logout</div>
         </div>
       </div>
     </div>
@@ -58,6 +58,7 @@
 </template>
 
 <script setup>
+import { useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
 let routes = ref([
@@ -102,4 +103,10 @@ let routes = ref([
 const getActiveRoute = computed(() => {
   return window.location.pathname;
 });
+
+const logoutForm = useForm({});
+
+const logout = () => {
+  logoutForm.get('/logout');
+}
 </script>
