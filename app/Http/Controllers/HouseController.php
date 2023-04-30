@@ -34,6 +34,7 @@ class HouseController extends Controller
             'categories' => $this->categoryRepo->getAll(true),
             'categoryOptions' => $this->categoryRepo->getAll(),
             'houses' => $this->houseRepo->getAll(),
+            'filters' => request()->only(['search'])
         ]);
     }
 

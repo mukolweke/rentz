@@ -18,9 +18,15 @@ class HouseRepository implements InterfaceHouseRepository
      */
     public function getAll($paginate = true)
     {
-        $housesQ = House::with('category')->latest('id');
+        $housesQ = House::with('category')
+            ->when(request()->get('search'), function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('slug', 'like', "%{$search}%")
+                    ->orWhere('location', 'like', "%{$search}%");
+            })
+            ->latest('id');
 
-        $houses = $paginate ? $housesQ->paginate(5) : $housesQ->get();
+        $houses = $paginate ? $housesQ->paginate(5)->withQueryString() : $housesQ->get();
 
         HouseTransformer::transformCollection($houses);
         return $houses;

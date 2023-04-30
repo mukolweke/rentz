@@ -706,6 +706,14 @@ video {
   max-width: 36rem !important;
 }
 
+.max-w-\[\] {
+  max-width:  !important;
+}
+
+.max-w-\[200px\] {
+  max-width: 200px !important;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
@@ -1199,6 +1207,11 @@ video {
 .text-yellow-500 {
   --tw-text-opacity: 1 !important;
   color: rgb(234 179 8 / var(--tw-text-opacity)) !important;
+}
+
+.text-blue-300 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(147 197 253 / var(--tw-text-opacity)) !important;
 }
 
 .underline {
