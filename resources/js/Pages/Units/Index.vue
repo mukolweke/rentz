@@ -4,21 +4,18 @@
       <!-- Page Content -->
       <div class="mt-4 bg-white p-8 shadow-lg rounded-lg">
         <div class="mb-8">
+          <p class="font-normal text-2xl antialiased capitalize mb-4">
+            <span v-if="house">{{ house.name }} Units</span>
+            <span v-else>Units</span>
+          </p>
           <div class="flex items-center justify-between">
-            <p class="font-normal text-2xl antialiased capitalize">
-              <span v-if="house">{{ house.name }} Units</span>
-              <span v-else>Units</span>
-            </p>
-
-            <div class="space-x-6 flex items-center">
-
-              <input
+            <input
                 v-model="search"
                 type="text"
                 placeholder="Search..."
                 class="border rounded px-4 py-1.5 outline-primaryAltLight"
               />
-
+            <div class="space-x-6 flex items-center">
               <Link
                 :href="
                   house
@@ -27,7 +24,7 @@
                 "
                 class="text-white bg-primary p-2 px-4 rounded"
               >
-                {{ house ? "Link a new unit" : "Create a new unit" }}
+                {{ house ? "Link Unit" : "Create Unit" }}
               </Link>
             </div>
           </div>
