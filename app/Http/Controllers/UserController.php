@@ -29,11 +29,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate(10);
+        $users = User::when(request()->get('search'), function ($query, $search) {
+            $query->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhere('phone', 'like', "%{$search}%");
+        })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
         UserTransformer::transformCollection($users);
 
         return Inertia::render('Users/Index', [
-            'users' => $users
+            'users' => $users,
+            'filters' => request()->only(['search'])
         ]);
     }
 
