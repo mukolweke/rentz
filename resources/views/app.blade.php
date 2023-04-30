@@ -7,8 +7,7 @@
     <title>Rentz: Tenant Management System</title>
 
     {{-- Custom Links --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
     <script src="https://unpkg.com/feather-icons"></script>
 

@@ -28,7 +28,7 @@
   </MainLayout>
 </template>
 
-    <script setup>
+<script setup>
 import MainLayout from '../../Layouts/MainLayout.vue';
 import TableView from '../../Components/Table.vue';
 
@@ -36,4 +36,4 @@ let props = defineProps({
   tenants: Object
 });
 
-    </script>
+</script>

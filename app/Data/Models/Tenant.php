@@ -11,11 +11,11 @@ class Tenant extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'unit_id', 'phone',
+        'user_id', 'unit_id', 'is_active'
     ];
 
     protected $cast = [
-        'phone' => 'string',
+        'is_active' => 'boolean',
         'user_id' => 'integer',
         'unit_id' => 'integer',
     ];
@@ -38,7 +38,7 @@ class Tenant extends Model
 
     public function getContactInfoAttribute()
     {
-        return $this->user->email . '<br/><br/>' . $this->phone;
+        return $this->user->email . '<br/><br/>' . $this->user->phone;
     }
 
     public function scopeIsActive($query, $active = true)

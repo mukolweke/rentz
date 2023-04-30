@@ -10,7 +10,7 @@
         </div>
 
         <div class="flex items-center space-x-4">
-          <Link href="/logout" method="post">Logout</Link>
+          <Link href="/logout" method="post" as="button">Logout</Link>
         </div>
       </div>
     </div>
@@ -28,7 +28,8 @@
               class="cursor-pointer hover:text-primary transition-all"
               :class="{
                 'rounded-t-lg': index === 0,
-                'font-semibold text-primary': $page.url.includes(item.label),
+                'font-light': !$page.url.includes(item.label),
+                'font-bold text-primary': $page.url.includes(item.label),
               }"
             >
               <!-- fa-bounce -->
@@ -38,7 +39,7 @@
                 class="inline-block space-x-2 w-full h-full p-4 px-6"
               >
                 <span>
-                  <i :class="'fa ' + item.icon" aria-hidden="true"></i>
+                  <i :class="'fas ' + item.icon" aria-hidden="true"></i>
                 </span>
                 <span>{{ item.name }}</span>
               </Link>
@@ -67,7 +68,7 @@ let routes = ref([
     name: 'Dashboard',
     routeName: 'dashboard',
     label: 'dashboard',
-    icon: 'fa-home',
+    icon: 'fa-gauge',
   },
   {
     name: 'House Types',
@@ -92,6 +93,12 @@ let routes = ref([
     routeName: 'tenants.index',
     label: 'tenants',
     icon: 'fa-users',
+  },
+  {
+    name: 'Staff',
+    routeName: 'users.index',
+    label: 'users',
+    icon: 'fa-clipboard-user',
   },
   {
     name: 'Settings',

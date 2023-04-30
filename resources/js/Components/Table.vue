@@ -3,7 +3,7 @@
     <div class="relative overflow-x-auto sm:rounded-lg">
       <table class="w-full text-sm text-left" aria-describedby="Display Table">
         <thead
-          class="text-xs uppercase border-b-2 border-primaryAlt bg-gray-50"
+          class="text-xs uppercase border-b-2 border-primaryAlt bg-gray-50 text-center"
         >
           <tr>
             <th
@@ -32,7 +32,7 @@
             <td
               v-for="field in fields"
               :key="field"
-              class="px-6 py-4 font-medium whitespace-nowrap"
+              class="px-6 py-4 font-medium whitespace-nowrap text-center"
               v-html="dataItem[field]"
             ></td>
             <td v-if="displayAction" class="px-6 py-4">

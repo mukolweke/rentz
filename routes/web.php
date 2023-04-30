@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -49,7 +50,11 @@ Route::middleware('auth')->group(function () {
 
     /** Tenants */
     Route::resource('tenants', TenantController::class);
-    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('tenants.remove');
+    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])
+        ->name('tenants.remove');
+
+    /** Users */
+    Route::resource('users', UserController::class);
 
     Route::get('/settings', function () {
         return Inertia::render('Settings/Index', []);

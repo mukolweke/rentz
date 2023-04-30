@@ -30,9 +30,9 @@ class TenantTransformer
     {
         return [
             'id' => $tenant->id,
-            'name' => $tenant->user->fullName,
+            'name' => $tenant->user->name,
             'email' => $tenant->user->email,
-            'phone' => $tenant->phone,
+            'phone' => $tenant->user->phone,
             'contact_info' => $tenant->contact_info,
             'unit' => $tenant->unit->name,
             'unit_id' => $tenant->unit_id,
