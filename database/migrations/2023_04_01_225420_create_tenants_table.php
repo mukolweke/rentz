@@ -20,8 +20,6 @@ return new class extends Migration
 
             $table->foreignId('unit_id')->constrained();
 
-            $table->string('phone');
-
             $table->timestamps();
 
             $table->softDeletes();

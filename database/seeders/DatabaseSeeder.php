@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
     {
         // DemoUsers
         User::create([
-            'first_name' => 'demo',
-            'last_name' => 'user',
+            'name' => 'Demo User',
             'email' => 'demouser@rentz.com',
+            'role' => 'admin',
             'password' => 'password1234'
         ]);
 

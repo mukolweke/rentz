@@ -19,7 +19,7 @@ return new class extends Migration
          * unit cannot have more than one occupant
          */
         Schema::table('tenants', function (Blueprint $table) {
-            $table->boolean('is_active')->after('phone')->default(false);
+            $table->boolean('is_active')->after('unit_id')->default(false);
         });
     }
 
