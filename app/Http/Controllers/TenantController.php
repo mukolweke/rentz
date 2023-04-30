@@ -15,9 +15,9 @@ use Carbon\Carbon;
 class TenantController extends Controller
 {
     /**
-     * HouseController constructor.
+     * TenantController constructor.
      *
-     * @param CategoryRepository $categoryRepo
+     * @param UnitRepository $unitRepo
      */
     public function __construct(
         protected UnitRepository $unitRepo
