@@ -11,12 +11,12 @@
             </p>
 
             <div class="space-x-6 flex items-center">
-              
+
               <input
                 v-model="search"
                 type="text"
                 placeholder="Search..."
-                class="border rounded px-4 py-1.5 outline-purple-400"
+                class="border rounded px-4 py-1.5 outline-primaryAltLight"
               />
 
               <Link
@@ -25,7 +25,7 @@
                     ? route('units.create', { house: house.id })
                     : route('units.create')
                 "
-                class="text-white bg-purple-700 p-2 px-4 rounded"
+                class="text-white bg-primary p-2 px-4 rounded"
               >
                 {{ house ? "Link a new unit" : "Create a new unit" }}
               </Link>

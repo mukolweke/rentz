@@ -24,7 +24,7 @@ Route::post('login', [LoginController::class, 'authenticate']);
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/', function () {
         return redirect('/dashboard');

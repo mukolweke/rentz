@@ -29,7 +29,7 @@ class UnitTransformer
     public static function transform($unit)
     {
         $available = !$unit->tenant()->isActive()->exists()
-            ? '<div class="bg-purple-700 text-white font-medium p-1 px-4 rounded text-center">Not Assigned</div>'
+            ? '<div class="bg-primary text-white font-medium p-1 px-4 rounded text-center">Not Assigned</div>'
             : '<div class="bg-green-500 text-white p-1 px-4 rounded text-center">Assigned</div>';
 
         return [

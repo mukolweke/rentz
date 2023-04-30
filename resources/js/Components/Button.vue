@@ -2,12 +2,13 @@
   <button
     class="px-4 rounded hover:shadow-lg transition"
     :class="{
-      'p-1.5 border border-purple-700 text-gray-500': outline && !danger,
-      'p-2 bg-purple-700 text-white hover:opacity-90': !outline,
+      'p-1.5 border border-primary text-gray-500': outline && !danger,
+      'p-2 bg-primary text-white hover:opacity-90': !outline,
       'bg-red-500': danger,
     }"
   >
-    {{ label }}
+    <span v-if="label == 'delete'"><i class="fa fa-trash"></i></span>
+    <span v-else>{{ label }}</span>
   </button>
 </template>
 

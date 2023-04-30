@@ -5,10 +5,12 @@
       <div
         class="max-w-[1200px] mx-auto h-full flex items-center justify-between"
       >
-        <div class="font-bold text-[32px] leading-loose uppercase">RentZ</div>
+        <div class="font-bold text-[32px] leading-loose uppercase text-primary">
+          RentZ
+        </div>
 
         <div class="flex items-center space-x-4">
-          <div class="cursor-pointer" @click="logout">Logout</div>
+          <Link href="/logout" method="post">Logout</Link>
         </div>
       </div>
     </div>
@@ -23,10 +25,10 @@
             <li
               v-for="(item, index) in routes"
               :key="item.routeName"
-              class="cursor-pointer hover:text-purple-700 transition-all"
+              class="cursor-pointer hover:text-primary transition-all"
               :class="{
                 'rounded-t-lg': index === 0,
-                'font-semibold text-purple-700': $page.url.includes(item.label),
+                'font-semibold text-primary': $page.url.includes(item.label),
               }"
             >
               <!-- fa-bounce -->
@@ -58,7 +60,6 @@
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
 let routes = ref([
@@ -103,10 +104,4 @@ let routes = ref([
 const getActiveRoute = computed(() => {
   return window.location.pathname;
 });
-
-const logoutForm = useForm({});
-
-const logout = () => {
-  logoutForm.get('/logout');
-}
 </script>

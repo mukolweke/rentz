@@ -8,13 +8,21 @@
         "
         class="font-medium text-red-600 cursor-pointer hover:underline"
       >
-        Delete
+        <span class="text-lg"><i class="fa fa-trash"></i></span>
       </div>
     </template>
     <template v-slot:body>
       <div class="w-[400px]">
         <div class="w-full space-y-4">
-          <p class="text-center">X</p>
+          <div class="flex items-center justify-center mb-8">
+            <div
+              class="border-2 border-red-500 rounded-full w-[100px] h-[100px] flex items-center justify-center"
+            >
+              <span class="text-4xl text-red-500"
+                ><i class="fa fa-xmark"></i
+              ></span>
+            </div>
+          </div>
 
           <p class="text-center">
             Do you really want to delete this records? This process cannot be

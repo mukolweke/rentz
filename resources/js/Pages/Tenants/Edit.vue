@@ -24,7 +24,7 @@
               name="category"
               id="category"
               placeholder="Choose a unit"
-              class="border border-gray-400 p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 p-2 w-full rounded outline-primary"
               required
               :disabled="houseId"
               :class="{ 'bg-gray-200': houseId }"
@@ -61,7 +61,7 @@
               type="text"
               name="first name"
               placeholder="Enter the first name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="first_name"
               required
             />
@@ -86,7 +86,7 @@
               type="text"
               name="last name"
               placeholder="Enter the last name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="last_name"
               required
             />
@@ -111,7 +111,7 @@
               type="text"
               name="email"
               placeholder="Enter tenant email"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="email"
               required
             />
@@ -137,7 +137,7 @@
               type="text"
               name="phone"
               placeholder="Enter tenant phone number (2547********)"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="phone"
               required
             />

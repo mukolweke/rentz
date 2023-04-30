@@ -8,21 +8,30 @@
           <Link
             :href="route('houses.edit', house.id)"
             class="p-2 px-4 bg-blue-500 rounded text-white"
-            >Edit</Link
           >
+            <span><i class="fa-regular fa-edit"></i></span>
+          </Link>
           <Modal
             deleteModal
             :submitSuccess="isSubmitSuccess"
             @confirm="deleteCategory"
           >
             <template v-slot:toggleBtn="{ onClick }">
-              <Button label="Delete" danger @click="onClick" />
+              <Button label="delete" danger @click="onClick" />
             </template>
 
             <template v-slot:body>
               <div class="w-[400px]">
                 <div class="w-full space-y-4">
-                  <p class="text-center">X</p>
+                  <div class="flex items-center justify-center mb-8">
+                    <div
+                      class="border-2 border-red-500 rounded-full w-[100px] h-[100px] flex items-center justify-center"
+                    >
+                      <span class="text-4xl text-red-500"
+                        ><i class="fa fa-xmark"></i
+                      ></span>
+                    </div>
+                  </div>
 
                   <p class="text-center">
                     Do you really want to delete this records? This process
@@ -87,12 +96,14 @@
       <div class="flex items-center space-x-4">
         <Link
           :href="route('units.index', { house: house.id })"
-          class="p-2 px-4 bg-green-500 rounded text-white"
+          class="p-1 px-6 bg-green-500 hover:shadow-lg rounded text-white"
         >
           Units
         </Link>
 
-        <div class="p-2 px-4 bg-yellow-500 rounded text-white">Staff</div>
+        <div class="p-1 px-6 bg-yellow-500 hover:shadow-lg rounded text-white">
+          Staff
+        </div>
       </div>
     </div>
   </MainLayout>

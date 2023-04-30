@@ -22,7 +22,7 @@
           :datum="houses"
           show-route="houses.show"
           edit-route="houses.edit"
-          :fields="['id', 'name', 'slug', 'category', 'created_on', 'updated_on']"
+          :fields="['id', 'name', 'slug', 'category']"
         />
       </div>
     </div>

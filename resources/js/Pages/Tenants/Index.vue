@@ -9,7 +9,7 @@
 
             <Link
               :href="route('tenants.create')"
-              class="text-white bg-purple-700 p-2 px-4 rounded"
+              class="text-white bg-primary p-2 px-4 rounded"
             >
               Create a new tenant
             </Link>

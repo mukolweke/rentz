@@ -23,7 +23,7 @@
               name="category"
               id="category"
               placeholder="Choose a type"
-              class="border border-gray-400 p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 p-2 w-full rounded outline-primary"
               required
             >
               <option selected class="text-gray-300" value="">
@@ -58,7 +58,7 @@
               type="text"
               name="name"
               placeholder="Enter the house name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-purple-700"
+              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="name"
               required
             />
@@ -80,7 +80,7 @@
               type="text"
               name="location"
               placeholder="Enter the house location"
-              class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-purple-700"
+              class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-primary"
               id="location"
               required
             />

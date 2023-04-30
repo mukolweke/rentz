@@ -1,26 +1,23 @@
 <template>
   <div>
     <div class="relative overflow-x-auto sm:rounded-lg">
-      <table
-        class="w-full text-sm text-left text-gray-500"
-        aria-describedby="Display Table"
-      >
+      <table class="w-full text-sm text-left" aria-describedby="Display Table">
         <thead
-          class="text-xs text-gray-700 uppercase border-b-2 border-purple-700 bg-gray-50"
+          class="text-xs uppercase border-b-2 border-primaryAlt bg-gray-50"
         >
           <tr>
             <th
               v-for="field in fields"
               :key="field"
               scope="col"
-              class="px-6 py-3 text-purple-700"
+              class="px-6 py-3 text-primaryAlt"
             >
               {{ field.replace("_", " ") }}
             </th>
             <th
               v-if="displayAction"
               scope="col"
-              class="px-6 py-3 text-purple-700"
+              class="px-6 py-3 text-primaryAlt"
             >
               Actions
             </th>
@@ -51,14 +48,16 @@
                   :href="route(showRoute, dataItem['id'])"
                   class="text-green-700 font-medium hover:underline"
                 >
-                  View
+                  <span class="text-lg"><i class="fa-regular fa-eye"></i></span>
                 </Link>
                 <Link
                   preserve-scroll
                   :href="route(editRoute, dataItem['id'])"
                   class="text-blue-700 font-medium hover:underline"
                 >
-                  Edit
+                  <span class="text-lg"
+                    ><i class="fa-regular fa-edit"></i
+                  ></span>
                 </Link>
               </div>
             </td>
@@ -68,11 +67,19 @@
     </div>
 
     <Pagination
+      v-if="datum.total > 0"
       class="mt-8 text-right"
       :links="datum.links"
       :prev_url="datum.prev_page_url"
       :next_url="datum.next_page_url"
     />
+
+    <p
+      v-if="datum.total == 0"
+      class="text-center text-lg font-medium opacity-30 my-20"
+    >
+      There is no data
+    </p>
   </div>
 </template>
 

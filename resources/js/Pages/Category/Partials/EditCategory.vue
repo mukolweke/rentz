@@ -6,9 +6,9 @@
           onActionClick();
           onClick();
         "
-        class="font-medium text-purple-400 cursor-pointer hover:underline"
+        class="font-medium text-primary cursor-pointer hover:underline"
       >
-        Edit
+        <span class="text-lg"><i class="fa-regular fa-edit"></i></span>
       </div>
     </template>
     <template v-slot:header>Edit Category </template>
@@ -26,7 +26,7 @@
             v-model="categoryForm.name"
             type="text"
             name="name"
-            class="border border-gray-400 p-2 w-full rounded outline-purple-700"
+            class="border border-gray-400 p-2 w-full rounded outline-primary"
             id="name"
             required
           />

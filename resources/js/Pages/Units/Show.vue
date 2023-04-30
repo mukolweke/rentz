@@ -8,8 +8,9 @@
           <Link
             :href="route('units.edit', unit.id)"
             class="p-2 px-4 bg-blue-500 rounded text-white"
-            >Edit</Link
           >
+            <span><i class="fa fa-edit"></i></span>
+          </Link>
           <Modal
             v-if="!tenant"
             deleteModal
@@ -17,13 +18,21 @@
             @confirm="deleteUnit"
           >
             <template v-slot:toggleBtn="{ onClick }">
-              <Button label="Delete" danger @click="onClick" />
+              <Button label="delete" danger @click="onClick" />
             </template>
 
             <template v-slot:body>
               <div class="w-[400px]">
                 <div class="w-full space-y-4">
-                  <p class="text-center">X</p>
+                  <div class="flex items-center justify-center mb-8">
+                    <div
+                      class="border-2 border-red-500 rounded-full w-[100px] h-[100px] flex items-center justify-center"
+                    >
+                      <span class="text-4xl text-red-500"
+                        ><i class="fa fa-xmark"></i
+                      ></span>
+                    </div>
+                  </div>
 
                   <p class="text-center">
                     Do you really want to delete this records? This process
@@ -68,7 +77,7 @@
               <div class="w-full">
                 <Link
                   :href="route('houses.show', unit.house_id)"
-                  class="font-bold text-blue-500"
+                  class="font-bold text-primaryAlt"
                 >
                   {{ unit.house }}
                 </Link>
@@ -105,7 +114,7 @@
         <Link
           v-else
           :href="route('tenants.create', { unit: unit.id })"
-          class="p-2 px-4 bg-purple-700 rounded text-white"
+          class="p-2 px-4 bg-primary rounded text-white"
         >
           Add Tenant
         </Link>
@@ -154,9 +163,7 @@
         </div>
 
         <!-- If not assigned -->
-        <div v-else class="text-purple-400 font-bold text-lg">
-          Unit Available
-        </div>
+        <div v-else class="text-primary font-bold text-lg">Unit Available</div>
       </div>
     </div>
 
@@ -167,9 +174,9 @@
         <div
           class="font-medium cursor-pointer"
           :class="{
-            'border-b-2 border-purple-600':
+            'border-b-2 border-primary':
               isActiveUnitActionTab('tenant-history'),
-            'text-gray-400 hover:text-purple-600':
+            'text-gray-400 hover:text-primary':
               !isActiveUnitActionTab('tenant-history'),
           }"
           @click="activeUnitActionTab = 'tenant-history'"
@@ -180,9 +187,9 @@
         <div
           class="font-medium cursor-pointer"
           :class="{
-            'border-b-2 border-purple-600':
+            'border-b-2 border-primary':
               isActiveUnitActionTab('repair-history'),
-            'text-gray-400 hover:text-purple-600':
+            'text-gray-400 hover:text-primary':
               !isActiveUnitActionTab('repair-history'),
           }"
           @click="activeUnitActionTab = 'repair-history'"
@@ -205,7 +212,7 @@
           />
         </div>
 
-        <div v-else class="text-purple-400 font-medium text-lg">
+        <div v-else class="text-primary font-medium text-lg">
           No tenants history available
         </div>
       </div>
