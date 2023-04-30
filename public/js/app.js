@@ -17986,15 +17986,10 @@ __webpack_require__.r(__webpack_exports__);
       label: 'units',
       icon: 'fa-building'
     }, {
-      name: 'Tenants',
-      routeName: 'tenants.index',
-      label: 'tenants',
-      icon: 'fa-users'
-    }, {
-      name: 'Staff',
+      name: 'Users',
       routeName: 'users.index',
       label: 'users',
-      icon: 'fa-clipboard-user'
+      icon: 'fa-users'
     }, {
       name: 'Settings',
       routeName: 'settings',
@@ -22047,7 +22042,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.search = $event;
         }),
-        placeholder: "Search..."
+        placeholder: "Search units..."
       }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         href: $props.house ? _ctx.route('units.create', {
           house: $props.house.id
@@ -22761,7 +22756,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.search = $event;
         }),
-        placeholder: "Search..."
+        placeholder: "Search users..."
       }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         href: _ctx.route('users.create'),
         "class": "text-white bg-primary p-2 px-4 rounded"

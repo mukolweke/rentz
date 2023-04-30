@@ -89,16 +89,10 @@ let routes = ref([
     icon: 'fa-building',
   },
   {
-    name: 'Tenants',
-    routeName: 'tenants.index',
-    label: 'tenants',
-    icon: 'fa-users',
-  },
-  {
-    name: 'Staff',
+    name: 'Users',
     routeName: 'users.index',
     label: 'users',
-    icon: 'fa-clipboard-user',
+    icon: 'fa-users',
   },
   {
     name: 'Settings',

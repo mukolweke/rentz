@@ -48,11 +48,6 @@ Route::middleware('auth')->group(function () {
     Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-    /** Tenants */
-    Route::resource('tenants', TenantController::class);
-    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])
-        ->name('tenants.remove');
-
     /** Users */
     Route::resource('users', UserController::class);
 
