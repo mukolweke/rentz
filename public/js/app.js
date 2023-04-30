@@ -19622,6 +19622,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
 /* harmony import */ var _Components_Button_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/Button.vue */ "./resources/js/Components/Button.vue");
 /* harmony import */ var _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Components/TextInput.vue */ "./resources/js/Components/TextInput.vue");
+/* harmony import */ var _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/SelectInput.vue */ "./resources/js/Components/SelectInput.vue");
+
 
 
 
@@ -19642,7 +19644,16 @@ __webpack_require__.r(__webpack_exports__);
       role: '',
       unit: ''
     });
-    var userRoles = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(['Admin', 'Staff', 'Tenant']);
+    var userRoles = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([{
+      id: 'admin',
+      name: 'Admin'
+    }, {
+      id: 'staff',
+      name: 'Staff'
+    }, {
+      id: 'tenant',
+      name: 'Tenant'
+    }]);
     var isSubmitSuccess = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var createUser = function createUser() {
       isSubmitSuccess.value = false;
@@ -19684,7 +19695,8 @@ __webpack_require__.r(__webpack_exports__);
         return _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm;
       },
       Button: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-      TextInput: _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+      TextInput: _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      SelectInput: _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -19711,7 +19723,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
 /* harmony import */ var _Components_Button_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/Button.vue */ "./resources/js/Components/Button.vue");
+/* harmony import */ var _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Components/TextInput.vue */ "./resources/js/Components/TextInput.vue");
+/* harmony import */ var _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/SelectInput.vue */ "./resources/js/Components/SelectInput.vue");
 function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
+
 
 
 
@@ -19733,7 +19749,16 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
       phone: props.user.phone,
       unit: props.user.unit_id
     });
-    var userRoles = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(['Admin', 'Staff', 'Tenant']);
+    var userRoles = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([{
+      id: 'admin',
+      name: 'Admin'
+    }, {
+      id: 'staff',
+      name: 'Staff'
+    }, {
+      id: 'tenant',
+      name: 'Tenant'
+    }]);
     var isSubmitSuccess = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var updateUser = function updateUser() {
       isSubmitSuccess.value = false;
@@ -19780,7 +19805,9 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
       get useForm() {
         return _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm;
       },
-      Button: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+      Button: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      TextInput: _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      SelectInput: _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22207,7 +22234,7 @@ var _hoisted_10 = {
   "aria-describedby": "Unit Details Table"
 };
 var _hoisted_11 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22216,7 +22243,7 @@ var _hoisted_13 = {
   "class": "w-full"
 };
 var _hoisted_14 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22225,7 +22252,7 @@ var _hoisted_16 = {
   "class": "w-full"
 };
 var _hoisted_17 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22234,7 +22261,7 @@ var _hoisted_19 = {
   "class": "w-full"
 };
 var _hoisted_20 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22243,7 +22270,7 @@ var _hoisted_22 = {
   "class": "w-full"
 };
 var _hoisted_23 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22252,7 +22279,7 @@ var _hoisted_25 = {
   "class": "w-full"
 };
 var _hoisted_26 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22261,7 +22288,7 @@ var _hoisted_28 = {
   "class": "w-full"
 };
 var _hoisted_29 = {
-  "class": "flex items-center mb-4"
+  "class": "flex items-start mb-4"
 };
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-1/3 capitalize font-medium text-gray-400"
@@ -22479,137 +22506,75 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "mb-6"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "name",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Name ", -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "mb-6"
+};
 var _hoisted_7 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
+  "class": "mb-6"
 };
 var _hoisted_8 = {
-  "class": "mb-6"
-};
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "email",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Email ", -1 /* HOISTED */);
-var _hoisted_10 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_11 = {
-  "class": "mb-6"
-};
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "phone",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Phone Number ", -1 /* HOISTED */);
-var _hoisted_13 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "category",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " User Role ", -1 /* HOISTED */);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  selected: "",
-  "class": "text-gray-300",
-  value: ""
-}, " Choose an option ", -1 /* HOISTED */);
-var _hoisted_16 = ["value"];
-var _hoisted_17 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_18 = {
   key: 0,
   "class": ""
 };
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "category",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Link a unit ", -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  selected: "",
-  "class": "text-gray-300",
-  value: ""
-}, " Choose an option ", -1 /* HOISTED */);
-var _hoisted_21 = ["value"];
-var _hoisted_22 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_23 = {
+var _hoisted_9 = {
   "class": "mt-8 flex justify-end items-center space-x-4"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["MainLayout"], null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Create User Form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Create User Form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
         modelValue: $setup.userForm.name,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.userForm.name = $event;
         }),
         name: "name",
-        id: "name",
         placeholder: "Enter full name",
-        "class": "w-full",
+        "label-string": "Name",
+        "input-error": $setup.userForm.errors.name,
         required: ""
-      }, null, 8 /* PROPS */, ["modelValue"]), $setup.userForm.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
         modelValue: $setup.userForm.email,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.userForm.email = $event;
         }),
         name: "email",
-        id: "email",
         placeholder: "Enter user email",
-        "class": "w-full",
+        "label-string": "Email",
+        "input-error": $setup.userForm.errors.email,
         required: ""
-      }, null, 8 /* PROPS */, ["modelValue"]), $setup.userForm.errors.email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.email), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
         modelValue: $setup.userForm.phone,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.userForm.phone = $event;
         }),
         name: "phone",
-        id: "phone",
         placeholder: "Enter user phone number (2547********)",
-        "class": "w-full"
-      }, null, 8 /* PROPS */, ["modelValue"]), $setup.userForm.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.phone), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" User Role "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "label-string": "Phone Number",
+        "input-error": $setup.userForm.errors.phone
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" User Role "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-          'mb-6': $setup.userForm.role.toLowerCase() == 'tenant'
+          'mb-6': $setup.userForm.role == 'tenant'
         })
-      }, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SelectInput"], {
+        modelValue: $setup.userForm.role,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $setup.userForm.role = $event;
         }),
         name: "category",
-        id: "category",
-        placeholder: "Choose a unit",
-        "class": "border border-gray-400 p-2 w-full rounded outline-primary",
+        "label-string": "User Role",
+        "select-options": $setup.userRoles,
+        "input-error": $setup.userForm.errors.role,
         required: ""
-      }, [_hoisted_15, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.userRoles, function (role, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          key: index,
-          value: role,
-          "class": "capitalize"
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role), 9 /* TEXT, PROPS */, _hoisted_16);
-      }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.userForm.role]]), $setup.userForm.errors.role ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.role), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Units "), $setup.userForm.role.toLowerCase() == 'tenant' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      }, null, 8 /* PROPS */, ["modelValue", "select-options", "input-error"])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Units "), $setup.userForm.role == 'tenant' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SelectInput"], {
+        modelValue: $setup.userForm.unit,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return $setup.userForm.unit = $event;
         }),
         name: "category",
-        id: "category",
-        placeholder: "Choose a unit",
-        "class": "border border-gray-400 p-2 w-full rounded outline-primary",
-        required: ""
-      }, [_hoisted_20, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.unitsOptions, function (unit, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          key: index,
-          value: unit.id
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(unit.name), 9 /* TEXT, PROPS */, _hoisted_21);
-      }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.userForm.unit]]), $setup.userForm.errors.unit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.unit), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit Buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Button"], {
+        "label-string": "Link a unit",
+        "select-options": $props.unitsOptions,
+        "input-error": $setup.userForm.errors.unit
+      }, null, 8 /* PROPS */, ["modelValue", "select-options", "input-error"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit Buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Button"], {
         label: "Cancel",
         outline: "",
         onClick: $setup.back
@@ -22656,138 +22621,75 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "mb-6"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "name",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Name ", -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "mb-6"
+};
 var _hoisted_7 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
+  "class": "mb-6"
 };
 var _hoisted_8 = {
-  "class": "mb-6"
-};
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "email",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Email ", -1 /* HOISTED */);
-var _hoisted_10 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_11 = {
-  "class": "mb-6"
-};
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "phone",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Phone Number ", -1 /* HOISTED */);
-var _hoisted_13 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "category",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " User Role ", -1 /* HOISTED */);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  selected: "",
-  "class": "text-gray-300",
-  value: ""
-}, " Choose an option ", -1 /* HOISTED */);
-var _hoisted_16 = ["value"];
-var _hoisted_17 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_18 = {
   key: 0,
   "class": ""
 };
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "category",
-  "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
-}, " Link a unit ", -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  selected: "",
-  "class": "text-gray-300",
-  value: ""
-}, " Choose an option ", -1 /* HOISTED */);
-var _hoisted_21 = ["value"];
-var _hoisted_22 = {
-  key: 0,
-  "class": "text-xs text-red-500 mt-1"
-};
-var _hoisted_23 = {
+var _hoisted_9 = {
   "class": "mt-8 flex justify-end items-center space-x-4"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_TextInput = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TextInput");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["MainLayout"], null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Update User Form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TextInput, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Update User Form "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
         modelValue: $setup.userForm.name,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.userForm.name = $event;
         }),
         name: "name",
-        id: "name",
         placeholder: "Enter full name",
-        "class": "w-full",
+        "label-string": "Full Name",
+        "input-error": $setup.userForm.errors.name,
         required: ""
-      }, null, 8 /* PROPS */, ["modelValue"]), $setup.userForm.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TextInput, {
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
         modelValue: $setup.userForm.email,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.userForm.email = $event;
         }),
         name: "email",
-        id: "email",
         placeholder: "Enter user email",
-        "class": "w-full",
+        "label-string": "Email",
+        "input-error": $setup.userForm.errors.email,
         required: ""
-      }, null, 8 /* PROPS */, ["modelValue"]), $setup.userForm.errors.email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.email), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TextInput, {
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
         modelValue: $setup.userForm.phone,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.userForm.phone = $event;
         }),
         name: "phone",
-        id: "phone",
         placeholder: "Enter user phone number (2547********)",
-        "class": "w-full"
-      }, null, 8 /* PROPS */, ["modelValue"]), $setup.userForm.errors.phone ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.phone), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" User Role "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "label-string": "Phone Number",
+        "input-error": $setup.userForm.errors.phone
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" User Role "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-          'mb-6': $setup.userForm.role.toLowerCase() == 'tenant'
+          'mb-6': $setup.userForm.role == 'tenant'
         })
-      }, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SelectInput"], {
+        modelValue: $setup.userForm.role,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $setup.userForm.role = $event;
         }),
         name: "category",
-        id: "category",
-        placeholder: "Choose a unit",
-        "class": "border border-gray-400 p-2 w-full rounded outline-primary",
+        "label-string": "User Role",
+        "select-options": $setup.userRoles,
+        "input-error": $setup.userForm.errors.role,
         required: ""
-      }, [_hoisted_15, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.userRoles, function (role, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          key: index,
-          value: role,
-          "class": "capitalize"
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role), 9 /* TEXT, PROPS */, _hoisted_16);
-      }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.userForm.role]]), $setup.userForm.errors.role ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.role), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Units "), $setup.userForm.role.toLowerCase() == 'tenant' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      }, null, 8 /* PROPS */, ["modelValue", "select-options", "input-error"])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Units "), $setup.userForm.role == 'tenant' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SelectInput"], {
+        modelValue: $setup.userForm.unit,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return $setup.userForm.unit = $event;
         }),
         name: "category",
-        id: "category",
-        placeholder: "Choose a unit",
-        "class": "border border-gray-400 p-2 w-full rounded outline-primary",
-        required: ""
-      }, [_hoisted_20, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.unitsOptions, function (unit, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          key: index,
-          value: unit.id
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(unit.name), 9 /* TEXT, PROPS */, _hoisted_21);
-      }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.userForm.unit]]), $setup.userForm.errors.unit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.userForm.errors.unit), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit Buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Button"], {
+        "label-string": "Link a unit",
+        "select-options": $props.unitsOptions,
+        "input-error": $setup.userForm.errors.unit
+      }, null, 8 /* PROPS */, ["modelValue", "select-options", "input-error"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit Buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Button"], {
         label: "Cancel",
         outline: "",
         onClick: $setup.back
@@ -22830,17 +22732,20 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_5 = {
   "class": "flex items-center justify-between"
 };
+var _hoisted_6 = {
+  "class": "max-w-[200px]"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["MainLayout"], null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Search Input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Search"], {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Search Input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Search"], {
         modelValue: $setup.search,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.search = $event;
         }),
         placeholder: "Search users..."
-      }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+      }, null, 8 /* PROPS */, ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         href: _ctx.route('users.create'),
         "class": "text-white bg-primary p-2 px-4 rounded"
       }, {
@@ -22985,10 +22890,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Modal\n            deleteModal\n            :submitSuccess=\"isSubmitSuccess\"\n            @confirm=\"deleteUnit\"\n          >\n            <template v-slot:toggleBtn=\"{ onClick }\">\n              <Button label=\"Delete\" danger @click=\"onClick\" />\n            </template>\n\n            <template v-slot:body>\n              <div class=\"w-[400px]\">\n                <div class=\"w-full space-y-4\">\n                  <p class=\"text-center\">X</p>\n\n                  <p class=\"text-center\">\n                    Do you really want to delete this records? This process\n                    cannot be undone.\n                  </p>\n                </div>\n              </div>\n            </template>\n          </Modal> ")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.id), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.email), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.phone), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full font-bold", {
-          'text-red-500': $props.user.role == 'Admin',
-          'text-green-500': $props.user.role == 'Staff',
-          'text-yellow-500': $props.user.role == 'Tenant'
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-full font-bold capitalize", {
+          'text-red-500': $props.user.role == 'admin',
+          'text-green-500': $props.user.role == 'staff',
+          'text-yellow-500': $props.user.role == 'tenant'
         }])
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.role), 3 /* TEXT, CLASS */)]), $props.user.unit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         "class": "w-full font-bold text-primaryAlt",

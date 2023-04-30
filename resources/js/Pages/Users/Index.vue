@@ -8,8 +8,9 @@
 
           <div class="flex items-center justify-between">
             <!-- Search Input -->
-            <Search v-model="search" placeholder="Search users..." />
-
+            <div class="max-w-[200px]">
+              <Search v-model="search" placeholder="Search users..." />
+            </div>
             <Link
               :href="route('users.create')"
               class="text-white bg-primary p-2 px-4 rounded"

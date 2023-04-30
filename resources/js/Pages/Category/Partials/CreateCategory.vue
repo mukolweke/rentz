@@ -1,34 +1,22 @@
 <template>
   <Modal
     :submitSuccess="isSubmitSuccess"
-    btnLabel="Add Category"
+    btnLabel="Create Category"
     @confirm="createCategory"
   >
-    <template v-slot:header> Create New Category </template>
+    <template v-slot:header> Create Category </template>
     <template v-slot:body>
       <div class="w-[400px]">
         <div class="">
-          <label
-            for="name"
-            class="block mb-2 uppercase font-bold text-xs text-gray-700"
-          >
-            Name
-          </label>
-
           <TextInput
             v-model="categoryForm.name"
             name="name"
-            id="name"
             placeholder="Enter a category name"
             class="w-full"
+            label-string="Name"
+            :input-error="categoryForm.errors.name"
             required
           />
-          <div
-            class="text-xs text-red-500 mt-1"
-            v-if="categoryForm.errors.name"
-          >
-            {{ categoryForm.errors.name }}
-          </div>
         </div>
       </div>
     </template>

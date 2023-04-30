@@ -64,11 +64,11 @@
             <div class="flex items-center mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">Role</div>
               <div
-                class="w-full font-bold"
+                class="w-full font-bold capitalize"
                 :class="{
-                  'text-red-500': user.role == 'Admin',
-                  'text-green-500': user.role == 'Staff',
-                  'text-yellow-500': user.role == 'Tenant',
+                  'text-red-500': user.role == 'admin',
+                  'text-green-500': user.role == 'staff',
+                  'text-yellow-500': user.role == 'tenant',
                 }"
               >
                 {{ user.role }}

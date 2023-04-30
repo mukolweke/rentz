@@ -15,7 +15,7 @@
     <div class="flex flex-col max-w-5xl rounded-lg shadow-lg bg-white">
       <div class="p-5 h-full">
         <div class="flex items-center justify-between h-full">
-          <h3 class="text-base font-semibold text-gray-500">
+          <h3 class="font-normal text-2xl antialiased capitalize">
             <slot name="header"></slot>
           </h3>
           <button class="p-1 leading-none" @click="isVisible = false">

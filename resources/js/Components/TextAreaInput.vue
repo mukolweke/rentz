@@ -1,20 +1,19 @@
 <template>
   <label
-    v-if="labelString"
-    :for="labelString"
+    for="labelString"
     class="block mb-2 uppercase font-bold text-xs text-gray-700"
   >
     {{ labelString }}
   </label>
 
-  <input
+  <textarea
     :value="modelValue"
     @input="updateValue"
     :id="labelString"
-    type="text"
+    rows="4"
+    class="block p-2.5 w-full placeholder:text-sm outline-primary rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
     :placeholder="placeholder"
-    class="border border-gray-400 placeholder:text-sm p-2 rounded outline-primary w-full"
-  />
+  ></textarea>
 
   <div class="text-xs text-red-500 mt-1" v-if="inputError">
     {{ inputError }}
@@ -26,8 +25,8 @@ defineProps({
   modelValue: String,
   placeholder: String,
   labelString: String,
-  inputError: String,
-})
+  inputError: String
+});
 
 const emit = defineEmits(['update:modelValue'])
 

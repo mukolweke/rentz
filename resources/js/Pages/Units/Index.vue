@@ -10,7 +10,9 @@
           </p>
           <div class="flex items-center justify-between">
             <!-- Search Input -->
-            <Search v-model="search" placeholder="Search units..." />
+            <div class="max-w-[200px]">
+                <Search v-model="search" placeholder="Search units..." />
+            </div>
 
             <div class="space-x-6 flex items-center">
               <Link

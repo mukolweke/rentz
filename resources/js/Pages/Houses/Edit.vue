@@ -11,85 +11,38 @@
         <div class="max-w-md w-full">
           <!-- Category -->
           <div class="mb-6">
-            <label
-              for="category"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Select House Type
-            </label>
-
-            <select
+            <SelectInput
               v-model="houseForm.category_id"
               name="category"
-              id="category"
-              placeholder="Choose a type"
-              class="border border-gray-400 p-2 w-full rounded outline-primary"
+              :select-options="categoryOptions"
+              label-string="Select House Type"
+              :input-error="houseForm.errors.category_id"
               required
-            >
-              <option selected class="text-gray-300" value="">
-                Choose a type
-              </option>
-              <option
-                v-for="(category, index) in categoryOptions"
-                :key="index"
-                :value="category.id"
-              >
-                {{ category.name }}
-              </option>
-            </select>
-            <div
-              class="text-xs text-red-500 mt-1"
-              v-if="houseForm.errors.category_id"
-            >
-              {{ houseForm.errors.category_id }}
-            </div>
+            />
           </div>
           <!-- Name -->
           <div class="mb-6">
-            <label
-              for="name"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Name
-            </label>
-
             <TextInput
               v-model="houseForm.name"
               name="name"
-              id="name"
               placeholder="Enter the house name"
               class="w-full"
+              label-string="Name"
+              :input-error="houseForm.errors.name"
               required
             />
-
-            <div class="text-xs text-red-500 mt-1" v-if="houseForm.errors.name">
-              {{ houseForm.errors.name }}
-            </div>
           </div>
           <!-- Location -->
           <div class="mb-6">
-            <label
-              for="location"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Location
-            </label>
-
             <TextInput
               v-model="houseForm.location"
               name="location"
-              id="location"
               placeholder="Enter the house location"
               class="w-full"
+              label-string="Location"
+              :input-error="houseForm.errors.location"
               required
             />
-
-            <div
-              class="text-xs text-red-500 mt-1"
-              v-if="houseForm.errors.location"
-            >
-              {{ houseForm.errors.location }}
-            </div>
           </div>
 
           <!-- Submit Button -->
@@ -104,11 +57,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import MainLayout from '../../Layouts/MainLayout.vue';
 import { useForm } from '@inertiajs/vue3'
 import Button from '../../Components/Button.vue';
 import TextInput from '../../Components/TextInput.vue';
+import SelectInput from '../../Components/SelectInput.vue';
 
 let props = defineProps({
   house: Object,

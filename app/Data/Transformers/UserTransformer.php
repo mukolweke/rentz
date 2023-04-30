@@ -29,9 +29,9 @@ class UserTransformer
     public static function transform($user)
     {
         $role = match ($user->role) {
-            'Admin' => '<div class="text-red-500 font-bold p-1 px-4 rounded text-center">Admin</div>',
-            'Staff' => '<div class="text-green-500 font-bold p-1 px-4 rounded text-center">Staff</div>',
-            'Tenant' => '<div class="text-yellow-500 font-bold p-1 px-4 rounded text-center">Tenant</div>',
+            'admin' => '<div class="text-red-500 font-bold p-1 px-4 rounded text-center">Admin</div>',
+            'staff' => '<div class="text-green-500 font-bold p-1 px-4 rounded text-center">Staff</div>',
+            'tenant' => '<div class="text-yellow-500 font-bold p-1 px-4 rounded text-center">Tenant</div>',
             default => '',
         };
 

@@ -12,137 +12,60 @@
         <div class="w-[400px]">
           <!-- Name -->
           <div class="mb-6">
-            <label
-              for="name"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Name
-            </label>
-
             <TextInput
               v-model="userForm.name"
               name="name"
-              id="name"
               placeholder="Enter full name"
-              class="w-full"
+              label-string="Name"
+              :input-error="userForm.errors.name"
               required
             />
-
-            <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.name">
-              {{ userForm.errors.name }}
-            </div>
           </div>
 
           <!-- Email -->
           <div class="mb-6">
-            <label
-              for="email"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Email
-            </label>
-
             <TextInput
               v-model="userForm.email"
               name="email"
-              id="email"
               placeholder="Enter user email"
-              class="w-full"
+              label-string="Email"
+              :input-error="userForm.errors.email"
               required
             />
-
-            <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.email">
-              {{ userForm.errors.email }}
-            </div>
           </div>
 
           <!-- Phone -->
           <div class="mb-6">
-            <label
-              for="phone"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Phone Number
-            </label>
-
             <TextInput
               v-model="userForm.phone"
               name="phone"
-              id="phone"
               placeholder="Enter user phone number (2547********)"
-              class="w-full"
+              label-string="Phone Number"
+              :input-error="userForm.errors.phone"
             />
-
-            <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.phone">
-              {{ userForm.errors.phone }}
-            </div>
           </div>
 
           <!-- User Role -->
-          <div :class="{ 'mb-6': userForm.role.toLowerCase() == 'tenant' }">
-            <label
-              for="category"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              User Role
-            </label>
-
-            <select
+          <div :class="{ 'mb-6': userForm.role == 'tenant' }">
+            <SelectInput
               v-model="userForm.role"
               name="category"
-              id="category"
-              placeholder="Choose a unit"
-              class="border border-gray-400 p-2 w-full rounded outline-primary"
+              label-string="User Role"
+              :select-options="userRoles"
+              :input-error="userForm.errors.role"
               required
-            >
-              <option selected class="text-gray-300" value="">
-                Choose an option
-              </option>
-              <option
-                v-for="(role, index) in userRoles"
-                :key="index"
-                :value="role"
-                class="capitalize"
-              >
-                {{ role }}
-              </option>
-            </select>
-            <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.role">
-              {{ userForm.errors.role }}
-            </div>
+            />
           </div>
 
           <!-- Units -->
-          <div class="" v-if="userForm.role.toLowerCase() == 'tenant'">
-            <label
-              for="category"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Link a unit
-            </label>
-
-            <select
+          <div class="" v-if="userForm.role == 'tenant'">
+            <SelectInput
               v-model="userForm.unit"
               name="category"
-              id="category"
-              placeholder="Choose a unit"
-              class="border border-gray-400 p-2 w-full rounded outline-primary"
-              required
-            >
-              <option selected class="text-gray-300" value="">
-                Choose an option
-              </option>
-              <option
-                v-for="(unit, index) in unitsOptions"
-                :key="index"
-                :value="unit.id"
-              >
-                {{ unit.name }}
-              </option>
-            </select>
-            <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.unit">
-              {{ userForm.errors.unit }}
-            </div>
+              label-string="Link a unit"
+              :select-options="unitsOptions"
+              :input-error="userForm.errors.unit"
+            />
           </div>
 
           <!-- Submit Buttons -->
@@ -162,6 +85,7 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3'
 import Button from '../../Components/Button.vue';
 import TextInput from '../../Components/TextInput.vue';
+import SelectInput from '../../Components/SelectInput.vue';
 
 defineProps({
   unitsOptions: Array
@@ -176,7 +100,9 @@ const userForm = useForm({
 });
 
 const userRoles = ref([
-  'Admin', 'Staff', 'Tenant'
+  { id: 'admin', name: 'Admin' },
+  { id: 'staff', name: 'Staff' },
+  { id: 'tenant', name: 'Tenant' }
 ])
 
 let isSubmitSuccess = ref(false);

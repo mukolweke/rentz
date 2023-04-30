@@ -14,106 +14,51 @@
         <div class="w-[400px]">
           <!-- House -->
           <div class="mb-6">
-            <label
-              for="category"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Link a house
-            </label>
-
-            <select
+            <SelectInput
               v-model="unitForm.house_id"
               name="category"
               id="category"
-              placeholder="Choose a type"
-              class="border border-gray-400 p-2 w-full rounded outline-primary"
+              :disabled="houseId"
+              :select-options="housesOptions"
+              :class="{ 'bg-gray-200': houseId }"
+              label-string="Link a house"
+              :input-error="unitForm.errors.house_id"
               required
-            >
-              <option selected class="text-gray-300" value="">
-                Choose a type
-              </option>
-              <option
-                v-for="(house, index) in housesOptions"
-                :key="index"
-                :value="house.id"
-              >
-                {{ house.name }}
-              </option>
-            </select>
-            <div
-              class="text-xs text-red-500 mt-1"
-              v-if="unitForm.errors.house_id"
-            >
-              {{ unitForm.errors.house_id }}
-            </div>
+            />
           </div>
           <!-- Name -->
           <div class="mb-6">
-            <label
-              for="name"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Name
-            </label>
-
             <TextInput
               v-model="unitForm.name"
               name="name"
-              id="name"
               required
               placeholder="Enter the house name"
               class="w-full"
+              label-string="Name"
+              :input-error="unitForm.errors.name"
             />
-
-            <div class="text-xs text-red-500 mt-1" v-if="unitForm.errors.name">
-              {{ unitForm.errors.name }}
-            </div>
           </div>
           <!-- Block -->
           <div class="mb-6">
-            <label
-              for="block_name"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Block
-            </label>
-
             <TextInput
               v-model="unitForm.block"
-              name="block name"
-              id="block_name"
+              name="block"
               required
               placeholder="Enter the block name"
-              class="w-full"
+              label-string="Block"
+              :input-error="unitForm.errors.block"
             />
-            <div class="text-xs text-red-500 mt-1" v-if="unitForm.errors.block">
-              {{ unitForm.errors.block }}
-            </div>
           </div>
 
           <!-- Unit Description -->
           <div class="mb-6">
-            <label
-              for="unit_description"
-              class="block mb-2 uppercase font-bold text-xs text-gray-700"
-            >
-              Description
-            </label>
-
-            <textarea
+            <TextAreaInput
               v-model="unitForm.description"
-              id="unit_description"
-              rows="4"
               name="description"
-              class="block p-2.5 w-full placeholder:text-sm outline-primary rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
               placeholder="Write a small unit description"
-            ></textarea>
-            <div
-              class="text-xs text-red-500 mt-1"
-              v-if="unitForm.errors.description"
-            >
-              {{ unitForm.errors.description }}
-            </div>
+              label-string="Description"
+              :input-error="unitForm.errors.description"
+            />
           </div>
 
           <!-- Submit Buttons -->
@@ -133,6 +78,8 @@ import { useForm } from '@inertiajs/vue3'
 import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import TextInput from '../../Components/TextInput.vue';
+import TextAreaInput from '../../Components/TextAreaInput.vue';
+import SelectInput from '../../Components/SelectInput.vue';
 
 let props = defineProps({
   unit: Array,

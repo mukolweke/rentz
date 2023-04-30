@@ -50,27 +50,27 @@
       <div class="mt-8 px-8">
         <div class="w-full max-w-xl">
           <div aria-describedby="Unit Details Table">
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">Id</div>
               <div class="w-full">{{ unit.id }}</div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">Name</div>
               <div class="w-full">{{ unit.name }}</div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 Block
               </div>
               <div class="w-full">{{ unit.block }}</div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 Description
               </div>
               <div class="w-full">{{ unit.description }}</div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 House
               </div>
@@ -83,13 +83,13 @@
                 </Link>
               </div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 Created
               </div>
               <div class="w-full">{{ unit.created_on }}</div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="flex items-start mb-4">
               <div class="w-1/3 capitalize font-medium text-gray-400">
                 Updated
               </div>
@@ -112,8 +112,8 @@
           @click="removeTenant"
         />
         <Link
+          :href="route('users.create', { unit: unit.id })"
           v-else
-          :href="route('tenants.create', { unit: unit.id })"
           class="p-2 px-4 bg-primary rounded text-white"
         >
           Add Tenant
@@ -154,7 +154,7 @@
 
           <div class="mt-4">
             <Link
-              :href="route('tenants.show', tenant['id'])"
+              :href="route('users.show', tenant['id'])"
               class="font-bold text-sm text-green-500 cursor-pointer"
             >
               View Profile <span><i class="fa fa-link"></i></span>
@@ -234,7 +234,7 @@ import TableView from '../../Components/Table.vue';
 let props = defineProps({
   unit: Object,
   tenant: Array | null,
-  prevTenants: Array,
+  prevTenants: Array | Object,
 })
 
 const unitForm = useForm(props.unit);
