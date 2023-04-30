@@ -29,7 +29,7 @@ class TenantTransformer
     public static function transform($tenant)
     {
         return [
-            'id' => $tenant->id,
+            'id' => $tenant->user_id,
             'name' => $tenant->user->name,
             'email' => $tenant->user->email,
             'phone' => $tenant->user->phone,
@@ -41,22 +41,6 @@ class TenantTransformer
             'removed_on' => !($tenant->is_active)
                 ? Carbon::parse($tenant->updated_at)->format('d-m-Y')
                 : null,
-        ];
-    }
-
-    /**
-     * @param Tenant $tenant
-     * @return array
-     */
-    public static function transformForEdit($tenant)
-    {
-        return [
-            'id' => $tenant->id,
-            'first_name' => $tenant->user->first_name,
-            'last_name' => $tenant->user->last_name,
-            'email' => $tenant->user->email,
-            'phone' => $tenant->phone,
-            'unit_id' => $tenant->unit_id,
         ];
     }
 }
