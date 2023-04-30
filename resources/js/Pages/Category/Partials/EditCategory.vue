@@ -21,13 +21,13 @@
           >
             Name
           </label>
-          {{ tempField }}
-          <input
+
+          <TextInput
             v-model="categoryForm.name"
-            type="text"
             name="name"
-            class="border border-gray-400 p-2 w-full rounded outline-primary"
             id="name"
+            placeholder="Enter a category name"
+            class="w-full"
             required
           />
           <div
@@ -45,6 +45,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3'
+import TextInput from '../../../Components/TextInput.vue';
 
 let props = defineProps({
   onActionClick: Function,

@@ -19,15 +19,15 @@
               Name
             </label>
 
-            <input
+            <TextInput
               v-model="userForm.name"
-              type="text"
               name="name"
-              placeholder="Enter full name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="name"
+              placeholder="Enter full name"
+              class="w-full"
               required
             />
+
             <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.name">
               {{ userForm.errors.name }}
             </div>
@@ -42,15 +42,15 @@
               Email
             </label>
 
-            <input
+            <TextInput
               v-model="userForm.email"
-              type="text"
               name="email"
-              placeholder="Enter user email"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="email"
+              placeholder="Enter user email"
+              class="w-full"
               required
             />
+
             <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.email">
               {{ userForm.errors.email }}
             </div>
@@ -65,14 +65,14 @@
               Phone Number
             </label>
 
-            <input
+            <TextInput
               v-model="userForm.phone"
-              type="text"
               name="phone"
-              placeholder="Enter user phone number (2547********)"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="phone"
+              placeholder="Enter user phone number (2547********)"
+              class="w-full"
             />
+
             <div class="text-xs text-red-500 mt-1" v-if="userForm.errors.phone">
               {{ userForm.errors.phone }}
             </div>

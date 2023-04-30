@@ -1264,6 +1264,10 @@ video {
   outline-color: #a8e6ff !important;
 }
 
+.outline-primaryAlt {
+  outline-color: #4fcdff !important;
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter !important;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;

@@ -15,13 +15,12 @@
             Name
           </label>
 
-          <input
+          <TextInput
             v-model="categoryForm.name"
-            type="text"
             name="name"
-            placeholder="Enter a category name"
-            class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
             id="name"
+            placeholder="Enter a category name"
+            class="w-full"
             required
           />
           <div
@@ -39,6 +38,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3'
+import TextInput from '../../../Components/TextInput.vue';
 
 const categoryForm = useForm({
   name: null,

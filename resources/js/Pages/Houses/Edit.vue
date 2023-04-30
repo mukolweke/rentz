@@ -53,15 +53,15 @@
               Name
             </label>
 
-            <input
+            <TextInput
               v-model="houseForm.name"
-              type="text"
               name="name"
-              placeholder="Enter the house name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="name"
+              placeholder="Enter the house name"
+              class="w-full"
               required
             />
+
             <div class="text-xs text-red-500 mt-1" v-if="houseForm.errors.name">
               {{ houseForm.errors.name }}
             </div>
@@ -75,15 +75,15 @@
               Location
             </label>
 
-            <input
+            <TextInput
               v-model="houseForm.location"
-              type="text"
               name="location"
-              placeholder="Enter the house location"
-              class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-primary"
               id="location"
+              placeholder="Enter the house location"
+              class="w-full"
               required
             />
+
             <div
               class="text-xs text-red-500 mt-1"
               v-if="houseForm.errors.location"
@@ -108,6 +108,7 @@ import { ref } from 'vue';
 import MainLayout from '../../Layouts/MainLayout.vue';
 import { useForm } from '@inertiajs/vue3'
 import Button from '../../Components/Button.vue';
+import TextInput from '../../Components/TextInput.vue';
 
 let props = defineProps({
   house: Object,

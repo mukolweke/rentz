@@ -5,7 +5,9 @@
       <div class="mt-4 bg-white p-8 shadow-lg rounded-lg">
         <div class="mb-8">
           <div class="flex items-center justify-between">
-            <p class="font-normal text-2xl antialiased capitalize">Create unit</p>
+            <p class="font-normal text-2xl antialiased capitalize">
+              Create unit
+            </p>
           </div>
         </div>
         <!-- Create Unit Form -->
@@ -56,15 +58,15 @@
               Name
             </label>
 
-            <input
+            <TextInput
               v-model="unitForm.name"
-              type="text"
               name="name"
-              placeholder="Enter the house name"
-              class="border border-gray-400 placeholder:text-sm p-2 w-full rounded outline-primary"
               id="name"
               required
+              placeholder="Enter the house name"
+              class="w-full"
             />
+
             <div class="text-xs text-red-500 mt-1" v-if="unitForm.errors.name">
               {{ unitForm.errors.name }}
             </div>
@@ -78,13 +80,13 @@
               Block
             </label>
 
-            <input
+            <TextInput
               v-model="unitForm.block"
-              type="text"
               name="block name"
-              placeholder="Enter the block name"
-              class="border border-gray-400 p-2 w-full placeholder:text-sm rounded outline-primary"
               id="block_name"
+              required
+              placeholder="Enter the block name"
+              class="w-full"
             />
             <div class="text-xs text-red-500 mt-1" v-if="unitForm.errors.block">
               {{ unitForm.errors.block }}
@@ -132,6 +134,7 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3'
 import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
+import TextInput from '../../Components/TextInput.vue';
 
 let props = defineProps({
   housesOptions: Array,

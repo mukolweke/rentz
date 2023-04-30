@@ -9,12 +9,9 @@
             <span v-else>Units</span>
           </p>
           <div class="flex items-center justify-between">
-            <input
-                v-model="search"
-                type="text"
-                placeholder="Search..."
-                class="border rounded px-4 py-1.5 outline-primaryAltLight"
-              />
+            <!-- Search Input -->
+            <Search v-model="search" placeholder="Search..." />
+
             <div class="space-x-6 flex items-center">
               <Link
                 :href="
@@ -48,6 +45,7 @@ import TableView from '../../Components/Table.vue';
 import { ref, watch } from 'vue';
 import { router } from '@inertiajs/vue3';
 import debounce from 'lodash/debounce';
+import Search from '../../Components/TextInput.vue';
 
 let props = defineProps({
   units: Object,
