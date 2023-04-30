@@ -2,7 +2,7 @@
   <MainLayout>
     <div class="mb-4">
       <div class="flex items-center justify-between py-4">
-        <p class="text-2xl">Edit House Details</p>
+        <p class="font-normal text-2xl antialiased">Edit House Details</p>
       </div>
     </div>
     <div class="py-4 pb-10 shadow-lg rounded-lg bg-white">

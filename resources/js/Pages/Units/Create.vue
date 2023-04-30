@@ -5,7 +5,7 @@
       <div class="mt-4 bg-white p-8 shadow-lg rounded-lg">
         <div class="mb-8">
           <div class="flex items-center justify-between">
-            <p class="font-semibold text-sm text-gray-500">Create a unit</p>
+            <p class="font-normal text-2xl antialiased capitalize">Create a unit</p>
           </div>
         </div>
         <!-- Create Unit Form -->

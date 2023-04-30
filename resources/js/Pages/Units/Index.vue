@@ -5,9 +5,9 @@
       <div class="mt-4 bg-white p-8 shadow-lg rounded-lg">
         <div class="mb-8">
           <div class="flex items-center justify-between">
-            <p class="font-semibold text-sm text-gray-500">
-              <span v-if="house">{{ house.name }} house list of units</span>
-              <span v-else>List of units</span>
+            <p class="font-normal text-2xl antialiased capitalize">
+              <span v-if="house">{{ house.name }} Units</span>
+              <span v-else>Units</span>
             </p>
 
             <div class="space-x-6 flex items-center">
