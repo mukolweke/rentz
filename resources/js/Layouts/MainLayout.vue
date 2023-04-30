@@ -36,12 +36,12 @@
               <Link
                 preserve-scroll
                 :href="route(item.routeName)"
-                class="inline-block space-x-2 w-full h-full p-4 px-6"
+                class="flex items-center space-x-4 w-full h-full p-4 px-6 text-lg"
               >
-                <span>
+                <span class="w-5">
                   <i :class="'fas ' + item.icon" aria-hidden="true"></i>
                 </span>
-                <span>{{ item.name }}</span>
+                <span class="w-full">{{ item.name }}</span>
               </Link>
             </li>
           </ul>
