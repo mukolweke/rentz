@@ -3,7 +3,7 @@
     <!-- Top Navigation -->
     <div class="h-[70px] shadow-sm bg-white fixed w-full">
       <div
-        class="max-w-[1200px] mx-auto h-full flex items-center justify-between"
+        class="max-w-[1200px] mx-4 xl:mx-auto h-full flex items-center justify-between"
       >
         <div class="font-bold text-[32px] leading-loose uppercase text-primary">
           RentZ
@@ -18,7 +18,7 @@
     <div class="max-w-[1200px] mx-auto flex py-4 h-full]">
       <!-- Left Side: Navigation -->
       <div
-        class="w-[15%] h-full rounded-lg flex flex-col justify-between fixed mt-[70px]"
+        class="hidden w-[15%] h-full rounded-lg lg:flex flex-col justify-between fixed mt-[70px]"
       >
         <div>
           <ul>
@@ -51,7 +51,7 @@
       </div>
 
       <!-- Right Side: Main Body -->
-      <div class="w-[85%] h-full px-8 ml-[15%] mt-[70px]">
+      <div class="w-full lg:w-[85%] h-full px-8 lg:ml-[15%] mt-[70px]">
         <slot />
       </div>
     </div>

@@ -20414,7 +20414,7 @@ var _hoisted_2 = {
   "class": "h-[70px] shadow-sm bg-white fixed w-full"
 };
 var _hoisted_3 = {
-  "class": "max-w-[1200px] mx-auto h-full flex items-center justify-between"
+  "class": "max-w-[1200px] mx-4 xl:mx-auto h-full flex items-center justify-between"
 };
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "font-bold text-[32px] leading-loose uppercase text-primary"
@@ -20426,7 +20426,7 @@ var _hoisted_6 = {
   "class": "max-w-[1200px] mx-auto flex py-4 h-full]"
 };
 var _hoisted_7 = {
-  "class": "w-[15%] h-full rounded-lg flex flex-col justify-between fixed mt-[70px]"
+  "class": "hidden w-[15%] h-full rounded-lg lg:flex flex-col justify-between fixed mt-[70px]"
 };
 var _hoisted_8 = {
   "class": "w-5"
@@ -20436,7 +20436,7 @@ var _hoisted_9 = {
 };
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, null, -1 /* HOISTED */);
 var _hoisted_11 = {
-  "class": "w-[85%] h-full px-8 ml-[15%] mt-[70px]"
+  "class": "w-full lg:w-[85%] h-full px-8 lg:ml-[15%] mt-[70px]"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
