@@ -18,7 +18,7 @@
     <div class="max-w-[1200px] mx-auto flex py-4 h-full]">
       <!-- Left Side: Navigation -->
       <div
-        class="hidden w-[15%] h-full rounded-lg lg:flex flex-col justify-between fixed mt-[70px]"
+        class="hidden w-[200px] h-full rounded-lg lg:flex flex-col justify-between fixed mt-[70px]"
       >
         <div>
           <ul>
@@ -51,7 +51,7 @@
       </div>
 
       <!-- Right Side: Main Body -->
-      <div class="w-full lg:w-[85%] h-full px-8 lg:ml-[15%] mt-[70px]">
+      <div class="w-full lg:w-[85%] h-full lg:ml-[250px] mt-[70px]">
         <slot />
       </div>
     </div>
