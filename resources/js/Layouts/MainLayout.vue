@@ -62,45 +62,74 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { usePage } from '@inertiajs/vue3'
 
-let routes = ref([
-  {
-    name: 'Dashboard',
-    routeName: 'dashboard',
-    label: 'dashboard',
-    icon: 'fa-gauge',
-  },
-  {
-    name: 'House Types',
-    routeName: 'category.index',
-    label: 'category',
-    icon: 'fa-list',
-  },
-  {
-    name: 'Houses',
-    routeName: 'houses.index',
-    label: 'houses',
-    icon: 'fa-list-alt',
-  },
-  {
-    name: 'Units',
-    routeName: 'units.index',
-    label: 'units',
-    icon: 'fa-building',
-  },
-  {
-    name: 'Users',
-    routeName: 'users.index',
-    label: 'users',
-    icon: 'fa-users',
-  },
-  {
-    name: 'Settings',
-    routeName: 'settings',
-    label: 'settings',
-    icon: 'fa-cog',
-  },
-])
+let routes = ref(
+  usePage().props.auth.user.role == 'tenant'
+    ? [
+      {
+        name: 'Dashboard',
+        routeName: 'dashboard',
+        label: 'dashboard',
+        icon: 'fa-gauge',
+      },
+      {
+        name: 'Profile',
+        routeName: 'profile',
+        label: 'profile',
+        icon: 'fa-user',
+      },
+      {
+        name: 'Unit',
+        routeName: 'unit',
+        label: 'unit',
+        icon: 'fa-user',
+      },
+      {
+        name: 'Payment',
+        routeName: 'payment',
+        label: 'payment',
+        icon: 'fa-user',
+      }
+    ]
+    : [
+      {
+        name: 'Dashboard',
+        routeName: 'dashboard',
+        label: 'dashboard',
+        icon: 'fa-gauge',
+      },
+      {
+        name: 'House Types',
+        routeName: 'category.index',
+        label: 'category',
+        icon: 'fa-list',
+      },
+      {
+        name: 'Houses',
+        routeName: 'houses.index',
+        label: 'houses',
+        icon: 'fa-list-alt',
+      },
+      {
+        name: 'Units',
+        routeName: 'units.index',
+        label: 'units',
+        icon: 'fa-building',
+      },
+      {
+        name: 'Users',
+        routeName: 'users.index',
+        label: 'users',
+        icon: 'fa-users',
+      },
+      {
+        name: 'Settings',
+        routeName: 'settings',
+        label: 'settings',
+        icon: 'fa-cog',
+      },
+    ])
 
 const getActiveRoute = computed(() => {
   return window.location.pathname;

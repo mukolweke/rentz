@@ -54,4 +54,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', function () {
         return Inertia::render('Settings/Index', []);
     })->name('settings');
+
+
+    Route::get('/profile', function () {
+    })->name('profile');
+    Route::get('/payment', function () {
+    })->name('payment');
+    Route::get('/unit', function () {
+    })->name('unit');
 });
