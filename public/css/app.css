@@ -567,10 +567,6 @@ video {
   margin-left: 1rem !important;
 }
 
-.ml-\[15\%\] {
-  margin-left: 15% !important;
-}
-
 .mr-4 {
   margin-right: 1rem !important;
 }
@@ -673,10 +669,6 @@ video {
 
 .w-\[400px\] {
   width: 400px !important;
-}
-
-.w-\[85\%\] {
-  width: 85% !important;
 }
 
 .w-full {
@@ -1305,11 +1297,6 @@ body {
 
 @media (min-width: 1024px) {
 
-  .lg\:mx-auto {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
   .lg\:ml-\[15\%\] {
     margin-left: 15% !important;
   }
@@ -1328,14 +1315,6 @@ body {
   .xl\:mx-auto {
     margin-left: auto !important;
     margin-right: auto !important;
-  }
-
-  .xl\:block {
-    display: block !important;
-  }
-
-  .xl\:flex {
-    display: flex !important;
   }
 }
 

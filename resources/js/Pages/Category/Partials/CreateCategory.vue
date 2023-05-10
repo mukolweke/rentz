@@ -1,10 +1,10 @@
 <template>
   <Modal
     :submitSuccess="isSubmitSuccess"
-    btnLabel="Create Category"
+    btnLabel="Create House Type"
     @confirm="createCategory"
   >
-    <template v-slot:header> Create Category </template>
+    <template v-slot:header> Create House Type </template>
     <template v-slot:body>
       <div class="w-[400px]">
         <div class="">
