@@ -20,7 +20,7 @@ class CategoryRepository implements InterfaceCategoryRepository
     {
         $categoriesQ = Category::latest('id');
 
-        $categories = $paginate ? $categoriesQ->paginate(5) : $categoriesQ->get();
+        $categories = $paginate ? $categoriesQ->paginate(10) : $categoriesQ->get();
 
         CategoryTransformer::transformCollection($categories);
         return $categories;

@@ -10,7 +10,15 @@
         </div>
 
         <div class="flex items-center space-x-4">
-          <Link href="/logout" method="post" as="button">Logout</Link>
+          <Link
+            href="/logout"
+            method="post"
+            as="button"
+            class="font-semibold text-primaryAlt text-sm"
+          >
+            <span><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+            Sign out
+          </Link>
         </div>
       </div>
     </div>
@@ -39,7 +47,7 @@
                 class="flex items-center space-x-4 w-full h-full p-4 px-6 text-lg"
               >
                 <span class="w-5">
-                  <i :class="'fas ' + item.icon" aria-hidden="true"></i>
+                  <i :class="'fa ' + item.icon" aria-hidden="true"></i>
                 </span>
                 <span class="w-full">{{ item.name }}</span>
               </Link>
