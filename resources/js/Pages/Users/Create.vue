@@ -57,6 +57,20 @@
             />
           </div>
 
+          <!-- Occupation -->
+          <div class="mb-6" v-if="userForm.role == 'tenant'">
+            <TextInput
+              v-model="userForm.occupation"
+              name="occupation"
+              placeholder="Enter user occupation"
+              class="w-full"
+              label-string="Occupation"
+              help-text="Please provide the source of income e.g. Sales agent at Rentz Supermarket"
+              :input-error="userForm.errors.occupation"
+              required
+            />
+          </div>
+
           <!-- Units -->
           <div class="" v-if="userForm.role == 'tenant'">
             <SelectInput
@@ -97,6 +111,7 @@ const userForm = useForm({
   phone: null,
   role: '',
   unit: '',
+  occupation: '',
 });
 
 const userRoles = ref([

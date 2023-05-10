@@ -42,6 +42,7 @@ class UserTransformer
             'phone' => $user->phone ?? '-',
             'role_display' => $role,
             'role' => $user->role,
+            'occupation' => $user->occupation,
             'unit' => $user->tenant ? $user->tenant->unit->name : '',
             'unit_id' => $user->tenant ? $user->tenant->unit_id : null,
             'created_on' => Carbon::parse($user->created_at)->format('d-m-Y'),

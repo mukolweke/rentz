@@ -7,6 +7,7 @@ use App\Data\Models\User;
 use App\Data\Repositories\Unit\UnitRepository;
 use App\Data\Transformers\UserTransformer;
 use App\Http\Requests\UserPostRequest;
+use App\Http\Requests\UserEditRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -67,7 +68,7 @@ class UserController extends Controller
     public function store(UserPostRequest $request)
     {
         // valid request
-        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'unit']);
+        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'unit', 'occupation']);
 
         //TODO: generate a random first time password EMAIL THE PASSWORD
 
@@ -112,22 +113,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserPostRequest  $request
+     * @param  UserEditRequest  $request
      * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserPostRequest $request, User $user)
+    public function update(UserEditRequest $request, User $user)
     {
         // valid request
-        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'unit']);
+        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'occupation']);
 
         // update a user record
         $user->update($attributes);
-
-        // update the tenant record
-        $user->tenant()->update([
-            'unit_id' => $attributes['unit'],
-        ]);
 
         // redirect
         return redirect()->route('users.show', $user->id);

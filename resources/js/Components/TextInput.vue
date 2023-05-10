@@ -19,6 +19,10 @@
   <div class="text-xs text-red-500 mt-1" v-if="inputError">
     {{ inputError }}
   </div>
+
+  <div class="text-[10px] text-gray-500 mt-1" v-if="helpText">
+    {{ helpText }}
+  </div>
 </template>
 
 <script setup>
@@ -27,6 +31,7 @@ defineProps({
   placeholder: String,
   labelString: String,
   inputError: String,
+  helpText: String,
 })
 
 const emit = defineEmits(['update:modelValue'])

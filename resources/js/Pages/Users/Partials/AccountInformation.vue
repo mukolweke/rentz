@@ -37,20 +37,20 @@
           </div>
         </div>
 
-        <div class="space-y-8">
+        <div class="space-y-8" v-if="user.role == 'tenant' && user.occupation">
           <div>
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
               Occupation
             </label>
             <div>
-              {{ user.name }}
+              {{ user.occupation }}
             </div>
           </div>
         </div>
 
         <!-- action -->
         <div>
-          <div class="font-semibold text-primaryAlt cursor-pointer">Update</div>
+          <EditUser :user="user" />
         </div>
       </div>
     </div>
@@ -96,6 +96,8 @@
 </template>
 
 <script setup>
+import EditUser from './EditUser.vue';
+
 defineProps({
   user: Object
 })
