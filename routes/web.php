@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
 
     /** Users */
     Route::resource('users', UserController::class);
+    // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
+    Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
 
     Route::get('/settings', function () {
         return Inertia::render('Settings/Index', []);

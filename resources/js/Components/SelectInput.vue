@@ -1,6 +1,6 @@
 <template>
   <label
-    :for="labelString"
+    :for="inputId ?? labelString"
     class="block mb-2 uppercase font-bold text-xs text-gray-700"
   >
     {{ labelString }}
@@ -10,16 +10,16 @@
     :value="modelValue"
     @input="updateValue"
     :disabled="disabled"
-    :id="labelString"
+    :id="inputId ?? labelString"
     class="border border-gray-400 p-2 w-full rounded outline-primary"
   >
     <option selected class="text-gray-300" value="">Choose an option</option>
     <option
       v-for="(item, index) in selectOptions"
       :key="index"
-      :value="item.id"
+      :value="item.id ?? item.value"
     >
-      {{ item.name }}
+      {{ item.name ?? item.label }}
     </option>
   </select>
 
@@ -34,7 +34,8 @@ defineProps({
   disabled: Boolean,
   selectOptions: Array | Object,
   labelString: String,
-  inputError: String
+  inputError: String,
+  inputId: String || null,
 })
 
 const emit = defineEmits(['update:modelValue'])

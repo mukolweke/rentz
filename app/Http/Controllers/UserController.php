@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Models\NextOfKin;
 use App\Data\Models\Unit;
 use App\Data\Models\User;
 use App\Data\Repositories\Unit\UnitRepository;
+use App\Data\Transformers\NextOfKinTransformer;
 use App\Data\Transformers\UserTransformer;
+use App\Http\Requests\NextOfKinPostRequest;
 use App\Http\Requests\UserPostRequest;
 use App\Http\Requests\UserEditRequest;
 use Illuminate\Http\Request;
@@ -93,6 +96,7 @@ class UserController extends Controller
     {
         return Inertia::render('Users/Show', [
             'user' => UserTransformer::transform($user),
+            'nextOfKins' => NextOfKinTransformer::transformCollection($user->nextOfKins)
         ]);
     }
 
@@ -138,5 +142,20 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function nextOfKin(NextOfKinPostRequest $request, User $user)
+    {
+        // valid request
+        $attributes = $request->safe()->only(['kins']);
+
+        NextOfKin::where('user_id', $user->id)->forceDelete();
+
+        foreach ($attributes['kins'] as $value) {
+            NextOfKin::create(array_merge($value, ['user_id' => $user->id]));
+        }
+
+        // redirect
+        return redirect()->route('users.show', $user->id);
     }
 }

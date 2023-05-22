@@ -57,48 +57,65 @@
   </div>
 
   <!-- 2. Next of kin info -->
-  <div v-if="user.role == 'tenant'" class="p-8 rounded-lg bg-white border border-gray-200">
+  <div
+    v-if="user.role == 'tenant'"
+    class="p-8 rounded-lg bg-white border border-gray-200"
+  >
     <!-- Panel Title -->
     <div class="flex items-center justify-between">
       <div class="font-semibold text-lg capitalize">
         {{ user.role }} Next of kin information
       </div>
       <!-- action -->
-      <div class="font-semibold text-primaryAlt cursor-pointer">Update</div>
+      <ManageNextOfKin :user-id="user.id" :next-of-kins="computedKins" />
     </div>
     <div class="w-full h-px bg-gray-200 my-4"></div>
-    <div class="w-full my-4" v-for="(item, index) in [1, 2, 3]" :key="index">
-      <div class="flex justify-between items-start">
-        <div>
-          <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
-            Name
-          </label>
-          <div>Lindah Malea</div>
-        </div>
 
-        <div>
-          <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
-            Contact
-          </label>
-          <div>0790559860/testing@gmail.com</div>
-        </div>
+    <div class="flex items-center justify-around mb-2 w-full">
+      <label class="flex-1 block uppercase font-bold text-xs text-gray-700">
+        Name
+      </label>
+      <label class="flex-1 block uppercase font-bold text-xs text-gray-700">
+        Email
+      </label>
+      <label class="flex-1 block uppercase font-bold text-xs text-gray-700">
+        Phone
+      </label>
+      <label class="flex-1 block uppercase font-bold text-xs text-gray-700">
+        Relation
+      </label>
+    </div>
+    <div class="w-full my-4" v-for="(kin, index) in computedKins" :key="index">
+      <div class="flex items-center justify-around">
+        <div class="flex-1 mr-1">{{ kin.name }}</div>
 
-        <div>
-          <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
-            Relation
-          </label>
-          <div>Parent/Wife/Child</div>
-        </div>
+        <div class="flex-1 mr-2">{{ kin.email }}</div>
+
+        <div class="flex-1 mr-1">{{ kin.phone }}</div>
+
+        <div class="flex-1 mr-1">{{ kin.relation }}</div>
       </div>
+      <div class="w-full h-px bg-gray-200 my-4"></div>
+    </div>
+
+    <div class="text-center" v-if="computedKins.length == 0">
+      <p class="text-lg font-medium opacity-30 my-10">
+        No next of kin attached
+      </p>
       <div class="w-full h-px bg-gray-200 my-4"></div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import EditUser from './EditUser.vue';
+import ManageNextOfKin from './ManageNextOfKin.vue';
 
-defineProps({
-  user: Object
-})
+const props = defineProps({
+  user: Object,
+  nextOfKins: Array,
+});
+
+const computedKins = computed(() => props.nextOfKins);
 </script>

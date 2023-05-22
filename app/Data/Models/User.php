@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Tenant::class);
     }
+
+    public function nextOfKins()
+    {
+        return $this->hasMany(NextOfKin::class);
+    }
 }

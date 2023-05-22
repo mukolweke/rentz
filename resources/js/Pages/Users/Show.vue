@@ -44,7 +44,7 @@
 
     <!-- Tab Contents -->
     <div v-if="activeTab == 'account'">
-      <AccountInformation :user="user" />
+      <AccountInformation :user="user" :next-of-kins="nextOfKins" />
     </div>
 
     <div v-if="activeTab == 'unit'">
@@ -68,7 +68,8 @@ import UnitInformation from './Partials/UnitInformation.vue';
 import { router } from '@inertiajs/vue3';
 
 let props = defineProps({
-  user: Object
+  user: Object,
+  nextOfKins: Array,
 })
 
 let activeTab = ref('account');

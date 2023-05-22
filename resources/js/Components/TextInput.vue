@@ -1,7 +1,7 @@
 <template>
   <label
     v-if="labelString"
-    :for="labelString"
+    :for="inputId ?? labelString"
     class="block mb-2 uppercase font-bold text-xs text-gray-700"
   >
     {{ labelString }}
@@ -10,7 +10,7 @@
   <input
     :value="modelValue"
     @input="updateValue"
-    :id="labelString"
+    :id="inputId ?? labelString"
     type="text"
     :placeholder="placeholder"
     class="border border-gray-400 placeholder:text-sm p-2 rounded outline-primary w-full"
@@ -32,6 +32,7 @@ defineProps({
   labelString: String,
   inputError: String,
   helpText: String,
+  inputId: String || null,
 })
 
 const emit = defineEmits(['update:modelValue'])
