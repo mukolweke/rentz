@@ -59,4 +59,24 @@ class UnitTransformer
             'house_id' => $unit->house_id,
         ];
     }
+
+    /**
+     * @param Unit $unit
+     * @return array
+     */
+    public static function assignedUnitTransformer($unit)
+    {
+        $tenant = $unit->tenant()->latest()->first();
+
+        return [
+            'id' => $unit->id,
+            'tenant_id' => $tenant->id,
+            'house' => $unit->house->name,
+            'name' => $unit->name,
+            'block' => $unit->block ?? '-',
+            'parking' => 'Todo Parking',
+            'tenant_joined_on' => Carbon::parse($tenant->created_at)->format('M d Y'),
+            'tenant_removed_on' => !$tenant->is_active ? Carbon::parse($tenant->updated_at)->format('M d Y') : null,
+        ];
+    }
 }

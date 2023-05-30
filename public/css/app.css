@@ -747,6 +747,14 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+}
+
 .flex-col {
   flex-direction: column !important;
 }
@@ -785,6 +793,14 @@ video {
 
 .gap-\[32px\] {
   gap: 32px !important;
+}
+
+.gap-8 {
+  gap: 2rem !important;
+}
+
+.gap-4 {
+  gap: 1rem !important;
 }
 
 .-space-x-px > :not([hidden]) ~ :not([hidden]) {
@@ -1077,6 +1093,10 @@ video {
 
 .pr-3 {
   padding-right: 0.75rem !important;
+}
+
+.pt-6 {
+  padding-top: 1.5rem !important;
 }
 
 .text-left {

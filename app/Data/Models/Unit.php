@@ -41,7 +41,14 @@ class Unit extends Model
 
     public function scopeIsAssigned($query, $assigned = true)
     {
-        return $assigned ? $query->whereHas('tenant') : $query->whereDoesntHave('tenant');
+        return $assigned
+            ? $query->whereHas('tenant', function ($query) {
+                return $query->where('is_active', true);
+            })
+            : $query->whereDoesntHave('tenant')
+            ->orWhereHas('tenant', function ($query) {
+                return $query->where('is_active', false);
+            });
     }
 
     public function getHasTenantAttribute()

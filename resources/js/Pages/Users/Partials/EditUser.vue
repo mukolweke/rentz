@@ -59,7 +59,7 @@
               placeholder="Enter user occupation"
               class="w-full"
               label-string="Occupation"
-              help-text="Please provide the source of income e.g. Sales agent at Rentz Supermarket"
+              help-text="Please provide the source of income e.g. Student, Sales agent at Rentz Supermarket"
               :input-error="userForm.errors.occupation"
               required
             />

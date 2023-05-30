@@ -7,6 +7,7 @@ use App\Data\Models\Unit;
 use App\Data\Models\User;
 use App\Data\Repositories\Unit\UnitRepository;
 use App\Data\Transformers\NextOfKinTransformer;
+use App\Data\Transformers\UnitTransformer;
 use App\Data\Transformers\UserTransformer;
 use App\Http\Requests\NextOfKinPostRequest;
 use App\Http\Requests\UserPostRequest;
@@ -96,6 +97,7 @@ class UserController extends Controller
     {
         return Inertia::render('Users/Show', [
             'user' => UserTransformer::transform($user),
+            'unit' => $user->tenant ? UnitTransformer::assignedUnitTransformer($user->tenant->unit) : null,
             'nextOfKins' => NextOfKinTransformer::transformCollection($user->nextOfKins)
         ]);
     }

@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
             'label' => 'Home'
         ]);
     })->name('dashboard');
+
     /** Houses */
     Route::resource('houses', HouseController::class);
 
@@ -52,6 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
     Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
+
+    // remove tenant from unit
+    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('remove.tenant');
 
     Route::get('/settings', function () {
         return Inertia::render('Settings/Index', []);

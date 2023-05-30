@@ -48,7 +48,7 @@
     </div>
 
     <div v-if="activeTab == 'unit'">
-      <UnitInformation />
+      <UnitInformation :unit="unit" />
     </div>
 
     <div v-if="activeTab == 'payment'">
@@ -70,6 +70,7 @@ import { router } from '@inertiajs/vue3';
 let props = defineProps({
   user: Object,
   nextOfKins: Array,
+  unit: Object,
 })
 
 let activeTab = ref('account');

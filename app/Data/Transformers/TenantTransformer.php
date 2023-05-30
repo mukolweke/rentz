@@ -29,10 +29,12 @@ class TenantTransformer
     public static function transform($tenant)
     {
         return [
-            'id' => $tenant->user_id,
+            'id' => $tenant->id,
+            'user_id' => $tenant->user_id,
             'name' => $tenant->user->name,
             'email' => $tenant->user->email,
             'phone' => $tenant->user->phone,
+            'occupation' => $tenant->user->occupation,
             'contact_info' => $tenant->contact_info,
             'unit' => $tenant->unit->name,
             'unit_id' => $tenant->unit_id,

@@ -57,28 +57,28 @@
             />
           </div>
 
-          <!-- Occupation -->
-          <div class="mb-6" v-if="userForm.role == 'tenant'">
-            <TextInput
-              v-model="userForm.occupation"
-              name="occupation"
-              placeholder="Enter user occupation"
-              class="w-full"
-              label-string="Occupation"
-              help-text="Please provide the source of income e.g. Sales agent at Rentz Supermarket"
-              :input-error="userForm.errors.occupation"
-              required
-            />
-          </div>
-
           <!-- Units -->
-          <div class="" v-if="userForm.role == 'tenant'">
+          <div class="mb-6" v-if="userForm.role == 'tenant'">
             <SelectInput
               v-model="userForm.unit"
               name="category"
               label-string="Link a unit"
               :select-options="unitsOptions"
               :input-error="userForm.errors.unit"
+            />
+          </div>
+
+          <!-- Occupation -->
+          <div v-if="userForm.role == 'tenant'">
+            <TextInput
+              v-model="userForm.occupation"
+              name="occupation"
+              placeholder="Enter user occupation"
+              class="w-full"
+              label-string="Occupation"
+              help-text="Please provide the source of income e.g. Student, Sales agent at Rentz Supermarket"
+              :input-error="userForm.errors.occupation"
+              required
             />
           </div>
 
@@ -95,7 +95,7 @@
 
 <script setup>
 import MainLayout from '../../Layouts/MainLayout.vue';
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useForm } from '@inertiajs/vue3'
 import Button from '../../Components/Button.vue';
 import TextInput from '../../Components/TextInput.vue';
@@ -110,9 +110,19 @@ const userForm = useForm({
   email: null,
   phone: null,
   role: '',
-  unit: '',
+  unit: null,
   occupation: '',
 });
+
+onMounted(() => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  if (urlParams.has('unit')) {
+    userForm.role = 'tenant';
+    userForm.unit = urlParams.get('unit');
+  }
+})
 
 const userRoles = ref([
   { id: 'admin', name: 'Admin' },
