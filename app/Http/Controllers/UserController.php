@@ -82,7 +82,7 @@ class UserController extends Controller
         if (isset($attributes['unit'])) {
             $user->tenant()->create(['unit_id' => $attributes['unit'], 'is_active' => true]);
 
-            // update unit status
+            // Mark unit as assigned
             \DB::table('units')->where('id', $attributes['unit'])->update(['status' => true]);
         }
 

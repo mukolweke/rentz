@@ -30,7 +30,7 @@ class TenantController extends Controller
         // remove tenant from a unit
         $tenant->update(['is_active' => false]);
 
-        // update unit status
+        // Mark unit as unassigned
         $unit->update(['status', false]);
 
         // redirect

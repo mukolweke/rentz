@@ -16,18 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // DemoUsers
-        User::create([
-            'name' => 'Demo User',
-            'email' => 'demouser@rentz.com',
-            'role' => 'admin',
-            'password' => 'password1234'
-        ]);
-
         $this->call([
             CategorySeeder::class,
             HouseSeeder::class,
             UnitSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
