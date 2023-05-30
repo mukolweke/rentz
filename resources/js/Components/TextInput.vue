@@ -14,6 +14,8 @@
     type="text"
     :placeholder="placeholder"
     class="border border-gray-400 placeholder:text-sm p-2 rounded outline-primary w-full"
+    :disabled="disabled"
+    :class="{ 'bg-gray-200': disabled }"
   />
 
   <div class="text-xs text-red-500 mt-1" v-if="inputError">
@@ -33,6 +35,7 @@ defineProps({
   inputError: String,
   helpText: String,
   inputId: String || null,
+  disabled: Boolean,
 })
 
 const emit = defineEmits(['update:modelValue'])

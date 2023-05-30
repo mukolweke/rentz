@@ -100,7 +100,7 @@
     <div class="mt-16 rounded-lg bg-white shadow-lg w-full p-8">
       <div>
         <div class="flex items-center justify-between">
-          <p v-if="staffs.total > 0" class="font-medium">House Staff</p>
+          <p class="font-medium">House Staff</p>
           <Link
             :href="route('users.create', { house: house.id })"
             class="p-2 px-4 text-green-500 rounded font-semibold"
@@ -118,7 +118,10 @@
           />
         </div>
 
-        <div v-else class="text-primary font-medium text-lg">
+        <div
+          v-else
+          class="py-[64px] text-gray-500 font-medium text-lg text-center"
+        >
           No staffs assigned
         </div>
       </div>

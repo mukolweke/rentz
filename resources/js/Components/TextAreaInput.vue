@@ -13,6 +13,8 @@
     rows="4"
     class="block p-2.5 w-full placeholder:text-sm outline-primary rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
     :placeholder="placeholder"
+    :disabled="disabled"
+    :class="{ 'bg-gray-200': disabled }"
   ></textarea>
 
   <div class="text-xs text-red-500 mt-1" v-if="inputError">
@@ -25,7 +27,8 @@ defineProps({
   modelValue: String,
   placeholder: String,
   labelString: String,
-  inputError: String
+  inputError: String,
+  disabled: Boolean,
 });
 
 const emit = defineEmits(['update:modelValue'])

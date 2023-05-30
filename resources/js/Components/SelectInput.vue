@@ -12,6 +12,7 @@
     :disabled="disabled"
     :id="inputId ?? labelString"
     class="border border-gray-400 p-2 w-full rounded outline-primary"
+    :class="{ 'bg-gray-200': disabled }"
   >
     <option selected class="text-gray-300" value="">Choose an option</option>
     <option

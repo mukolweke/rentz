@@ -53,6 +53,7 @@
               label-string="User Role"
               :select-options="userRoles"
               :input-error="userForm.errors.role"
+              :disabled="getUrlParams().has('unit') || getUrlParams().has('house')"
               required
             />
           </div>
@@ -65,6 +66,7 @@
               label-string="Link a unit"
               :select-options="unitOptions"
               :input-error="userForm.errors.unit"
+              :disabled="getUrlParams().has('unit')"
             />
           </div>
           <!-- Houses -->
