@@ -44,6 +44,7 @@
               ></slot>
               <div v-else class="flex items-center space-x-4">
                 <Link
+                  v-if="showRoute"
                   preserve-scroll
                   :href="route(showRoute, dataItem['id'])"
                   class="text-green-700 font-medium hover:underline"
@@ -51,6 +52,7 @@
                   <span class="text-lg"><i class="fa-regular fa-eye"></i></span>
                 </Link>
                 <Link
+                  v-if="editRoute"
                   preserve-scroll
                   :href="route(editRoute, dataItem['id'])"
                   class="text-blue-700 font-medium hover:underline"

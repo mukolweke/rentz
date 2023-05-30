@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserPostRequest extends FormRequest
+class UserEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,6 @@ class UserPostRequest extends FormRequest
             'email' => 'required|email',
             'role' => 'required',
             'occupation' => 'required_if:role,tenant',
-            'unit' => 'required_if:role,tenant',
             'house' => 'required_if:role,staff',
             'staffRole' => 'required_if:role,staff',
         ];
@@ -44,7 +43,6 @@ class UserPostRequest extends FormRequest
     {
         return [
             'occupation.required_if' => 'The occupation field is required',
-            'unit.required_if' => 'The unit field is required',
             'house.required_if' => 'The house field is required',
             'staffRole.required_if' => 'The staff role field is required',
         ];

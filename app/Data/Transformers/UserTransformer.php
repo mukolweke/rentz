@@ -42,6 +42,10 @@ class UserTransformer
             'phone' => $user->phone ?? '-',
             'role_display' => $role,
             'role' => $user->role,
+            'occupation' => $user->occupation,
+            'house' => $user->staff ? $user->staff->house->name : '',
+            'house_id' => $user->staff ? $user->staff->house_id : null,
+            'staff_role' => $user->staff ? $user->staff->role : '',
             'unit' => $user->tenant ? $user->tenant->unit->name : '',
             'unit_id' => $user->tenant ? $user->tenant->unit_id : null,
             'created_on' => Carbon::parse($user->created_at)->format('d-m-Y'),
@@ -62,6 +66,8 @@ class UserTransformer
             'email' => $user->email,
             'phone' => $user->phone,
             'unit_id' => $user->tenant ? $user->tenant->unit_id : null,
+            'house_id' => $user->staff ? $user->staff->house_id : null,
+            'staff_role' => $user->staff ? $user->staff->role : '',
         ];
     }
 }

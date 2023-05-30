@@ -11,7 +11,7 @@ class Unit extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'block', 'house_id'
+        'name', 'description', 'block', 'house_id', 'status'
     ];
 
     protected $cast = [
@@ -19,6 +19,7 @@ class Unit extends Model
         'description' => 'string',
         'block' => 'string',
         'house_id' => 'integer',
+        'status' => 'boolean',
     ];
 
     protected $dates = [
@@ -41,7 +42,14 @@ class Unit extends Model
 
     public function scopeIsAssigned($query, $assigned = true)
     {
-        return $assigned ? $query->whereHas('tenant') : $query->whereDoesntHave('tenant');
+        return $assigned
+            ? $query->whereHas('tenant', function ($query) {
+                return $query->where('is_active', true);
+            })
+            : $query->whereDoesntHave('tenant')
+            ->orWhereHas('tenant', function ($query) {
+                return $query->where('is_active', false);
+            });
     }
 
     public function getHasTenantAttribute()

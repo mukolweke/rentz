@@ -24,7 +24,6 @@
           title="Users Listing"
           :datum="users"
           show-route="users.show"
-          edit-route="users.edit"
           :fields="['id', 'name', 'email', 'phone', 'role_display']"
         />
       </div>

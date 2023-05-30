@@ -18,14 +18,20 @@
           <h3 class="font-normal text-2xl antialiased capitalize">
             <slot name="header"></slot>
           </h3>
-          <button class="p-1 leading-none" @click="isVisible = false">
+          <button
+            class="p-1 leading-none"
+            @click="
+              isVisible = false;
+              emit('cancel');
+            "
+          >
             <div class="text-xl font-semibold h-6 w-6 text-gray-300">
               <span>X</span>
             </div>
           </button>
         </div>
       </div>
-      <div class="pb-6 px-6">
+      <div class="pb-6 pt-6 px-6">
         <slot name="body"></slot>
       </div>
       <div class="p-6">
@@ -36,7 +42,14 @@
             'justify-center': deleteModal,
           }"
         >
-          <Button label="Cancel" @click="isVisible = false" outline />
+          <Button
+            label="Cancel"
+            @click="
+              isVisible = false;
+              emit('cancel');
+            "
+            outline
+          />
           <Button
             class="ml-4"
             label="Confirm"
@@ -67,7 +80,7 @@ let props = defineProps({
 
 let isVisible = ref(false);
 
-let emit = defineEmits(['confirm'])
+let emit = defineEmits(['confirm', 'cancel'])
 
 const confirm = () => {
   emit('confirm')

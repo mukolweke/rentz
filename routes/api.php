@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GetApiData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/unit-options', [GetApiData::class, 'unitOptions'])->name('unit.options');
+Route::get('/house-options', [GetApiData::class, 'houseOptions'])->name('house.options');
+Route::get('/houses/{house}/staff', [GetApiData::class, 'houseStaff'])->name('house.staff');
+

@@ -105,12 +105,13 @@
       <div class="flex items-center justify-between">
         <p class="text-lg">Current Tenant</p>
 
-        <Button
+        <p
           v-if="tenant"
-          label="Remove Tenant"
-          danger
+          class="font-semibold text-red-500 cursor-pointer"
           @click="removeTenant"
-        />
+        >
+          Remove Tenant
+        </p>
         <Link
           :href="route('users.create', { unit: unit.id })"
           v-else
@@ -123,38 +124,57 @@
       <div class="bg-white p-8 shadow-lg mt-4">
         <!-- If Assigned -->
         <div v-if="tenant">
-          <div class="flex items-start">
-            <div class="w-1/2 space-y-4">
-              <p>
-                <span class="font-bold mr-4"> Name: </span>{{ tenant["name"] }}
-              </p>
+          <div class="w-full">
+            <div class="grid gap-8 grid-cols-2">
+              <div>
+                <label
+                  class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                >
+                  Name
+                </label>
+                <div>
+                  {{ tenant["name"] }}
+                </div>
+              </div>
 
-              <p>
-                <span class="font-bold mr-4">Email: </span>{{ tenant["email"] }}
-              </p>
+              <div>
+                <label
+                  class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                >
+                  Email
+                </label>
+                <div>
+                  {{ tenant["email"] }}
+                </div>
+              </div>
 
-              <p>
-                <span class="font-bold mr-4">Phone: </span>{{ tenant["phone"] }}
-              </p>
+              <div>
+                <label
+                  class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                >
+                  Phone
+                </label>
+                <div>
+                  {{ tenant["phone"] }}
+                </div>
+              </div>
 
-              <p>
-                <span class="font-bold mr-4">Joined: </span>
-                {{ tenant["created_on"] }}
-              </p>
-            </div>
-
-            <div class="w-1/2 space-y-4">
-              <p><span class="font-bold mr-4">Reference: </span>N/A</p>
-
-              <p><span class="font-bold mr-4">Next of Kin: </span>N/A</p>
-
-              <p><span class="font-bold mr-4">Parking Spot:</span> N/A</p>
+              <div>
+                <label
+                  class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                >
+                  Occupation
+                </label>
+                <div>
+                  {{ tenant["occupation"] }}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="mt-4">
+          <div class="mt-8">
             <Link
-              :href="route('users.show', tenant['id'])"
+              :href="route('users.show', tenant['user_id'])"
               class="font-bold text-sm text-green-500 cursor-pointer"
             >
               View Profile <span><i class="fa fa-link"></i></span>
@@ -230,6 +250,7 @@ import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
 import TableView from '../../Components/Table.vue';
+import axios from 'axios';
 
 let props = defineProps({
   unit: Object,
@@ -251,15 +272,13 @@ let deleteUnit = () => {
   });
 }
 
-const revokeForm = useForm({
-  unitId: props.unit.id,
-  tenantId: props.tenant ? props.tenant.id : null,
-})
+let removeTenant = async () => {
+  let unitId = props.unit.id;
+  let tenantId = props.tenant ? props.tenant.id : null;
 
-let removeTenant = () => {
-  revokeForm.get(`/units/${revokeForm.unitId}/tenant/${revokeForm.tenantId}/remove`, {
-    preserveScroll: true,
-  })
+  await axios.get(`/units/${unitId}/tenant/${tenantId}/remove`);
+
+  location.reload()
 }
 
 let activeUnitActionTab = ref('tenant-history');

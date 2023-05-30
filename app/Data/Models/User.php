@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'role', 'password'
+        'name', 'email', 'phone', 'role', 'password', 'occupation'
     ];
 
     /**
@@ -58,5 +58,15 @@ class User extends Authenticatable
     public function tenant()
     {
         return $this->hasOne(Tenant::class);
+    }
+
+    public function staff()
+    {
+        return $this->hasOne(Staff::class);
+    }
+
+    public function nextOfKins()
+    {
+        return $this->hasMany(NextOfKin::class);
     }
 }

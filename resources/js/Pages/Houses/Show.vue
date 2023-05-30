@@ -6,6 +6,12 @@
 
         <div class="flex items-center space-x-4">
           <Link
+            :href="route('units.index', { house: house.id })"
+            class="p-2 px-4 bg-green-500 hover:shadow-lg rounded text-white"
+          >
+            Units
+          </Link>
+          <Link
             :href="route('houses.edit', house.id)"
             class="p-2 px-4 bg-blue-500 rounded text-white"
           >
@@ -90,19 +96,33 @@
       </div>
     </div>
 
-    <!-- House Actions -->
-    <div class="mt-16">
-      <p class="text-lg mb-4">House Actions</p>
-      <div class="flex items-center space-x-4">
-        <Link
-          :href="route('units.index', { house: house.id })"
-          class="p-1 px-6 bg-green-500 hover:shadow-lg rounded text-white"
-        >
-          Units
-        </Link>
+    <!-- House Staff -->
+    <div class="mt-16 rounded-lg bg-white shadow-lg w-full p-8">
+      <div>
+        <div class="flex items-center justify-between">
+          <p class="font-medium">House Staff</p>
+          <Link
+            :href="route('users.create', { house: house.id })"
+            class="p-2 px-4 text-green-500 rounded font-semibold"
+          >
+            Add Staff
+          </Link>
+        </div>
 
-        <div class="p-1 px-6 bg-yellow-500 hover:shadow-lg rounded text-white">
-          Staff
+        <div class="mt-4" v-if="staffs.total > 0">
+          <TableView
+            class="h-full"
+            :displayAction="false"
+            :fields="['id', 'name', 'email', 'phone', 'role']"
+            :datum="staffs"
+          />
+        </div>
+
+        <div
+          v-else
+          class="py-[64px] text-gray-500 font-medium text-lg text-center"
+        >
+          No staffs assigned
         </div>
       </div>
     </div>
@@ -110,15 +130,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import MainLayout from '../../Layouts/MainLayout.vue';
 import Button from '../../Components/Button.vue';
 import { useForm } from '@inertiajs/vue3'
+import axios from 'axios';
+import TableView from '../../Components/Table.vue';
 
 let props = defineProps({
   house: Object,
   units: Object,
 });
+
+const staffs = ref([]);
+
+onMounted(async () => {
+  // fetch the house staff;
+  let { data } = await axios.get('/api/houses/' + props.house.id + '/staff');
+
+  staffs.value = data;
+})
 
 const houseForm = useForm(props.house);
 
