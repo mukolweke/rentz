@@ -31,7 +31,7 @@
           </button>
         </div>
       </div>
-      <div class="pb-6 px-6">
+      <div class="pb-6 pt-6 px-6">
         <slot name="body"></slot>
       </div>
       <div class="p-6">
