@@ -40,7 +40,7 @@
 
           <!-- Phone -->
           <div class="mb-6">
-            <TextInput
+            <PhoneInput
               v-model="userForm.phone"
               name="phone"
               placeholder="Enter user phone"
@@ -98,6 +98,7 @@ import { useForm } from '@inertiajs/vue3'
 import TextInput from '../../../Components/TextInput.vue';
 import SelectInput from '../../../Components/SelectInput.vue';
 import axios from 'axios';
+import PhoneInput from '../../../Components/PhoneInput.vue';
 
 let props = defineProps({
   user: Object,

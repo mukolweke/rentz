@@ -17841,6 +17841,55 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/PhoneInput.vue?vue&type=script&setup=true&lang=js":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/PhoneInput.vue?vue&type=script&setup=true&lang=js ***!
+  \***************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var maska__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! maska */ "./node_modules/maska/dist/maska.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'PhoneInput',
+  props: {
+    modelValue: String,
+    placeholder: String,
+    labelString: String,
+    inputError: String,
+    helpText: String,
+    inputId: String || null,
+    disabled: Boolean
+  },
+  emits: ['update:modelValue'],
+  setup: function setup(__props, _ref) {
+    var expose = _ref.expose,
+      emit = _ref.emit;
+    expose();
+    var updateValue = function updateValue(event) {
+      emit('update:modelValue', event.target.value);
+    };
+    var __returned__ = {
+      emit: emit,
+      updateValue: updateValue,
+      get vMaska() {
+        return maska__WEBPACK_IMPORTED_MODULE_0__.vMaska;
+      }
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/SelectInput.vue?vue&type=script&setup=true&lang=js":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/SelectInput.vue?vue&type=script&setup=true&lang=js ***!
@@ -19706,7 +19755,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Button_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/Button.vue */ "./resources/js/Components/Button.vue");
 /* harmony import */ var _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Components/TextInput.vue */ "./resources/js/Components/TextInput.vue");
 /* harmony import */ var _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/SelectInput.vue */ "./resources/js/Components/SelectInput.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _Components_PhoneInput_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/PhoneInput.vue */ "./resources/js/Components/PhoneInput.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -19717,6 +19767,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -19766,7 +19817,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               // if role tenant fetch unit options
               if (value === 'tenant') {
-                axios__WEBPACK_IMPORTED_MODULE_6__["default"].get('/api/unit-options').then(function (_ref3) {
+                axios__WEBPACK_IMPORTED_MODULE_7__["default"].get('/api/unit-options').then(function (_ref3) {
                   var data = _ref3.data;
                   unitOptions.value = _toConsumableArray(data);
                 })["catch"](function (err) {
@@ -19776,7 +19827,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               // if role staff fetch house options
               if (value === 'staff') {
-                axios__WEBPACK_IMPORTED_MODULE_6__["default"].get('/api/house-options').then(function (_ref4) {
+                axios__WEBPACK_IMPORTED_MODULE_7__["default"].get('/api/house-options').then(function (_ref4) {
                   var data = _ref4.data;
                   houseOptions.value = _toConsumableArray(data);
                 })["catch"](function (err) {
@@ -19862,8 +19913,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       TextInput: _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
       SelectInput: _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
       get axios() {
-        return axios__WEBPACK_IMPORTED_MODULE_6__["default"];
-      }
+        return axios__WEBPACK_IMPORTED_MODULE_7__["default"];
+      },
+      PhoneInput: _Components_PhoneInput_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20016,7 +20068,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
 /* harmony import */ var _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/TextInput.vue */ "./resources/js/Components/TextInput.vue");
 /* harmony import */ var _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/SelectInput.vue */ "./resources/js/Components/SelectInput.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _Components_PhoneInput_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/PhoneInput.vue */ "./resources/js/Components/PhoneInput.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -20028,6 +20081,7 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 
 
 
@@ -20075,7 +20129,7 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
                 break;
               }
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_4__["default"].get('/api/house-options');
+              return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get('/api/house-options');
             case 3:
               response = _context2.sent;
               if (response.data) {
@@ -20137,8 +20191,9 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
       TextInput: _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       SelectInput: _Components_SelectInput_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
       get axios() {
-        return axios__WEBPACK_IMPORTED_MODULE_4__["default"];
-      }
+        return axios__WEBPACK_IMPORTED_MODULE_5__["default"];
+      },
+      PhoneInput: _Components_PhoneInput_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20621,6 +20676,51 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["href", "disabled"])])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/PhoneInput.vue?vue&type=template&id=4a508d87":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/PhoneInput.vue?vue&type=template&id=4a508d87 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = ["for"];
+var _hoisted_2 = ["value", "id", "placeholder", "disabled"];
+var _hoisted_3 = {
+  key: 1,
+  "class": "text-xs text-red-500 mt-1"
+};
+var _hoisted_4 = {
+  key: 2,
+  "class": "text-[10px] text-gray-500 mt-1"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _$props$inputId, _$props$inputId2;
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$props.labelString ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", {
+    key: 0,
+    "for": (_$props$inputId = $props.inputId) !== null && _$props$inputId !== void 0 ? _$props$inputId : $props.labelString,
+    "class": "block mb-2 uppercase font-bold text-xs text-gray-700"
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.labelString), 9 /* TEXT, PROPS */, _hoisted_1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "data-maska": "(+254) ### ### ###",
+    value: $props.modelValue,
+    onInput: $setup.updateValue,
+    id: (_$props$inputId2 = $props.inputId) !== null && _$props$inputId2 !== void 0 ? _$props$inputId2 : $props.labelString,
+    type: "text",
+    placeholder: $props.placeholder,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border border-gray-400 placeholder:text-sm p-2 rounded outline-primary w-full", {
+      'bg-gray-200': $props.disabled
+    }]),
+    disabled: $props.disabled
+  }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_2), [[$setup["vMaska"]]]), $props.inputError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.inputError), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.helpText ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.helpText), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -23061,7 +23161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "label-string": "Email",
         "input-error": $setup.userForm.errors.email,
         required: ""
-      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["PhoneInput"], {
         modelValue: $setup.userForm.phone,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.userForm.phone = $event;
@@ -23405,7 +23505,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "label-string": "Email",
         "input-error": $setup.userForm.errors.email,
         required: ""
-      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
+      }, null, 8 /* PROPS */, ["modelValue", "input-error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Phone "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["PhoneInput"], {
         modelValue: $setup.userForm.phone,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.userForm.phone = $event;
@@ -33515,6 +33615,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Components/PhoneInput.vue":
+/*!************************************************!*\
+  !*** ./resources/js/Components/PhoneInput.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PhoneInput_vue_vue_type_template_id_4a508d87__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhoneInput.vue?vue&type=template&id=4a508d87 */ "./resources/js/Components/PhoneInput.vue?vue&type=template&id=4a508d87");
+/* harmony import */ var _PhoneInput_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhoneInput.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/PhoneInput.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var _Users_user_work_www_rentz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_user_work_www_rentz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PhoneInput_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PhoneInput_vue_vue_type_template_id_4a508d87__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/PhoneInput.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Components/SelectInput.vue":
 /*!*************************************************!*\
   !*** ./resources/js/Components/SelectInput.vue ***!
@@ -34460,6 +34588,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Components/PhoneInput.vue?vue&type=script&setup=true&lang=js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/Components/PhoneInput.vue?vue&type=script&setup=true&lang=js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhoneInput_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhoneInput_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PhoneInput.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/PhoneInput.vue?vue&type=script&setup=true&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Components/SelectInput.vue?vue&type=script&setup=true&lang=js":
 /*!************************************************************************************!*\
   !*** ./resources/js/Components/SelectInput.vue?vue&type=script&setup=true&lang=js ***!
@@ -35000,6 +35144,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pagination_vue_vue_type_template_id_0e1fe725__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pagination_vue_vue_type_template_id_0e1fe725__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Pagination.vue?vue&type=template&id=0e1fe725 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Pagination.vue?vue&type=template&id=0e1fe725");
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/PhoneInput.vue?vue&type=template&id=4a508d87":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Components/PhoneInput.vue?vue&type=template&id=4a508d87 ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhoneInput_vue_vue_type_template_id_4a508d87__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhoneInput_vue_vue_type_template_id_4a508d87__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PhoneInput.vue?vue&type=template&id=4a508d87 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/PhoneInput.vue?vue&type=template&id=4a508d87");
 
 
 /***/ }),
@@ -40016,6 +40176,213 @@ const toJSONObject = (obj) => {
   isSpecCompliantForm,
   toJSONObject
 });
+
+
+/***/ }),
+
+/***/ "./node_modules/maska/dist/maska.js":
+/*!******************************************!*\
+  !*** ./node_modules/maska/dist/maska.js ***!
+  \******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Mask": () => (/* binding */ w),
+/* harmony export */   "MaskInput": () => (/* binding */ J),
+/* harmony export */   "tokens": () => (/* binding */ O),
+/* harmony export */   "vMaska": () => (/* binding */ U)
+/* harmony export */ });
+/*! maska v2.1.9 | (c) Alexander Shabunevich | Released under the MIT license */
+var W = Object.defineProperty;
+var b = (n, t, s) => t in n ? W(n, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : n[t] = s;
+var m = (n, t, s) => (b(n, typeof t != "symbol" ? t + "" : t, s), s);
+const O = {
+  "#": { pattern: /[0-9]/ },
+  "@": { pattern: /[a-zA-Z]/ },
+  "*": { pattern: /[a-zA-Z0-9]/ }
+};
+class w {
+  constructor(t = {}) {
+    m(this, "opts", {});
+    m(this, "memo", /* @__PURE__ */ new Map());
+    const s = { ...t };
+    if (s.tokens != null) {
+      s.tokens = s.tokensReplace ? { ...s.tokens } : { ...O, ...s.tokens };
+      for (const e of Object.values(s.tokens))
+        typeof e.pattern == "string" && (e.pattern = new RegExp(e.pattern));
+    } else
+      s.tokens = O;
+    Array.isArray(s.mask) && (s.mask.length > 1 ? s.mask = [...s.mask].sort((e, a) => e.length - a.length) : s.mask = s.mask[0] ?? ""), s.mask === "" && (s.mask = null), this.opts = s;
+  }
+  masked(t) {
+    return this.process(t, this.findMask(t));
+  }
+  unmasked(t) {
+    return this.process(t, this.findMask(t), !1);
+  }
+  isEager() {
+    return this.opts.eager === !0;
+  }
+  isReversed() {
+    return this.opts.reversed === !0;
+  }
+  completed(t) {
+    const s = this.findMask(t);
+    if (this.opts.mask == null || s == null)
+      return !1;
+    const e = this.process(t, s).length;
+    return typeof this.opts.mask == "string" ? e >= this.opts.mask.length : typeof this.opts.mask == "function" ? e >= s.length : this.opts.mask.filter((a) => e >= a.length).length === this.opts.mask.length;
+  }
+  findMask(t) {
+    const s = this.opts.mask;
+    if (s == null)
+      return null;
+    if (typeof s == "string")
+      return s;
+    if (typeof s == "function")
+      return s(t);
+    const e = this.process(t, s.slice(-1).pop() ?? "", !1);
+    return s.find((a) => this.process(t, a, !1).length >= e.length) ?? "";
+  }
+  escapeMask(t) {
+    const s = [], e = [];
+    return t.split("").forEach((a, i) => {
+      a === "!" && t[i - 1] !== "!" ? e.push(i - e.length) : s.push(a);
+    }), { mask: s.join(""), escaped: e };
+  }
+  process(t, s, e = !0) {
+    var A;
+    if (s == null)
+      return t;
+    const a = `value=${t},mask=${s},masked=${e ? 1 : 0}`;
+    if (this.memo.has(a))
+      return this.memo.get(a);
+    const { mask: i, escaped: h } = this.escapeMask(s), r = [], k = this.opts.tokens != null ? this.opts.tokens : {}, l = this.isReversed() ? -1 : 1, d = this.isReversed() ? "unshift" : "push", g = this.isReversed() ? 0 : i.length - 1, C = this.isReversed() ? () => o > -1 && c > -1 : () => o < i.length && c < t.length, S = (f) => !this.isReversed() && f <= g || this.isReversed() && f >= g;
+    let E, u = -1, o = this.isReversed() ? i.length - 1 : 0, c = this.isReversed() ? t.length - 1 : 0;
+    for (; C(); ) {
+      const f = i.charAt(o), p = k[f], M = (p == null ? void 0 : p.transform) != null ? p.transform(t.charAt(c)) : t.charAt(c);
+      if (!h.includes(o) && p != null) {
+        if (M.match(p.pattern) != null)
+          r[d](M), p.repeated ? (u === -1 ? u = o : o === g && o !== u && (o = u - l), g === u && (o -= l)) : p.multiple && (o -= l), o += l;
+        else if (p.multiple) {
+          const P = ((A = r[c - l]) == null ? void 0 : A.match(p.pattern)) != null, R = i.charAt(o + l);
+          P && R !== "" && k[R] == null ? (o += l, c -= l) : r[d]("");
+        } else
+          M === E ? E = void 0 : p.optional && (o += l, c -= l);
+        c += l;
+      } else
+        e && !this.isEager() && r[d](f), M === f && !this.isEager() ? c += l : E = f, this.isEager() || (o += l);
+      if (this.isEager())
+        for (; S(o) && (k[i.charAt(o)] == null || h.includes(o)); )
+          e ? r[d](i.charAt(o)) : i.charAt(o) === t.charAt(c) && (c += l), o += l;
+    }
+    return this.memo.set(a, r.join("")), this.memo.get(a);
+  }
+}
+const V = (n) => JSON.parse(n.replaceAll("'", '"')), T = (n, t = {}) => {
+  const s = { ...t };
+  return n.dataset.maska != null && n.dataset.maska !== "" && (s.mask = L(n.dataset.maska)), n.dataset.maskaEager != null && (s.eager = y(n.dataset.maskaEager)), n.dataset.maskaReversed != null && (s.reversed = y(n.dataset.maskaReversed)), n.dataset.maskaTokensReplace != null && (s.tokensReplace = y(n.dataset.maskaTokensReplace)), n.dataset.maskaTokens != null && (s.tokens = x(n.dataset.maskaTokens)), s;
+}, y = (n) => n !== "" ? !!JSON.parse(n) : !0, L = (n) => n.startsWith("[") && n.endsWith("]") ? V(n) : n, x = (n) => {
+  if (n.startsWith("{") && n.endsWith("}"))
+    return V(n);
+  const t = {};
+  return n.split("|").forEach((s) => {
+    const e = s.split(":");
+    t[e[0]] = {
+      pattern: new RegExp(e[1]),
+      optional: e[2] === "optional",
+      multiple: e[2] === "multiple",
+      repeated: e[2] === "repeated"
+    };
+  }), t;
+};
+class J {
+  constructor(t, s = {}) {
+    m(this, "items", /* @__PURE__ */ new Map());
+    m(this, "beforeinputEvent", (t) => {
+      const s = t.target, e = this.items.get(s);
+      e.isEager() && "inputType" in t && t.inputType.startsWith("delete") && e.unmasked(s.value).length <= 1 && this.setMaskedValue(s, "");
+    });
+    m(this, "inputEvent", (t) => {
+      if (t instanceof CustomEvent && t.type === "input" && t.detail != null && typeof t.detail == "object" && "masked" in t.detail)
+        return;
+      const s = t.target, e = this.items.get(s), a = s.value, i = s.selectionStart, h = s.selectionEnd;
+      let r = a;
+      if (e.isEager()) {
+        const k = e.masked(a), l = e.unmasked(a);
+        l === "" && "data" in t && t.data != null ? r = t.data : l !== e.unmasked(k) && (r = l);
+      }
+      if (this.setMaskedValue(s, r), "inputType" in t && (t.inputType.startsWith("delete") || i != null && i < a.length))
+        try {
+          s.setSelectionRange(i, h);
+        } catch {
+        }
+    });
+    this.options = s, typeof t == "string" ? this.init(
+      Array.from(document.querySelectorAll(t)),
+      this.getMaskOpts(s)
+    ) : this.init(
+      "length" in t ? Array.from(t) : [t],
+      this.getMaskOpts(s)
+    );
+  }
+  destroy() {
+    for (const t of this.items.keys())
+      t.removeEventListener("input", this.inputEvent), t.removeEventListener("beforeinput", this.beforeinputEvent);
+    this.items.clear();
+  }
+  needUpdateOptions(t, s) {
+    const e = this.items.get(t), a = new w(T(t, this.getMaskOpts(s)));
+    return JSON.stringify(e.opts) !== JSON.stringify(a.opts);
+  }
+  needUpdateValue(t) {
+    const s = t.dataset.maskaValue;
+    return s == null && t.value !== "" || s != null && s !== t.value;
+  }
+  getMaskOpts(t) {
+    const { onMaska: s, preProcess: e, postProcess: a, ...i } = t;
+    return i;
+  }
+  init(t, s) {
+    for (const e of t) {
+      const a = new w(T(e, s));
+      this.items.set(e, a), e.value !== "" && this.setMaskedValue(e, e.value), e.addEventListener("input", this.inputEvent), e.addEventListener("beforeinput", this.beforeinputEvent);
+    }
+  }
+  setMaskedValue(t, s) {
+    const e = this.items.get(t);
+    this.options.preProcess != null && (s = this.options.preProcess(s));
+    const a = e.masked(s), i = e.unmasked(e.isEager() ? a : s), h = e.completed(s), r = { masked: a, unmasked: i, completed: h };
+    s = a, this.options.postProcess != null && (s = this.options.postProcess(s)), t.value = s, t.dataset.maskaValue = s, this.options.onMaska != null && (Array.isArray(this.options.onMaska) ? this.options.onMaska.forEach((k) => k(r)) : this.options.onMaska(r)), t.dispatchEvent(new CustomEvent("maska", { detail: r })), t.dispatchEvent(new CustomEvent("input", { detail: r }));
+  }
+}
+const v = /* @__PURE__ */ new WeakMap(), N = (n) => {
+  setTimeout(() => {
+    var t;
+    ((t = v.get(n)) == null ? void 0 : t.needUpdateValue(n)) === !0 && n.dispatchEvent(new CustomEvent("input"));
+  });
+}, U = (n, t) => {
+  const s = n instanceof HTMLInputElement ? n : n.querySelector("input"), e = { ...t.arg };
+  if (s == null)
+    return;
+  N(s);
+  const a = v.get(s);
+  if (a != null) {
+    if (!a.needUpdateOptions(s, e))
+      return;
+    a.destroy();
+  }
+  if (t.value != null) {
+    const i = t.value, h = (r) => {
+      i.masked = r.masked, i.unmasked = r.unmasked, i.completed = r.completed;
+    };
+    e.onMaska = e.onMaska == null ? h : Array.isArray(e.onMaska) ? [...e.onMaska, h] : [e.onMaska, h];
+  }
+  v.set(s, new J(s, e));
+};
+
 
 
 /***/ })

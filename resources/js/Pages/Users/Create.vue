@@ -36,7 +36,7 @@
 
           <!-- Phone -->
           <div class="mb-6">
-            <TextInput
+            <PhoneInput
               v-model="userForm.phone"
               name="phone"
               placeholder="Enter user phone number (2547********)"
@@ -125,6 +125,7 @@ import Button from '../../Components/Button.vue';
 import TextInput from '../../Components/TextInput.vue';
 import SelectInput from '../../Components/SelectInput.vue';
 import axios from 'axios';
+import PhoneInput from '../../Components/PhoneInput.vue';
 
 let unitOptions = ref([]);
 let houseOptions = ref([]);
