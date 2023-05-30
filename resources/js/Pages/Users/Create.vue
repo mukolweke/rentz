@@ -67,7 +67,6 @@
               :input-error="userForm.errors.unit"
             />
           </div>
-
           <!-- Houses -->
           <div class="mb-6" v-if="userForm.role == 'staff'">
             <SelectInput
@@ -76,6 +75,7 @@
               label-string="Link a house"
               :select-options="houseOptions"
               :input-error="userForm.errors.house"
+              :disabled="getUrlParams().has('house')"
             />
           </div>
 
@@ -138,15 +138,27 @@ const userForm = useForm({
   occupation: '',
 });
 
-onMounted(() => {
+const getUrlParams = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
+
+  return urlParams;
+}
+
+onMounted(() => {
+  let urlParams = getUrlParams();
 
   if (urlParams.has('unit')) {
     userForm.role = 'tenant';
     userForm.unit = urlParams.get('unit');
   }
+
+  if (urlParams.has('house')) {
+    userForm.role = 'staff';
+    userForm.house = urlParams.get('house');
+  }
 });
+
 
 watch(() => userForm.role, async (value) => {
   // if role tenant fetch unit options

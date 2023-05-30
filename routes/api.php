@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/unit-options', [GetApiData::class, 'unitOptions'])->name('unit.options');
 Route::get('/house-options', [GetApiData::class, 'houseOptions'])->name('house.options');
+Route::get('/houses/{house}/staff', [GetApiData::class, 'houseStaff'])->name('house.staff');
 

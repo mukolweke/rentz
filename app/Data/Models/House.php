@@ -44,4 +44,9 @@ class House extends Model
     {
         return $this->hasMany(Unit::class);
     }
+
+    public function staffs()
+    {
+        return $this->hasMany(Staff::class);
+    }
 }
