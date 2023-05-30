@@ -81,6 +81,9 @@ class UserController extends Controller
 
         if (isset($attributes['unit'])) {
             $user->tenant()->create(['unit_id' => $attributes['unit'], 'is_active' => true]);
+
+            // update unit status
+            \DB::table('units')->where('id', $attributes['unit'])->update(['status' => true]);
         }
 
         if (isset($attributes['house'])) {

@@ -30,6 +30,9 @@ class TenantController extends Controller
         // remove tenant from a unit
         $tenant->update(['is_active' => false]);
 
+        // update unit status
+        $unit->update(['status', false]);
+
         // redirect
         return redirect()->route('units.show', $unit->id);
     }

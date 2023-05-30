@@ -11,7 +11,7 @@ class Unit extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'block', 'house_id'
+        'name', 'description', 'block', 'house_id', 'status'
     ];
 
     protected $cast = [
@@ -19,6 +19,7 @@ class Unit extends Model
         'description' => 'string',
         'block' => 'string',
         'house_id' => 'integer',
+        'status' => 'boolean',
     ];
 
     protected $dates = [

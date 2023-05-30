@@ -22,7 +22,7 @@ class UnitRepository implements InterfaceUnitRepository
         $unitQ = $this->unitQuery();
 
         $units = $paginate
-            ? $unitQ->paginate(10)->withQueryString()
+            ? $unitQ->paginate(10)->appends(request()->all())
             : $unitQ->isAssigned(false)->get();
 
         UnitTransformer::transformCollection($units);
@@ -40,7 +40,7 @@ class UnitRepository implements InterfaceUnitRepository
         $unitQ = $this->unitQuery($houseId);
 
         $units = $paginate
-            ? $unitQ->paginate(5)->withQueryString()
+            ? $unitQ->paginate(5)->appends(request()->all())
             : $unitQ->get();
 
         UnitTransformer::transformCollection($units);
@@ -55,10 +55,7 @@ class UnitRepository implements InterfaceUnitRepository
                     ->orWhere('description', 'like', "%{$search}%")
                     ->orWhere('block', 'like', "%{$search}%");
             })
-            ->leftJoin('tenants', 'units.id', '=', 'tenants.unit_id')
-            ->select('units.*', 'tenants.created_at as tenant_created_date', 'tenants.is_active as tenant_active')
-            ->orderByDesc('tenant_active')
-            ->orderByDesc('tenant_created_date');
+            ->orderByDesc('status');
 
         return empty($houseId) ? $query : $query->where('house_id', $houseId);
     }

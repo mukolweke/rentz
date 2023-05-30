@@ -185,7 +185,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        'Barryvdh\Debugbar\ServiceProvider',
+        
         /*
          * Application Service Providers...
          */
