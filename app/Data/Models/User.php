@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasOne(Tenant::class);
     }
 
+    public function staff()
+    {
+        return $this->hasOne(Staff::class);
+    }
+
     public function nextOfKins()
     {
         return $this->hasMany(NextOfKin::class);

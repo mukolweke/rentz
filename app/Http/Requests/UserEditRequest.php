@@ -28,7 +28,9 @@ class UserEditRequest extends FormRequest
             'phone' => '',
             'email' => 'required|email',
             'role' => 'required',
-            'occupation' => 'required_if:role,tenant'
+            'occupation' => 'required_if:role,tenant',
+            'house' => 'required_if:role,staff',
+            'staffRole' => 'required_if:role,staff',
         ];
     }
 
@@ -40,7 +42,9 @@ class UserEditRequest extends FormRequest
     public function messages()
     {
         return [
-            'occupation.required_if' => 'The occupation field is required'
+            'occupation.required_if' => 'The occupation field is required',
+            'house.required_if' => 'The house field is required',
+            'staffRole.required_if' => 'The staff role field is required',
         ];
     }
 }

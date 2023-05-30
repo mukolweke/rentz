@@ -8,9 +8,9 @@
     <div class="w-full h-px bg-gray-200 my-4"></div>
     <div class="w-full">
       <div class="flex items-start justify-between">
-        <div class="space-y-8">
+        <div class="grid gap-8 grid-cols-2">
           <div>
-            <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
+            <label class="block uppercase font-bold text-xs text-gray-700">
               Name
             </label>
             <div>
@@ -19,7 +19,7 @@
           </div>
 
           <div>
-            <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
+            <label class="block uppercase font-bold text-xs text-gray-700">
               Email
             </label>
             <div>
@@ -28,22 +28,46 @@
           </div>
 
           <div>
-            <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
+            <label class="block uppercase font-bold text-xs text-gray-700">
               Phone
             </label>
             <div>
               {{ user.phone }}
             </div>
           </div>
-        </div>
 
-        <div class="space-y-8" v-if="user.role == 'tenant' && user.occupation">
-          <div>
-            <label class="block mb-2 uppercase font-bold text-xs text-gray-700">
+          <div v-if="user.role == 'tenant' && user.occupation">
+            <label class="block uppercase font-bold text-xs text-gray-700">
               Occupation
             </label>
             <div>
               {{ user.occupation }}
+            </div>
+          </div>
+
+          <div v-if="user.role == 'staff' && user.house">
+            <label class="block uppercase font-bold text-xs text-gray-700">
+              House
+            </label>
+            <div>
+              {{ user.house }}
+            </div>
+          </div>
+          <div v-if="user.role == 'staff' && user.house">
+            <label class="block uppercase font-bold text-xs text-gray-700">
+              House
+            </label>
+            <div>
+              {{ user.house }}
+            </div>
+          </div>
+
+          <div v-if="user.role == 'staff' && user.staff_role">
+            <label class="block uppercase font-bold text-xs text-gray-700">
+              Staff Role
+            </label>
+            <div>
+              {{ user.staff_role }}
             </div>
           </div>
         </div>

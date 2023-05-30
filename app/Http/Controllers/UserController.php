@@ -72,15 +72,19 @@ class UserController extends Controller
     public function store(UserPostRequest $request)
     {
         // valid request
-        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'unit', 'occupation']);
-
-        //TODO: generate a random first time password EMAIL THE PASSWORD
+        $attributes = $request->safe()->only(
+            ['name', 'email', 'phone', 'role', 'unit', 'occupation', 'house', 'staffRole']
+        );
 
         // save the details
         $user = User::create($attributes);
 
         if (isset($attributes['unit'])) {
             $user->tenant()->create(['unit_id' => $attributes['unit'], 'is_active' => true]);
+        }
+
+        if (isset($attributes['house'])) {
+            $user->staff()->create(['house_id' => $attributes['house'], 'role' => $attributes['staffRole']]);
         }
 
         // redirect
@@ -103,20 +107,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        return Inertia::render('Users/Edit', [
-            'user' => UserTransformer::transformForEdit($user),
-            'unitsOptions' => Unit::select(['id', 'name'])->get()->toArray()
-        ]);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  UserEditRequest  $request
@@ -126,10 +116,14 @@ class UserController extends Controller
     public function update(UserEditRequest $request, User $user)
     {
         // valid request
-        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'occupation']);
+        $attributes = $request->safe()->only(['name', 'email', 'phone', 'role', 'occupation', 'house', 'staffRole']);
 
         // update a user record
         $user->update($attributes);
+
+        if (isset($attributes['house'])) {
+            $user->staff()->update(['house_id' => $attributes['house'], 'role' => $attributes['staffRole']]);
+        }
 
         // redirect
         return redirect()->route('users.show', $user->id);

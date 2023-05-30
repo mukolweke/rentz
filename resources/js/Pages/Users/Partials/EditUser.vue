@@ -51,6 +51,28 @@
             />
           </div>
 
+          <!-- Houses -->
+          <div class="mb-6" v-if="userForm.role == 'staff'">
+            <SelectInput
+              v-model="userForm.house"
+              name="house"
+              label-string="Link a house"
+              :select-options="houseOptions"
+              :input-error="userForm.errors.house"
+            />
+          </div>
+
+          <!-- Staff Role -->
+          <div class="mb-6" v-if="userForm.role == 'staff'">
+            <TextInput
+              v-model="userForm.staffRole"
+              name="staff role"
+              placeholder="Enter the staff role e.g. caretaker"
+              label-string="Staff Role"
+              :input-error="userForm.errors.staffRole"
+            />
+          </div>
+
           <!-- Occupation -->
           <div class="mb-6" v-if="user.role == 'tenant'">
             <TextInput
@@ -71,9 +93,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useForm } from '@inertiajs/vue3'
 import TextInput from '../../../Components/TextInput.vue';
+import SelectInput from '../../../Components/SelectInput.vue';
+import axios from 'axios';
 
 let props = defineProps({
   user: Object,
@@ -85,8 +109,26 @@ const userForm = useForm({
   phone: props.user.phone,
   role: props.user.role,
   occupation: props.user.occupation,
+  house: props.user.house_id,
+  staffRole: props.user.staff_role,
 });
 
+let houseOptions = ref([]);
+
+onMounted(async () => {
+  await getHouseOptions();
+})
+
+const getHouseOptions = async () => {
+  // if role staff fetch house options
+  if (props.user.role === 'staff') {
+    let response = await axios.get('/api/house-options');
+
+    if (response.data) {
+      houseOptions.value = [...response.data]
+    }
+  }
+}
 
 let isSubmitSuccess = ref(false);
 

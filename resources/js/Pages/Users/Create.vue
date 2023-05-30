@@ -46,10 +46,10 @@
           </div>
 
           <!-- User Role -->
-          <div :class="{ 'mb-6': userForm.role == 'tenant' }">
+          <div :class="{ 'mb-6': ['staff', 'tenant'].includes(userForm.role) }">
             <SelectInput
               v-model="userForm.role"
-              name="category"
+              name="role"
               label-string="User Role"
               :select-options="userRoles"
               :input-error="userForm.errors.role"
@@ -61,10 +61,32 @@
           <div class="mb-6" v-if="userForm.role == 'tenant'">
             <SelectInput
               v-model="userForm.unit"
-              name="category"
+              name="unit"
               label-string="Link a unit"
-              :select-options="unitsOptions"
+              :select-options="unitOptions"
               :input-error="userForm.errors.unit"
+            />
+          </div>
+
+          <!-- Houses -->
+          <div class="mb-6" v-if="userForm.role == 'staff'">
+            <SelectInput
+              v-model="userForm.house"
+              name="house"
+              label-string="Link a house"
+              :select-options="houseOptions"
+              :input-error="userForm.errors.house"
+            />
+          </div>
+
+          <!-- Staff Role -->
+          <div class="mb-6" v-if="userForm.role == 'staff'">
+            <TextInput
+              v-model="userForm.staffRole"
+              name="staff role"
+              placeholder="Enter the staff role e.g. caretaker"
+              label-string="Staff Role"
+              :input-error="userForm.errors.staffRole"
             />
           </div>
 
@@ -95,15 +117,15 @@
 
 <script setup>
 import MainLayout from '../../Layouts/MainLayout.vue';
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3'
 import Button from '../../Components/Button.vue';
 import TextInput from '../../Components/TextInput.vue';
 import SelectInput from '../../Components/SelectInput.vue';
+import axios from 'axios';
 
-defineProps({
-  unitsOptions: Array
-});
+let unitOptions = ref([]);
+let houseOptions = ref([]);
 
 const userForm = useForm({
   name: null,
@@ -111,6 +133,8 @@ const userForm = useForm({
   phone: null,
   role: '',
   unit: null,
+  house: null,
+  staffRole: '',
   occupation: '',
 });
 
@@ -122,7 +146,23 @@ onMounted(() => {
     userForm.role = 'tenant';
     userForm.unit = urlParams.get('unit');
   }
-})
+});
+
+watch(() => userForm.role, async (value) => {
+  // if role tenant fetch unit options
+  if (value === 'tenant') {
+    axios.get('/api/unit-options').then(({ data }) => {
+      unitOptions.value = [...data]
+    }).catch((err) => console.log(err));
+  }
+
+  // if role staff fetch house options
+  if (value === 'staff') {
+    axios.get('/api/house-options').then(({ data }) => {
+      houseOptions.value = [...data]
+    }).catch((err) => console.log(err));
+  }
+});
 
 const userRoles = ref([
   { id: 'admin', name: 'Admin' },
