@@ -3,15 +3,19 @@
 namespace App\Data\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Data\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -68,5 +72,11 @@ class User extends Authenticatable
     public function nextOfKins()
     {
         return $this->hasMany(NextOfKin::class);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection(Constants::USER_AVATAR_COLLECTION)
+            ->singleFile();
     }
 }

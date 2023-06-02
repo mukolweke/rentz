@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     /** Users */
+    Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::resource('users', UserController::class);
     // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
     Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');

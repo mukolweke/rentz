@@ -53,7 +53,9 @@
               label-string="User Role"
               :select-options="userRoles"
               :input-error="userForm.errors.role"
-              :disabled="getUrlParams().has('unit') || getUrlParams().has('house')"
+              :disabled="
+                getUrlParams().has('unit') || getUrlParams().has('house')
+              "
               required
             />
           </div>
@@ -106,6 +108,13 @@
             />
           </div>
 
+          <!-- Avatar -->
+          <input
+            type="file"
+            name="avatar"
+            @input="userForm.avatar = $event.target.files[0]"
+          />
+
           <!-- Submit Buttons -->
           <div class="mt-8 flex justify-end items-center space-x-4">
             <Button label="Cancel" outline @click="back" />
@@ -139,6 +148,7 @@ const userForm = useForm({
   house: null,
   staffRole: '',
   occupation: '',
+  avatar: null,
 });
 
 const getUrlParams = () => {
@@ -192,6 +202,7 @@ let createUser = () => {
 
   userForm.post('/users', {
     preserveScroll: true,
+    forceFormData: true,
     onSuccess: () => {
       isSubmitSuccess.value = true;
       userForm.reset();

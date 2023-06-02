@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Constants;
 use App\Data\Models\NextOfKin;
 use App\Data\Models\Unit;
 use App\Data\Models\User;
@@ -12,6 +13,7 @@ use App\Data\Transformers\UserTransformer;
 use App\Http\Requests\NextOfKinPostRequest;
 use App\Http\Requests\UserPostRequest;
 use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -79,6 +81,12 @@ class UserController extends Controller
         // save the details
         $user = User::create($attributes);
 
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        }
+
         if (isset($attributes['unit'])) {
             $user->tenant()->create(['unit_id' => $attributes['unit'], 'is_active' => true]);
 
@@ -124,6 +132,12 @@ class UserController extends Controller
         // update a user record
         $user->update($attributes);
 
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        }
+        
         if (isset($attributes['house'])) {
             $user->staff()->update(['house_id' => $attributes['house'], 'role' => $attributes['staffRole']]);
         }

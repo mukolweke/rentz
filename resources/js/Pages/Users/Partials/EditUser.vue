@@ -86,6 +86,13 @@
               required
             />
           </div>
+
+          <!-- Avatar -->
+          <input
+            type="file"
+            name="avatar"
+            @input="userForm.avatar = $event.target.files[0]"
+          />
         </div>
       </div>
     </template>
@@ -112,6 +119,7 @@ const userForm = useForm({
   occupation: props.user.occupation,
   house: props.user.house_id,
   staffRole: props.user.staff_role,
+  avatar: null,
 });
 
 let houseOptions = ref([]);
@@ -136,7 +144,7 @@ let isSubmitSuccess = ref(false);
 let updateTenant = () => {
   isSubmitSuccess.value = false;
 
-  userForm.patch('/users/' + props.user.id, {
+  userForm.post('/users/' + props.user.id, {
     preserveScroll: true,
     onSuccess: () => {
       isSubmitSuccess.value = true;

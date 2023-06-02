@@ -7,7 +7,14 @@
     </h4>
     <div class="w-full h-px bg-gray-200 my-4"></div>
     <div class="w-full">
-      <div class="flex items-start justify-between">
+      <div class="flex items-start space-x-8">
+        <div>
+          <img
+            class="w-32 h-32 rounded-lg object-cover"
+            :src="user.avatar"
+            alt=""
+          />
+        </div>
         <div class="grid gap-8 grid-cols-2">
           <div>
             <label class="block uppercase font-bold text-xs text-gray-700">
@@ -73,7 +80,7 @@
         </div>
 
         <!-- action -->
-        <div>
+        <div class="flex-1 flex justify-end w-full">
           <EditUser :user="user" />
         </div>
       </div>
