@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Constants;
 use App\Data\Models\NextOfKin;
 use App\Data\Models\Unit;
 use App\Data\Models\User;
@@ -12,6 +13,7 @@ use App\Data\Transformers\UserTransformer;
 use App\Http\Requests\NextOfKinPostRequest;
 use App\Http\Requests\UserPostRequest;
 use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -79,10 +81,16 @@ class UserController extends Controller
         // save the details
         $user = User::create($attributes);
 
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        }
+
         if (isset($attributes['unit'])) {
             $user->tenant()->create(['unit_id' => $attributes['unit'], 'is_active' => true]);
 
-            // update unit status
+            // Mark unit as assigned
             \DB::table('units')->where('id', $attributes['unit'])->update(['status' => true]);
         }
 
@@ -110,6 +118,43 @@ class UserController extends Controller
     }
 
     /**
+     * Updates the current saved avatar of a user
+     *
+     * @param \Illuminate\Http\Request
+     * @param  User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAvatar(Request $request, User $user)
+    {
+        $request->validate([
+            'avatar' => 'required|file'
+        ]);
+
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        }
+
+        // redirect
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the current saved avatar from a user
+     *
+     * @param  User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function removeAvatar(User $user)
+    {
+        $user->clearMediaCollection(Constants::USER_AVATAR_COLLECTION);
+
+        // redirect
+        return redirect()->back();
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  UserEditRequest  $request
@@ -123,6 +168,15 @@ class UserController extends Controller
 
         // update a user record
         $user->update($attributes);
+
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        } else {
+            // when user removes avatar and sets default
+            $user->clearMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        }
 
         if (isset($attributes['house'])) {
             $user->staff()->update(['house_id' => $attributes['house'], 'role' => $attributes['staffRole']]);

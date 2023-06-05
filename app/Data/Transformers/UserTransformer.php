@@ -2,6 +2,7 @@
 
 namespace App\Data\Transformers;
 
+use App\Data\Constants;
 use App\Data\Models\User;
 use Carbon\Carbon;
 
@@ -50,6 +51,7 @@ class UserTransformer
             'unit_id' => $user->tenant ? $user->tenant->unit_id : null,
             'created_on' => Carbon::parse($user->created_at)->format('d-m-Y'),
             'updated_on' => Carbon::parse($user->updated_at)->format('d-m-Y'),
+            'avatar' => $user->getFirstMediaUrl(Constants::USER_AVATAR_COLLECTION),
         ];
     }
 

@@ -95,17 +95,4 @@ onMounted(() => {
   }
 })
 
-// const tenantForm = useForm(props.tenant);
-
-// let isSubmitSuccess = ref(false);
-
-// let deleteUnit = () => {
-//   isSubmitSuccess.value = false;
-//   tenantForm.delete('/units/' + tenantForm.id, {
-//     preserveScroll: true,
-//     onSuccess: () => {
-//       isSubmitSuccess.value = true;
-//     },
-//   });
-// }
 </script>

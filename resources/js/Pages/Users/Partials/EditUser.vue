@@ -86,6 +86,22 @@
               required
             />
           </div>
+
+          <!-- Avatar -->
+          <label
+            for="avatar"
+            class="block mb-2 uppercase font-bold text-xs text-gray-700"
+          >
+            Avatar
+          </label>
+
+          <AvatarInput
+            v-model="userForm.avatar"
+            :src="user.avatar"
+            :edit-page="true"
+            :alt-tag="user.name.match(/\b(\w)/g).join('')"
+            class="w-40 h-40 rounded-lg border-2 border-black"
+          />
         </div>
       </div>
     </template>
@@ -99,9 +115,11 @@ import TextInput from '../../../Components/TextInput.vue';
 import SelectInput from '../../../Components/SelectInput.vue';
 import axios from 'axios';
 import PhoneInput from '../../../Components/PhoneInput.vue';
+import AvatarInput from '../../../Components/AvatarInput.vue';
+import { router } from '@inertiajs/vue3'
 
 let props = defineProps({
-  user: Object,
+    user: Object,
 });
 
 const userForm = useForm({
@@ -112,6 +130,7 @@ const userForm = useForm({
   occupation: props.user.occupation,
   house: props.user.house_id,
   staffRole: props.user.staff_role,
+  avatar: null,
 });
 
 let houseOptions = ref([]);
@@ -136,11 +155,12 @@ let isSubmitSuccess = ref(false);
 let updateTenant = () => {
   isSubmitSuccess.value = false;
 
-  userForm.patch('/users/' + props.user.id, {
+  userForm.post('/users/' + props.user.id, {
     preserveScroll: true,
     onSuccess: () => {
       isSubmitSuccess.value = true;
       userForm.reset();
+      router.reload({ only: ['users.index'] })
     },
   });
 }
