@@ -88,10 +88,19 @@
           </div>
 
           <!-- Avatar -->
-          <input
-            type="file"
-            name="avatar"
-            @input="userForm.avatar = $event.target.files[0]"
+          <label
+            for="avatar"
+            class="block mb-2 uppercase font-bold text-xs text-gray-700"
+          >
+            Avatar
+          </label>
+
+          <AvatarInput
+            v-model="userForm.avatar"
+            :src="user.avatar"
+            :edit-page="true"
+            :alt-tag="user.name.match(/\b(\w)/g).join('')"
+            class="w-40 h-40 rounded-lg border-2 border-black"
           />
         </div>
       </div>
@@ -106,9 +115,11 @@ import TextInput from '../../../Components/TextInput.vue';
 import SelectInput from '../../../Components/SelectInput.vue';
 import axios from 'axios';
 import PhoneInput from '../../../Components/PhoneInput.vue';
+import AvatarInput from '../../../Components/AvatarInput.vue';
+import { router } from '@inertiajs/vue3'
 
 let props = defineProps({
-  user: Object,
+    user: Object,
 });
 
 const userForm = useForm({
@@ -149,6 +160,7 @@ let updateTenant = () => {
     onSuccess: () => {
       isSubmitSuccess.value = true;
       userForm.reset();
+      router.reload({ only: ['users.index'] })
     },
   });
 }

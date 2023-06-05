@@ -2,23 +2,29 @@
 import { ref } from 'vue';
 import Icon from './Icon.vue';
 
+const props = defineProps({
+  modelValue: File,
+  src: String,
+  altTag: String,
+  editPage: {
+    type: Boolean,
+    default: false,
+  }
+})
+
 const fileInput = ref(null)
 
 function browse() {
-  console.log('i am clicked', fileInput.value)
   fileInput.value.click();
 }
 
 let fileData = ref(null)
 
-let src = ref(null)
+let src = ref(props.src)
 
-defineProps({
-  modelValue: File,
-  altTag: String,
-});
+let showActions = ref(props.editPage)
 
-const emit = defineEmits(['update:model-value'])
+const emit = defineEmits(['update:model-value', 'remove-file'])
 
 function fileInputChange(e) {
   fileData.value = e.target.files[0]
@@ -35,6 +41,7 @@ function remove() {
   fileData.value = null;
   src.value = null;
   emit('update:model-value', fileData.value);
+  emit('remove-file');
 }
 </script>
 
@@ -66,22 +73,26 @@ function remove() {
     />
 
     <div
+      @mouseover="showActions = true"
+      @mouseleave="showActions = props.editPage ?? false"
       class="absolute top-0 bottom-0 h-full w-full bg-black bg-opacity-25 flex items-center justify-center"
     >
-      <button
-        @click="browse()"
-        class="cursor-pointer flex items-center justify-center hover:bg-white hover:bg-opacity-25 p-2 focus:outline-none transition duration-200"
-      >
-        <Icon name="camera" class="h-6 w-6" />
-      </button>
+      <div v-if="showActions" class="flex items-center">
+        <button
+          @click="browse()"
+          class="cursor-pointer rounded-full flex items-center justify-center hover:bg-white hover:bg-opacity-25 p-2 focus:outline-none transition duration-200"
+        >
+          <Icon name="camera" class="h-6 w-6" />
+        </button>
 
-      <button
-        v-if="fileData"
-        @click="remove()"
-        class="cursor-pointer flex items-center justify-center hover:bg-white hover:bg-opacity-25 p-2 focus:outline-none transition duration-200"
-      >
-        <Icon name="x" class="h-6 w-6" />
-      </button>
+        <button
+          v-if="src"
+          @click="remove()"
+          class="cursor-pointer rounded-full flex items-center justify-center hover:bg-white hover:bg-opacity-25 p-2 focus:outline-none transition duration-200"
+        >
+          <Icon name="x" class="h-6 w-6" />
+        </button>
+      </div>
     </div>
   </div>
 </template>

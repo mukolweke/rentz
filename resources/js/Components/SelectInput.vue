@@ -39,9 +39,9 @@ defineProps({
   inputId: String || null,
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:model-value'])
 
 const updateValue = (event) => {
-  emit('update:modelValue', event.target.value)
+  emit('update:model-value', event.target.value)
 }
 </script>

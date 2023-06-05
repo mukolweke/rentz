@@ -8,11 +8,33 @@
     <div class="w-full h-px bg-gray-200 my-4"></div>
     <div class="w-full">
       <div class="flex items-start space-x-8">
+        <!-- <div>
+          <span
+            v-if="user.avatar"
+            class="relative inline-block w-32 h-32 rounded-full overflow-hidden"
+          >
+            <img
+              class="object-cover h-full w-full"
+              :src="user.avatar"
+              :alt="user.name.match(/\b(\w)/g).join('')"
+            />
+            <span class="absolute inset-0 border-2 border-black/10 rounded-full"></span>
+          </span>
+          <div
+            v-else
+            class="w-32 h-32 rounded-full bg-primaryAlt opacity-70 flex items-center justify-center text-white text-5xl"
+          >
+            {{ user.name.match(/\b(\w)/g).join("") }}
+          </div>
+        </div> -->
         <div>
-          <img
-            class="w-32 h-32 rounded-lg object-cover"
+          <!-- Avatar -->
+          <AvatarInput
+            v-model="avatarForm.avatar"
+            @remove-file="removeAvatar"
             :src="user.avatar"
-            alt=""
+            :alt-tag="user.name.match(/\b(\w)/g).join('')"
+            class="w-40 h-40 rounded-lg"
           />
         </div>
         <div class="grid gap-8 grid-cols-2">
@@ -139,9 +161,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import EditUser from './EditUser.vue';
 import ManageNextOfKin from './ManageNextOfKin.vue';
+import { useForm } from '@inertiajs/vue3';
+import AvatarInput from '../../../Components/AvatarInput.vue'
 
 const props = defineProps({
   user: Object,
@@ -149,4 +173,24 @@ const props = defineProps({
 });
 
 const computedKins = computed(() => props.nextOfKins);
+
+const avatarForm = useForm({
+  avatar: null
+});
+
+watch(() => avatarForm.avatar, async (value) => {
+  if (value) updateAvatar();
+})
+
+function updateAvatar() {
+  avatarForm.post('/users/' + props.user.id + '/update-avatar', {
+    preserveScroll: true,
+  });
+}
+
+function removeAvatar() {
+  avatarForm.get('/users/' + props.user.id + '/remove-avatar', {
+    preserveScroll: true,
+  });
+}
 </script>

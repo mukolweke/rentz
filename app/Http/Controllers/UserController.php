@@ -118,6 +118,43 @@ class UserController extends Controller
     }
 
     /**
+     * Updates the current saved avatar of a user
+     *
+     * @param \Illuminate\Http\Request
+     * @param  User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAvatar(Request $request, User $user)
+    {
+        $request->validate([
+            'avatar' => 'required|file'
+        ]);
+
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        }
+
+        // redirect
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the current saved avatar from a user
+     *
+     * @param  User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function removeAvatar(User $user)
+    {
+        $user->clearMediaCollection(Constants::USER_AVATAR_COLLECTION);
+
+        // redirect
+        return redirect()->back();
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  UserEditRequest  $request
@@ -136,8 +173,11 @@ class UserController extends Controller
             $user->addMediaFromRequest('avatar')
                 ->usingName(Str::slug($user->name, '-'))
                 ->toMediaCollection(Constants::USER_AVATAR_COLLECTION);
+        } else {
+            // when user removes avatar and sets default
+            $user->clearMediaCollection(Constants::USER_AVATAR_COLLECTION);
         }
-        
+
         if (isset($attributes['house'])) {
             $user->staff()->update(['house_id' => $attributes['house'], 'role' => $attributes['staffRole']]);
         }

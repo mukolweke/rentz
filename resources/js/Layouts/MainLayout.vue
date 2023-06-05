@@ -133,7 +133,7 @@ let routes = ref(
       },
       {
         name: 'Settings',
-        routeName: 'settings',
+        routeName: 'settings.index',
         label: 'settings',
         icon: 'fa-cog',
       },
