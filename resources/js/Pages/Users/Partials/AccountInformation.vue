@@ -8,25 +8,6 @@
     <div class="w-full h-px bg-gray-200 my-4"></div>
     <div class="w-full">
       <div class="flex items-start space-x-8">
-        <!-- <div>
-          <span
-            v-if="user.avatar"
-            class="relative inline-block w-32 h-32 rounded-full overflow-hidden"
-          >
-            <img
-              class="object-cover h-full w-full"
-              :src="user.avatar"
-              :alt="user.name.match(/\b(\w)/g).join('')"
-            />
-            <span class="absolute inset-0 border-2 border-black/10 rounded-full"></span>
-          </span>
-          <div
-            v-else
-            class="w-32 h-32 rounded-full bg-primaryAlt opacity-70 flex items-center justify-center text-white text-5xl"
-          >
-            {{ user.name.match(/\b(\w)/g).join("") }}
-          </div>
-        </div> -->
         <div>
           <!-- Avatar -->
           <AvatarInput
