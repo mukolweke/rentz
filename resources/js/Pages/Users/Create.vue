@@ -46,7 +46,7 @@
           </div>
 
           <!-- User Role -->
-          <div :class="{ 'mb-6': ['staff', 'tenant'].includes(userForm.role) }">
+          <div class="mb-6">
             <SelectInput
               v-model="userForm.role"
               name="role"
@@ -95,7 +95,7 @@
           </div>
 
           <!-- Occupation -->
-          <div v-if="userForm.role == 'tenant'">
+          <div class="mb-6" v-if="userForm.role == 'tenant'">
             <TextInput
               v-model="userForm.occupation"
               name="occupation"
@@ -109,11 +109,21 @@
           </div>
 
           <!-- Avatar -->
-          <input
-            type="file"
-            name="avatar"
-            @input="userForm.avatar = $event.target.files[0]"
-          />
+          <div>
+            <label
+              for="avatar"
+              class="block mb-2 uppercase font-bold text-xs text-gray-700"
+            >
+              Avatar
+            </label>
+
+            <AvatarInput
+              v-model="userForm.avatar"
+              :create-page="true"
+              class="w-40 h-40 rounded-lg"
+              placeholder="Upload Avatar"
+            />
+          </div>
 
           <!-- Submit Buttons -->
           <div class="mt-8 flex justify-end items-center space-x-4">
@@ -135,6 +145,7 @@ import TextInput from '../../Components/TextInput.vue';
 import SelectInput from '../../Components/SelectInput.vue';
 import axios from 'axios';
 import PhoneInput from '../../Components/PhoneInput.vue';
+import AvatarInput from '../../Components/AvatarInput.vue';
 
 let unitOptions = ref([]);
 let houseOptions = ref([]);
