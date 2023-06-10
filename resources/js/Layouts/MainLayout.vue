@@ -10,15 +10,35 @@
         </div>
 
         <div class="flex items-center space-x-4">
-          <Link
-            href="/logout"
-            method="post"
-            as="button"
-            class="font-semibold text-primaryAlt text-sm"
-          >
-            <span><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
-            Sign out
-          </Link>
+          <div class="relative cursor-pointer">
+            <div class="flex items-center space-x-4">
+              <p
+                v-if="!$page.props.auth.user.avatar"
+                class="font-semibold text-primary text-lg rounded-full border-2 border-primary p-2"
+              >
+                {{ $page.props.auth.user.username.match(/\b(\w)/g).join("") }}
+              </p>
+
+              <img
+                v-else
+                class="h-10 w-10 rounded-full"
+                :src="$page.props.auth.user.avatar"
+                alt="Avatar"
+              />
+
+              <Link
+                href="/logout"
+                method="post"
+                as="button"
+                class="font-semibold text-primaryAlt text-sm"
+              >
+                <span
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i
+                ></span>
+                Sign out
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

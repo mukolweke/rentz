@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Data\Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -42,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => [
                     'username' => Auth::user()->name,
                     'role' => Auth::user()->role,
+                    'avatar' => Auth::user()->getFirstMediaUrl(Constants::USER_AVATAR_COLLECTION),
                 ]
             ] : null,
         ]);
