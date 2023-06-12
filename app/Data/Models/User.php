@@ -64,9 +64,19 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Tenant::class);
     }
 
+    public function isTenant()
+    {
+        return $this->role == 'tenant';
+    }
+
     public function staff()
     {
         return $this->hasOne(Staff::class);
+    }
+
+    public function isStaff()
+    {
+        return $this->role == 'tenant';
     }
 
     public function nextOfKins()

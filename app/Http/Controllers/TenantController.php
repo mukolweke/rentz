@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Data\Models\Tenant;
 use App\Data\Models\Unit;
 use App\Data\Repositories\Unit\UnitRepository;
+use App\Data\Transformers\NextOfKinTransformer;
+use App\Data\Transformers\UnitTransformer;
 use App\Data\Transformers\UserTransformer;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -45,8 +47,12 @@ class TenantController extends Controller
      */
     public function dashboard()
     {
+        $user = Auth::user();
+
         return Inertia::render('Tenant/Dashboard', [
-            'user' => UserTransformer::transform(Auth::user())
+            'user' => UserTransformer::transform($user),
+            'unit' => UnitTransformer::assignedUnitTransformer($user->tenant->unit),
+            'nextOfKins' => NextOfKinTransformer::transformCollection($user->nextOfKins)
         ]);
     }
 }

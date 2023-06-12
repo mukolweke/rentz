@@ -27,40 +27,41 @@ Route::post('login', [LoginController::class, 'authenticate']);
 
 
 Route::middleware('auth')->group(function () {
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::middleware('tenant')->group(function () {
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::get('/', function () {
-        return redirect('/dashboard');
+        Route::get('/', function () {
+            return redirect('/dashboard');
+        });
+
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        /** Houses */
+        Route::resource('houses', HouseController::class);
+
+        /** Units */
+        Route::resource('units', UnitController::class);
+
+        /** Categories */
+        Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+        Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+        Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+        /** Users */
+        Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::post('users/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('users.update.avatar');
+        Route::get('users/{user}/remove-avatar', [UserController::class, 'removeAvatar'])->name('users.remove.avatar');
+        Route::resource('users', UserController::class);
+        // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
+        Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
+
+        // remove tenant from unit
+        Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('remove.tenant');
+
+        Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('/settings/user/avatar', [SettingController::class, 'userAvatar'])->name('settings.user.avatar');
     });
-
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    /** Houses */
-    Route::resource('houses', HouseController::class);
-
-    /** Units */
-    Route::resource('units', UnitController::class);
-
-    /** Categories */
-    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('category', [CategoryController::class, 'store'])->name('category.store');
-    Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
-    Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
-
-    /** Users */
-    Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::post('users/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('users.update.avatar');
-    Route::get('users/{user}/remove-avatar', [UserController::class, 'removeAvatar'])->name('users.remove.avatar');
-    Route::resource('users', UserController::class);
-    // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
-    Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
-
-    // remove tenant from unit
-    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('remove.tenant');
-
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::post('/settings/user/avatar', [SettingController::class, 'userAvatar'])->name('settings.user.avatar');
-
 
     Route::get('/tenant/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
     Route::get('/billing', function () {

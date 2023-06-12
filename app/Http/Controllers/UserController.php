@@ -209,6 +209,6 @@ class UserController extends Controller
         }
 
         // redirect
-        return redirect()->route('users.show', $user->id);
+        return Auth::user()->isTenant() ? redirect()->back() : redirect()->route('users.show', $user->id);
     }
 }

@@ -50,7 +50,7 @@ defineProps({
 
           <!-- Profile Info -->
           <panel-view class="my-8">
-            <div class="mb-8">
+            <div class="mb-10">
               <h2 class="tracking-normal uppercase text-sm font-semibold">
                 About
               </h2>
@@ -103,7 +103,7 @@ defineProps({
           </div>
         </aside>
 
-        <main class="p-5 min-w-[240px] basis-[640px]">
+        <main class="p-5 py-8 min-w-[240px] basis-[640px]">
           <slot />
         </main>
       </section>
