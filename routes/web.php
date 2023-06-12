@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TenantController;
@@ -32,11 +33,7 @@ Route::middleware('auth')->group(function () {
         return redirect('/dashboard');
     });
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Home/Index', [
-            'label' => 'Home'
-        ]);
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     /** Houses */
     Route::resource('houses', HouseController::class);
@@ -65,10 +62,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/user/avatar', [SettingController::class, 'userAvatar'])->name('settings.user.avatar');
 
 
-    Route::get('/profile', function () {
-    })->name('profile');
-    Route::get('/payment', function () {
-    })->name('payment');
-    Route::get('/unit', function () {
-    })->name('unit');
+    Route::get('/tenant/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
+    Route::get('/billing', function () {
+    })->name('billing');
+    Route::get('/tenant-unit', function () {
+    })->name('tenant-unit');
 });
