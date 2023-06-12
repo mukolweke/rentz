@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TenantMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,10 +19,10 @@ class TenantMiddleware
     {
         $response = $next($request);
 
-        if ($request->user()->isTenant()) {
-            return redirect('/tenant/dashboard');
+        if (!$request->user()->isTenant()) {
+            return $response;
         }
 
-        return $response;
+        return redirect('/tenant/dashboard');
     }
 }

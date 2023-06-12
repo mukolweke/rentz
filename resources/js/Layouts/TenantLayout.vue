@@ -95,11 +95,17 @@ defineProps({
               Manage your account
             </div>
 
-            <div
+            <Link
+              href="/logout"
+              method="post"
+              as="button"
               class="mt-4 p-2 w-full text-center text-primaryAlt hover:text-white hover:bg-primaryAlt transition duration-200 font-medium rounded-md cursor-pointer uppercase text-sm"
             >
-              Log out
-            </div>
+              <span class="mr-2">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </span>
+              Sign out
+            </Link>
           </div>
         </aside>
 

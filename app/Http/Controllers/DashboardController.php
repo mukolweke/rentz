@@ -10,10 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->role == 'tenant') {
-            return redirect()->route('tenant.dashboard');
-        }
-
         return Inertia::render('Home/Index', [
             'label' => 'Home'
         ]);

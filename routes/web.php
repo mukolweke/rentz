@@ -27,13 +27,14 @@ Route::post('login', [LoginController::class, 'authenticate']);
 
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('tenant')->group(function () {
-        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-        Route::get('/', function () {
-            return redirect('/dashboard');
-        });
+    Route::get('/', function () {
+        return redirect('/dashboard');
+    });
 
+    // Admin/Staff Dashboard Routes
+    Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         /** Houses */
@@ -63,9 +64,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/settings/user/avatar', [SettingController::class, 'userAvatar'])->name('settings.user.avatar');
     });
 
+    // Tenant Dashboard Routes
     Route::get('/tenant/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
+
     Route::get('/billing', function () {
     })->name('billing');
+
     Route::get('/tenant-unit', function () {
     })->name('tenant-unit');
 });
