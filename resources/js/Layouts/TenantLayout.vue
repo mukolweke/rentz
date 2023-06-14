@@ -1,18 +1,103 @@
 <script setup>
+import { ref, watch } from 'vue';
 import PanelView from '../Components/Panel.vue';
+import Icon from '../Components/Icon.vue'
+import { useForm } from '@inertiajs/vue3';
 
-defineProps({
+const props = defineProps({
   user: Object
-})
+});
+
+let showHeaderEdit = ref(false);
+let showAvatarEdit = ref(false);
+
+const fileInput = ref(null);
+const uploadType = ref('');
+
+function browseFile(type) {
+  fileInput.value.click();
+  uploadType.value = type
+}
+
+const fileForm = useForm({
+  header: null,
+  avatar: null,
+});
+
+const avatarSrc = ref(props.user.avatar);
+const headerSrc = ref(props.user.header);
+
+function fileInputChange(e) {
+  if (uploadType.value == 'avatar') {
+    fileForm.avatar = e.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(fileForm.avatar);
+    reader.onload = (e) => {
+      avatarSrc.value = e.target.result;
+
+      // save file;
+      fileForm.post('/tenant/' + props.user.id + '/update-avatar', {
+        preserveScroll: true,
+      });
+    }
+  }
+
+  if (uploadType.value == 'header') {
+    fileForm.header = e.target.files[0]
+
+    let reader = new FileReader();
+    reader.readAsDataURL(fileForm.header);
+    reader.onload = (e) => {
+      headerSrc.value = e.target.result;
+
+      // save file;
+      fileForm.post('/tenant/' + props.user.id + '/update-header', {
+        preserveScroll: true,
+      });
+    }
+  }
+}
 </script>
+
+<style scoped>
+.bg-header {
+  background-color: #a8e6ff;
+  background-position: center center;
+  background-size: cover;
+}
+</style>
 
 <template>
   <div class="m-0 p-0 bg-[#f8fafc] min-h-screen">
     <div class="">
+      <input
+        type="file"
+        accept="image/*"
+        class="hidden"
+        ref="fileInput"
+        @change="fileInputChange"
+      />
       <!-- Header -->
       <header class="h-[192px] flex items-center justify-center select-none">
-        <div class="bg-primaryAltLight h-[192px] w-full">
-          <!-- bg-[#F4F5F7] -->
+        <div
+          class="bg-header h-[192px] w-full relative cursor-pointer transition duration-200"
+          :style="`background-image: url('${headerSrc}');text-align:center;`"
+          @mouseenter="showHeaderEdit = true"
+          @mouseleave="showHeaderEdit = false"
+        >
+          <div
+            v-if="showHeaderEdit"
+            class="absolute inset-0 bg-black/10"
+            @click="() => browseFile('header')"
+          >
+            <div class="flex items-center justify-center h-full">
+              <div class="text-white flex flex-col items-center justify-center">
+                <Icon name="image" fill="#ffffff" class="h-6 w-6" />
+                <p class="font-medium mt-2">Update your header image</p>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -22,22 +107,45 @@ defineProps({
       >
         <aside class="p-5 min-w-[240px] basis-[320px] select-none">
           <!-- Profile -->
-          <div class="-mt-[90px] z-50 inline-block">
+          <div class="-mt-[90px] z-50 inline-block relative">
             <!-- Avatar -->
             <div
-              class="w-[150px] h-[150px] bg-primaryAlt rounded-full border-4 border-white"
+              class="w-[150px] h-[150px] bg-primaryAlt rounded-full border-4 border-white relative"
+              @mouseenter="showAvatarEdit = true"
+              @mouseleave="showAvatarEdit = false"
             >
-              <div class="w-full h-full flex items-center justify-center">
+              <div class="w-full h-full">
+                <!-- avatar -->
                 <img
-                  v-if="user.avatar"
+                  v-if="avatarSrc"
                   class="h-full w-full object-cover rounded-full"
-                  :src="user.avatar"
+                  :src="avatarSrc"
                   :alt="user.name"
                 />
 
-                <p v-else class="text-white text-5xl">
-                  {{ user.name.match(/\b(\w)/g).join("") }}
-                </p>
+                <!-- Name initials -->
+                <div
+                  v-else
+                  class="h-full w-full absolute inset-0 flex items-center justify-center z-0"
+                >
+                  <p class="text-white text-5xl">
+                    {{ user.name.match(/\b(\w)/g).join("") }}
+                  </p>
+                </div>
+                <!-- Hover upload avatar -->
+                <div
+                  v-if="showAvatarEdit"
+                  class="absolute inset-0 bg-black/10 rounded-full"
+                >
+                  <div class="flex items-center justify-center h-full">
+                    <div
+                      @click="() => browseFile('avatar')"
+                      class="cursor-pointer text-white flex flex-col items-center justify-center"
+                    >
+                      <Icon name="camera" fill="#ffffff" class="h-6 w-6" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

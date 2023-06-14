@@ -52,6 +52,7 @@ class UserTransformer
             'created_on' => Carbon::parse($user->created_at)->format('d-m-Y'),
             'updated_on' => Carbon::parse($user->updated_at)->format('d-m-Y'),
             'avatar' => $user->getFirstMediaUrl(Constants::USER_AVATAR_COLLECTION),
+            'header' => $user->getFirstMediaUrl(Constants::USER_HEADER_COLLECTION),
         ];
     }
 

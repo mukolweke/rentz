@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function () {
 
     // Tenant Dashboard Routes
     Route::get('/tenant/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
+    Route::post('tenant/{user}/update-header', [UserController::class, 'updateHeader'])->name('tenant.update.header');
+    Route::post('tenant/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('tenant.update.avatar');
 
     Route::get('/billing', function () {
     })->name('billing');

@@ -86,7 +86,12 @@ class User extends Authenticatable implements HasMedia
 
     public function registerMediaCollections(): void
     {
+        // USER AVATAR
         $this->addMediaCollection(Constants::USER_AVATAR_COLLECTION)
+            ->singleFile();
+
+        // TENANT DASH HEADER
+        $this->addMediaCollection(Constants::USER_HEADER_COLLECTION)
             ->singleFile();
     }
 }

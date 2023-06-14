@@ -141,6 +141,29 @@ class UserController extends Controller
     }
 
     /**
+     * Updates the current saved header of a user
+     *
+     * @param \Illuminate\Http\Request
+     * @param  User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updateHeader(Request $request, User $user)
+    {
+        $request->validate([
+            'header' => 'required|file'
+        ]);
+
+        if ($request->hasFile('header')) {
+            $user->addMediaFromRequest('header')
+                ->usingName(Str::slug($user->name, '-'))
+                ->toMediaCollection(Constants::USER_HEADER_COLLECTION);
+        }
+
+        // redirect
+        return redirect()->back();
+    }
+
+    /**
      * Remove the current saved avatar from a user
      *
      * @param  User  $user
@@ -149,6 +172,20 @@ class UserController extends Controller
     public function removeAvatar(User $user)
     {
         $user->clearMediaCollection(Constants::USER_AVATAR_COLLECTION);
+
+        // redirect
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the current saved header from a user
+     *
+     * @param  User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function removeHeader(User $user)
+    {
+        $user->clearMediaCollection(Constants::USER_HEADER_COLLECTION);
 
         // redirect
         return redirect()->back();
