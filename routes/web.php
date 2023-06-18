@@ -70,6 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::post('tenant/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('tenant.update.avatar');
     Route::get('/tenant/dashboard/edit', [TenantController::class, 'edit'])->name('tenant.edit');
     Route::post('/tenant/{user}/edit', [TenantController::class, 'update'])->name('tenant.update');
+    Route::get('/house/{house}/view-details', [TenantController::class, 'viewHouseDetails'])
+        ->name('tenant.house.details');
 
     Route::get('/billing', function () {
     })->name('billing');

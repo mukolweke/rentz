@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Models\House;
 use App\Data\Models\Tenant;
 use App\Data\Models\Unit;
 use App\Data\Models\User;
 use App\Data\Repositories\Unit\UnitRepository;
+use App\Data\Transformers\HouseTransformer;
 use App\Data\Transformers\NextOfKinTransformer;
+use App\Data\Transformers\StaffTransformer;
 use App\Data\Transformers\UnitTransformer;
 use App\Data\Transformers\UserTransformer;
 use App\Http\Requests\TenantUpdatePostRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
@@ -76,6 +78,9 @@ class TenantController extends Controller
 
     /**
      * Update the tenant details
+     *
+     * @param  \App\Data\Models\User  $user
+     * @param  TenantUpdatePostRequest  $request
      */
     public function update(TenantUpdatePostRequest $request, User $user)
     {
@@ -95,5 +100,28 @@ class TenantController extends Controller
 
         // redirect
         return redirect()->back();
+    }
+
+    /**
+     * View the House/Unit/Neighbours Details
+     * @param  \App\Data\Models\House  $house
+     */
+    public function viewHouseDetails(House $house)
+    {
+        $user = Auth::user();
+
+        $staffs = $house->staffs()->paginate(5);
+        StaffTransformer::transformCollection($staffs);
+
+        $neighbours = User::where('id', '!=', Auth::id())->whereHas('tenant')->paginate(5);
+        UserTransformer::transformCollection($neighbours);
+
+        return Inertia::render('Tenant/House/Index', [
+            'user' => UserTransformer::transform($user),
+            'unit' => UnitTransformer::assignedUnitTransformer($user->tenant->unit),
+            'house' => HouseTransformer::transform($house),
+            'staffs' => $staffs,
+            'neighbours' => $neighbours
+        ]);
     }
 }

@@ -18,7 +18,16 @@ const computedKins = computed(() => props.nextOfKins);
   <tenant-layout :user="user">
     <!-- Unit Details -->
     <div class="mb-10">
-      <h2 class="tracking-wide text-lg mb-4">Unit Details</h2>
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="tracking-wide text-lg">Unit Details</h2>
+
+        <Link
+          :href="route('tenant.house.details', { house: unit.house_id })"
+          class="hover:text-primaryAlt text-sm font-semibold"
+        >
+          Explore <span><i class="fa fa-arrow-right"></i></span>
+        </Link>
+      </div>
 
       <panel-view>
         <div class="grid grid-cols-3 gap-8">

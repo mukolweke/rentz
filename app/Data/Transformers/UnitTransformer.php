@@ -72,6 +72,7 @@ class UnitTransformer
             'id' => $unit->id,
             'tenant_id' => $tenant->id,
             'house' => $unit->house->name,
+            'house_id' => $unit->house_id,
             'name' => $unit->name,
             'block' => $unit->block ?? '-',
             'parking' => 'Todo Parking',

@@ -5,10 +5,7 @@ import TextInput from '../../Components/TextInput.vue';
 import PhoneInput from '../../Components/PhoneInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import Button from '../../Components/Button.vue';
-import { ref } from 'vue';
 import PasswordInput from '../../Components/PasswordInput.vue'
-
-let showPassword = ref(false);
 
 const props = defineProps({
   user: Object,
