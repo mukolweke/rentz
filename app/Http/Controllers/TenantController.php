@@ -113,7 +113,11 @@ class TenantController extends Controller
         $staffs = $house->staffs()->paginate(5);
         StaffTransformer::transformCollection($staffs);
 
-        $neighbours = User::where('id', '!=', Auth::id())->whereHas('tenant')->paginate(5);
+        $neighbours = User::where('id', '!=', Auth::id())
+            ->whereHas('tenant', function ($query) {
+                return $query->IsActive();
+            })
+            ->paginate(5);
         UserTransformer::transformCollection($neighbours);
 
         return Inertia::render('Tenant/House/Index', [
