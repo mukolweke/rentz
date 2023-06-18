@@ -1,12 +1,14 @@
 <script setup>
 import TenantLayout from '../../Layouts/TenantLayout.vue'
-import PanelView from '../../Components/Panel.vue';
 import BreadCrumps from '../../Components/BreadCrumps.vue';
 import TextInput from '../../Components/TextInput.vue';
 import PhoneInput from '../../Components/PhoneInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import Button from '../../Components/Button.vue';
-import Accordion from '../../Components/Accordion.vue'
+import { ref } from 'vue';
+import PasswordInput from '../../Components/PasswordInput.vue'
+
+let showPassword = ref(false);
 
 const props = defineProps({
   user: Object,
@@ -145,7 +147,7 @@ const updateTenant = (form) => {
       </div>
       <div class="grid grid-cols-2 gap-8">
         <div>
-          <TextInput
+          <PasswordInput
             v-model="passwordForm.password"
             name="password"
             placeholder="Enter password"
@@ -156,7 +158,7 @@ const updateTenant = (form) => {
         </div>
 
         <div>
-          <TextInput
+          <PasswordInput
             v-model="passwordForm.password_confirmation"
             name="password_confirmation"
             placeholder="Enter confirm password"
