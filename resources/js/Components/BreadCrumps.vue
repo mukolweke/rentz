@@ -35,7 +35,7 @@ function lastItem(index) {
           >
             {{ item.label }}
           </Link>
-          <span v-else class="text-gray-500">
+          <span v-else class="text-gray-500 text-sm">
             {{ item.label }}
           </span>
         </div>
