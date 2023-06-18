@@ -10,14 +10,14 @@
               v-for="field in fields"
               :key="field"
               scope="col"
-              class="px-6 py-3 text-primaryAlt"
+              class="px-6 py-3 text-primaryAlt text-left"
             >
               {{ field.replace("_", " ") }}
             </th>
             <th
               v-if="displayAction"
               scope="col"
-              class="px-6 py-3 text-primaryAlt"
+              class="px-6 py-3 text-primaryAlt text-left"
             >
               Actions
             </th>
@@ -32,7 +32,7 @@
             <td
               v-for="field in fields"
               :key="field"
-              class="px-6 py-4 font-medium whitespace-nowrap text-center"
+              class="px-6 py-4 font-medium whitespace-nowrap text-left"
               v-html="dataItem[field]"
             ></td>
             <td v-if="displayAction" class="px-6 py-4">
