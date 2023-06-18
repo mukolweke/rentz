@@ -55,7 +55,7 @@ class User extends Authenticatable implements HasMedia
     public static function handleObserver()
     {
         static::creating(function ($model) {
-            $model->password = Hash::make('password1234');
+            $model->password = Hash::make(Constants::DEFAULT_PASSWORD);
         });
     }
 
@@ -76,7 +76,7 @@ class User extends Authenticatable implements HasMedia
 
     public function isStaff()
     {
-        return $this->role == 'tenant';
+        return $this->role == 'staff';
     }
 
     public function nextOfKins()

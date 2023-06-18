@@ -13,4 +13,6 @@ class Constants
     const SETTING_AVATAR_COLLECTION = 'default_avatar';
 
     const USER_HEADER_COLLECTION = 'header';
+
+    const DEFAULT_PASSWORD = 'Password*1234';
 }

@@ -5,7 +5,8 @@ import Icon from '../Components/Icon.vue'
 import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
-  user: Object
+  user: Object,
+  editing: Boolean
 });
 
 let showHeaderEdit = ref(false);
@@ -156,6 +157,13 @@ function fileInputChange(e) {
             </div>
           </div>
 
+          <div
+            v-if="$page.props.auth.user.hasDefaultPassword"
+            class="text-yellow-500 font-bold text-xs rounded mt-5 motion-safe:animate-bounce"
+          >
+            Please update your password
+          </div>
+
           <!-- Profile Info -->
           <panel-view class="my-8">
             <div class="mb-10">
@@ -197,17 +205,21 @@ function fileInputChange(e) {
 
           <!-- Actions -->
           <div>
-            <div
-              class="bg-slate-100 p-2 w-full text-center font-medium hover:bg-slate-200 transition duration-200 rounded-md cursor-pointer uppercase text-sm"
+            <Link
+              v-if="!editing"
+              href="/tenant/dashboard/edit"
+              method="get"
+              as="button"
+              class="mb-4 bg-slate-100 p-2 w-full text-center font-medium hover:bg-slate-200 transition duration-200 rounded-md cursor-pointer uppercase text-sm"
             >
               Manage your account
-            </div>
+            </Link>
 
             <Link
               href="/logout"
               method="post"
               as="button"
-              class="mt-4 p-2 w-full text-center text-primaryAlt hover:text-white hover:bg-primaryAlt transition duration-200 font-medium rounded-md cursor-pointer uppercase text-sm"
+              class="p-2 w-full text-center text-primaryAlt hover:text-white hover:bg-primaryAlt transition duration-200 font-medium rounded-md cursor-pointer uppercase text-sm"
             >
               <span class="mr-2">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
