@@ -174,7 +174,7 @@ function fileInputChange(e) {
               <div class="mt-4 space-y-4">
                 <p class="text-sm tracking-wide">
                   <span class="mr-2"><i class="fa fa-briefcase"></i></span>
-                  <span>{{ user.occupation ?? "Not Stated" }}</span>
+                  <span>{{ user.occupation ?? "Not Provided" }}</span>
                 </p>
 
                 <p class="text-sm tracking-wide">
