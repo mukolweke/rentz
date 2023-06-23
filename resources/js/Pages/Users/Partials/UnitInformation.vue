@@ -12,6 +12,7 @@
       >
         Remove Tenant
       </p>
+      <p v-else class="p-2 text-white bg-yellow-500 rounded-lg text-sm">NOT A CURRENT TENANT</p>
     </div>
     <div class="w-full h-px bg-gray-200 my-4"></div>
     <div class="w-full my-4">

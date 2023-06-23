@@ -55,7 +55,7 @@ class User extends Authenticatable implements HasMedia
     public static function handleObserver()
     {
         static::creating(function ($model) {
-            $model->password = Hash::make('password1234');
+            $model->password = Hash::make(Constants::DEFAULT_PASSWORD);
         });
     }
 
@@ -64,9 +64,19 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Tenant::class);
     }
 
+    public function isTenant()
+    {
+        return $this->role == 'tenant';
+    }
+
     public function staff()
     {
         return $this->hasOne(Staff::class);
+    }
+
+    public function isStaff()
+    {
+        return $this->role == 'staff';
     }
 
     public function nextOfKins()
@@ -76,7 +86,12 @@ class User extends Authenticatable implements HasMedia
 
     public function registerMediaCollections(): void
     {
+        // USER AVATAR
         $this->addMediaCollection(Constants::USER_AVATAR_COLLECTION)
+            ->singleFile();
+
+        // TENANT DASH HEADER
+        $this->addMediaCollection(Constants::USER_HEADER_COLLECTION)
             ->singleFile();
     }
 }

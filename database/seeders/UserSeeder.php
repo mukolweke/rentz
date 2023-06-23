@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Data\Constants;
 use App\Data\Models\House;
 use App\Data\Models\Unit;
 use App\Data\Models\User;
@@ -25,7 +26,7 @@ class UserSeeder extends Seeder
             'email' => 'demoadmin@rentz.com',
             'phone' => '(+254)720 000 000',
             'role' => 'admin',
-            'password' => 'password1234'
+            'password' => Constants::DEFAULT_PASSWORD,
         ]);
 
         /**
@@ -36,7 +37,7 @@ class UserSeeder extends Seeder
             'email' => 'demostaff@rentz.com',
             'role' => 'staff',
             'phone' => '(+254)720 000 001',
-            'password' => 'password1234',
+            'password' => Constants::DEFAULT_PASSWORD,
         ]);
 
         /// Assign staff to a house and give a role
@@ -50,7 +51,7 @@ class UserSeeder extends Seeder
             'email' => 'demotenant@rentz.com',
             'role' => 'tenant',
             'phone' => '(+254)720 000 002',
-            'password' => 'password1234',
+            'password' => Constants::DEFAULT_PASSWORD,
         ]);
 
         $unitId = Unit::first()->id;

@@ -10,15 +10,35 @@
         </div>
 
         <div class="flex items-center space-x-4">
-          <Link
-            href="/logout"
-            method="post"
-            as="button"
-            class="font-semibold text-primaryAlt text-sm"
-          >
-            <span><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
-            Sign out
-          </Link>
+          <div class="relative cursor-pointer">
+            <div class="flex items-center space-x-4">
+              <p
+                v-if="!$page.props.auth.user.avatar"
+                class="font-semibold text-primary text-lg rounded-full border-2 border-primary p-2"
+              >
+                {{ $page.props.auth.user.username.match(/\b(\w)/g).join("") }}
+              </p>
+
+              <img
+                v-else
+                class="h-10 w-10 rounded-full object-cover"
+                :src="$page.props.auth.user.avatar"
+                alt="Avatar"
+              />
+
+              <Link
+                href="/logout"
+                method="post"
+                as="button"
+                class="font-semibold text-primaryAlt text-sm"
+              >
+                <span
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i
+                ></span>
+                Sign out
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -70,74 +90,46 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { usePage } from '@inertiajs/vue3'
 
 let routes = ref(
-  usePage().props.auth.user.role == 'tenant'
-    ? [
-      {
-        name: 'Dashboard',
-        routeName: 'dashboard',
-        label: 'dashboard',
-        icon: 'fa-gauge',
-      },
-      {
-        name: 'Profile',
-        routeName: 'profile',
-        label: 'profile',
-        icon: 'fa-user',
-      },
-      {
-        name: 'Unit',
-        routeName: 'unit',
-        label: 'unit',
-        icon: 'fa-user',
-      },
-      {
-        name: 'Payment',
-        routeName: 'payment',
-        label: 'payment',
-        icon: 'fa-user',
-      }
-    ]
-    : [
-      {
-        name: 'Dashboard',
-        routeName: 'dashboard',
-        label: 'dashboard',
-        icon: 'fa-gauge',
-      },
-      {
-        name: 'House Types',
-        routeName: 'category.index',
-        label: 'category',
-        icon: 'fa-list',
-      },
-      {
-        name: 'Houses',
-        routeName: 'houses.index',
-        label: 'houses',
-        icon: 'fa-list-alt',
-      },
-      {
-        name: 'Units',
-        routeName: 'units.index',
-        label: 'units',
-        icon: 'fa-building',
-      },
-      {
-        name: 'Users',
-        routeName: 'users.index',
-        label: 'users',
-        icon: 'fa-users',
-      },
-      {
-        name: 'Settings',
-        routeName: 'settings.index',
-        label: 'settings',
-        icon: 'fa-cog',
-      },
-    ])
+  [
+    {
+      name: 'Dashboard',
+      routeName: 'dashboard',
+      label: 'dashboard',
+      icon: 'fa-gauge',
+    },
+    {
+      name: 'House Types',
+      routeName: 'category.index',
+      label: 'category',
+      icon: 'fa-list',
+    },
+    {
+      name: 'Houses',
+      routeName: 'houses.index',
+      label: 'houses',
+      icon: 'fa-list-alt',
+    },
+    {
+      name: 'Units',
+      routeName: 'units.index',
+      label: 'units',
+      icon: 'fa-building',
+    },
+    {
+      name: 'Users',
+      routeName: 'users.index',
+      label: 'users',
+      icon: 'fa-users',
+    },
+    {
+      name: 'Settings',
+      routeName: 'settings.index',
+      label: 'settings',
+      icon: 'fa-cog',
+    },
+  ])
 
 const getActiveRoute = computed(() => {
   return window.location.pathname;

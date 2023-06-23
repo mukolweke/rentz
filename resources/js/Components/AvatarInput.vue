@@ -4,12 +4,11 @@ import Icon from './Icon.vue';
 
 const props = defineProps({
   modelValue: File,
-  src: String,
-  altTag: String,
-  editPage: {
-    type: Boolean,
-    default: false,
-  }
+  src: { type: String, default: '' },
+  altTag: { type: String, default: 'User Avatar' },
+  editPage: { type: Boolean, default: false },
+  createPage: { type: Boolean, default: false },
+  placeholder: String,
 })
 
 const fileInput = ref(null)
@@ -55,6 +54,13 @@ function remove() {
         <img class="object-cover h-full w-full" :src="src" :alt="altTag" />
         <span class="absolute inset-0 border-2 border-black/10"></span>
       </span>
+    </div>
+
+    <div
+      v-else-if="createPage && src == ''"
+      class="w-full h-full border-2 border-black/10 text-primaryAlt opacity-70 flex items-center justify-center bg-white text-lg"
+    >
+      {{ placeholder }}
     </div>
 
     <div

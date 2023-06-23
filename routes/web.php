@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TenantController;
@@ -32,43 +33,49 @@ Route::middleware('auth')->group(function () {
         return redirect('/dashboard');
     });
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Home/Index', [
-            'label' => 'Home'
-        ]);
-    })->name('dashboard');
+    // Admin/Staff Dashboard Routes
+    Route::middleware('admin')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    /** Houses */
-    Route::resource('houses', HouseController::class);
+        /** Houses */
+        Route::resource('houses', HouseController::class);
 
-    /** Units */
-    Route::resource('units', UnitController::class);
+        /** Units */
+        Route::resource('units', UnitController::class);
 
-    /** Categories */
-    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('category', [CategoryController::class, 'store'])->name('category.store');
-    Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
-    Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+        /** Categories */
+        Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+        Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+        Route::post('category/{category}', [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-    /** Users */
-    Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::post('users/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('users.update.avatar');
-    Route::get('users/{user}/remove-avatar', [UserController::class, 'removeAvatar'])->name('users.remove.avatar');
-    Route::resource('users', UserController::class);
-    // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
-    Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
+        /** Users */
+        Route::post('users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::post('users/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('users.update.avatar');
+        Route::get('users/{user}/remove-avatar', [UserController::class, 'removeAvatar'])->name('users.remove.avatar');
+        Route::resource('users', UserController::class);
+        // Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
+        Route::post('users/{user}/next-of-kins', [UserController::class, 'nextOfKin'])->name('nextOfKin.store');
 
-    // remove tenant from unit
-    Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('remove.tenant');
+        // remove tenant from unit
+        Route::get('/units/{unit}/tenant/{tenant}/remove', [TenantController::class, 'removeTenant'])->name('remove.tenant');
 
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::post('/settings/user/avatar', [SettingController::class, 'userAvatar'])->name('settings.user.avatar');
+        Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('/settings/user/avatar', [SettingController::class, 'userAvatar'])->name('settings.user.avatar');
+    });
 
+    // Tenant Dashboard Routes
+    Route::get('/tenant/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
+    Route::post('tenant/{user}/update-header', [UserController::class, 'updateHeader'])->name('tenant.update.header');
+    Route::post('tenant/{user}/update-avatar', [UserController::class, 'updateAvatar'])->name('tenant.update.avatar');
+    Route::get('/tenant/dashboard/edit', [TenantController::class, 'edit'])->name('tenant.edit');
+    Route::post('/tenant/{user}/edit', [TenantController::class, 'update'])->name('tenant.update');
+    Route::get('/house/{house}/view-details', [TenantController::class, 'viewHouseDetails'])
+        ->name('tenant.house.details');
 
-    Route::get('/profile', function () {
-    })->name('profile');
-    Route::get('/payment', function () {
-    })->name('payment');
-    Route::get('/unit', function () {
-    })->name('unit');
+    Route::get('/billing', function () {
+    })->name('billing');
+
+    Route::get('/tenant-unit', function () {
+    })->name('tenant-unit');
 });

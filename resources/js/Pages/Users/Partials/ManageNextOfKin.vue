@@ -121,7 +121,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
+import { useForm, router } from '@inertiajs/vue3'
 import TextInput from '../../../Components/TextInput.vue';
 import SelectInput from '../../../Components/SelectInput.vue';
 
@@ -150,6 +150,7 @@ let addNextOfKins = () => {
     onSuccess: () => {
       isSubmitSuccess.value = true;
       nextOfKinForm.reset();
+      router.reload()
     },
   });
 }

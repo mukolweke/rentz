@@ -30,3 +30,5 @@ createInertiaApp({
             .mount(el)
     },
 });
+
+// .catch(() => console.log('Error loading app'))

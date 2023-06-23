@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Data\Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -41,7 +43,9 @@ class HandleInertiaRequests extends Middleware
             'auth' => Auth::user() ? [
                 'user' => [
                     'username' => Auth::user()->name,
+                    'hasDefaultPassword' => Hash::check(Constants::DEFAULT_PASSWORD, Auth::user()->password),
                     'role' => Auth::user()->role,
+                    'avatar' => Auth::user()->getFirstMediaUrl(Constants::USER_AVATAR_COLLECTION),
                 ]
             ] : null,
         ]);
