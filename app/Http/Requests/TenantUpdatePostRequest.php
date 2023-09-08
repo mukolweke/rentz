@@ -21,7 +21,7 @@ class TenantUpdatePostRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         $requestType = request()->get('type');
 
@@ -45,6 +45,8 @@ class TenantUpdatePostRequest extends FormRequest
                 ]
             ];
         }
+
+        return [];
     }
 
     /**

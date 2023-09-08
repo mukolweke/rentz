@@ -4,8 +4,19 @@ namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Data\Models\Tenant
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $unit_id
+ * @property int $is_active
+ *
+ * @mixin \Eloquent
+ */
 class Tenant extends Model
 {
     use HasFactory, SoftDeletes;
@@ -26,22 +37,22 @@ class Tenant extends Model
         'deleted_at',
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function unit()
+    public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
     }
 
-    public function getContactInfoAttribute()
+    public function getContactInfoAttribute(): string
     {
         return $this->user->email . '<br/><br/>' . $this->user->phone;
     }
 
-    public function scopeIsActive($query, $active = true)
+    public function scopeIsActive($query, $active = true): mixed
     {
         return $query->where('is_active', $active);
     }

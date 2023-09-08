@@ -16,7 +16,7 @@ class UnitController extends Controller
     /**
      * HouseController constructor.
      * @param HouseRepository $houseRepo
-     * @param CategoryRepository $categoryRepo
+     * @param UnitRepository $unitRepo
      */
     public function __construct(
         protected HouseRepository $houseRepo,
@@ -27,7 +27,6 @@ class UnitController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -45,7 +44,6 @@ class UnitController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -59,7 +57,6 @@ class UnitController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\UnitPostRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(UnitPostRequest $request)
     {
@@ -77,7 +74,6 @@ class UnitController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Data\Models\Unit  $unit
-     * @return \Illuminate\Http\Response
      */
     public function show(Unit $unit)
     {
@@ -99,7 +95,6 @@ class UnitController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Data\Models\Unit  $unit
-     * @return \Illuminate\Http\Response
      */
     public function edit(Unit $unit)
     {
@@ -114,7 +109,6 @@ class UnitController extends Controller
      *
      * @param  \App\Http\Requests\UnitPostRequest  $request
      * @param  \App\Data\Models\Unit  $unit
-     * @return \Illuminate\Http\Response
      */
     public function update(UnitPostRequest $request, Unit $unit)
     {
@@ -132,7 +126,6 @@ class UnitController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Data\Models\Unit  $unit
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Unit $unit)
     {

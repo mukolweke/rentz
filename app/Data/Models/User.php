@@ -6,6 +6,8 @@ namespace App\Data\Models;
 
 use App\Data\Constants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+/**
+ * App\Data\Models\User
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $phone
+ * @property string $role
+ * @property string|null $occupation
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ *
+ * @mixin \Eloquent
+ */
 class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
@@ -59,7 +76,7 @@ class User extends Authenticatable implements HasMedia
         });
     }
 
-    public function tenant()
+    public function tenant(): HasOne
     {
         return $this->hasOne(Tenant::class);
     }
@@ -69,7 +86,7 @@ class User extends Authenticatable implements HasMedia
         return $this->role == 'tenant';
     }
 
-    public function staff()
+    public function staff(): HasOne
     {
         return $this->hasOne(Staff::class);
     }
@@ -79,7 +96,7 @@ class User extends Authenticatable implements HasMedia
         return $this->role == 'staff';
     }
 
-    public function nextOfKins()
+    public function nextOfKins(): HasMany
     {
         return $this->hasMany(NextOfKin::class);
     }

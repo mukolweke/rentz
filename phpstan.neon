@@ -1,0 +1,25 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    reportUnmatchedIgnoredErrors: false
+
+    paths:
+        - app
+
+    # The level 8 is the highest level
+    level: 5
+
+    ignoreErrors:
+        - '#Access to an undefined property Illuminate\\Database\\[a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+\.#'
+        -'#Illuminate\\Database\\Eloquent\\Builder::withTrashed\(\)#'
+        -'#Spatie\\Image\\Manipulations::performOnCollections\(\)#'
+        - '#Unsafe usage of new static#'
+    universalObjectCratesClasses:
+
+    excludePaths:
+        - ./*/*/FileToBeExcluded.php
+        - app/Service/Logipar/*
+
+    checkMissingIterableValueType: false

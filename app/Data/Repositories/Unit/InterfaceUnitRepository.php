@@ -2,6 +2,8 @@
 
 namespace App\Data\Repositories\Unit;
 
+use App\Data\Models\Unit;
+
 /**
  * InterfaceUnitRepository
  * @package App\Data\Repositories\Unit
@@ -34,14 +36,14 @@ interface InterfaceUnitRepository
      * Update the specified resource in storage.
      *
      * @param  Array  $attributes
-     * @param  \App\Data\Models\House  $house
+     * @param  \App\Data\Models\Unit  $unit
      */
-    public function update($attributes, $house);
+    public function update($attributes, Unit $unit);
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Data\Models\House  $house
+     * @param  \App\Data\Models\Unit  $unit
      */
-    public function delete($house);
+    public function delete(Unit $unit);
 }
