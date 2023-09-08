@@ -27,7 +27,7 @@ class HouseFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(1),
+            'name' => $this->faker->name(2),
             'location' => $this->faker->sentence(2),
             'category_id' => Category::all()->random()->id,
         ];

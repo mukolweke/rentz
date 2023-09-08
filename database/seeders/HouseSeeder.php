@@ -16,21 +16,8 @@ class HouseSeeder extends Seeder
      */
     public function run()
     {
-        $categoryId = Category::where('slug', 'apartment')->first()->id;
-
-        $houses = [
-            [
-                'name' => 'GKM Apartments',
-                'category' => $categoryId,
-            ],
-            [
-                'name' => 'Starlight Homes',
-                'category' => $categoryId,
-            ]
-        ];
-
-        foreach ($houses as $house) {
-            House::create($house);
-        }
+        House::factory()
+            ->count(2)
+            ->create();
     }
 }
