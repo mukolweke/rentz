@@ -13,7 +13,6 @@ class SettingController extends Controller
     /**
      * Display a settings index page.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {

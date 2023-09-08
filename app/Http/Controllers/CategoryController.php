@@ -22,7 +22,6 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -34,8 +33,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  CategoryPostRequest  $request
      */
     public function store(CategoryPostRequest $request)
     {
@@ -52,9 +50,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CategoryPostRequest  $request
      * @param  \App\Data\Models\Category  $category
-     * @return \Illuminate\Http\Response
      */
     public function update(CategoryPostRequest $request, Category $category)
     {
@@ -72,7 +69,6 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Data\Models\Category  $category
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
     {

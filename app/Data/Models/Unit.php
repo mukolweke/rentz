@@ -4,8 +4,22 @@ namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Data\Models\Unit
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $block
+ * @property string $description
+ * @property int $house_id
+ * @property int $status
+ *
+ * @mixin \Eloquent
+ */
 class Unit extends Model
 {
     use HasFactory, SoftDeletes;
@@ -30,12 +44,12 @@ class Unit extends Model
 
     protected $appends = array('has_tenant');
 
-    public function house()
+    public function house(): BelongsTo
     {
         return $this->belongsTo(House::class);
     }
 
-    public function tenant()
+    public function tenant(): HasOne
     {
         return $this->hasOne(Tenant::class);
     }

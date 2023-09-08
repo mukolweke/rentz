@@ -76,7 +76,7 @@ class UnitRepository implements InterfaceUnitRepository
      * @param  Array  $attributes
      * @param  \App\Data\Models\Unit  $unit
      */
-    public function update($attributes, $unit)
+    public function update($attributes, Unit $unit)
     {
         $unit->update($attributes);
     }
@@ -86,7 +86,7 @@ class UnitRepository implements InterfaceUnitRepository
      *
      * @param  \App\Data\Models\Unit  $unit
      */
-    public function delete($unit)
+    public function delete(Unit $unit)
     {
         $unit->delete();
     }

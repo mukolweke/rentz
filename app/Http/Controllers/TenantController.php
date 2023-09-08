@@ -34,7 +34,6 @@ class TenantController extends Controller
      *
      * @param  \App\Data\Models\Unit  $unit
      * @param  \App\Data\Models\Tenant  $tenant
-     * @return \Illuminate\Http\Response
      */
     public function removeTenant(Unit $unit, Tenant $tenant)
     {
@@ -42,7 +41,7 @@ class TenantController extends Controller
         $tenant->update(['is_active' => false]);
 
         // Mark unit as unassigned
-        $unit->update(['status', false]);
+        $unit->update(['status' => false]);
 
         // redirect
         return redirect()->route('units.show', $unit->id);

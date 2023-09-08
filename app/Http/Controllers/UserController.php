@@ -15,6 +15,7 @@ use App\Http\Requests\UserPostRequest;
 use App\Http\Requests\UserEditRequest;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -32,7 +33,6 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -56,7 +56,6 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -69,7 +68,6 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  UserPostRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(UserPostRequest $request)
     {
@@ -106,7 +104,6 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  User  $user
-     * @return \Illuminate\Http\Response
      */
     public function show(User $user)
     {
@@ -120,9 +117,8 @@ class UserController extends Controller
     /**
      * Updates the current saved avatar of a user
      *
-     * @param \Illuminate\Http\Request
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param User $user
      */
     public function updateAvatar(Request $request, User $user)
     {
@@ -143,9 +139,8 @@ class UserController extends Controller
     /**
      * Updates the current saved header of a user
      *
-     * @param \Illuminate\Http\Request
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param User $user
      */
     public function updateHeader(Request $request, User $user)
     {
@@ -166,8 +161,7 @@ class UserController extends Controller
     /**
      * Remove the current saved avatar from a user
      *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
      */
     public function removeAvatar(User $user)
     {
@@ -180,8 +174,7 @@ class UserController extends Controller
     /**
      * Remove the current saved header from a user
      *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
      */
     public function removeHeader(User $user)
     {
@@ -194,9 +187,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserEditRequest  $request
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param UserEditRequest  $request
+     * @param User $user
      */
     public function update(UserEditRequest $request, User $user)
     {
@@ -226,14 +218,18 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int  $id
      */
     public function destroy($id)
     {
         //
     }
 
+    /**
+     * Create the next of kin
+     * @param NextOfKinPostRequest $request
+     * @param User $user
+     */
     public function nextOfKin(NextOfKinPostRequest $request, User $user)
     {
         // valid request

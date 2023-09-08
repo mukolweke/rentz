@@ -26,7 +26,6 @@ class HouseController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -41,7 +40,6 @@ class HouseController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -52,7 +50,6 @@ class HouseController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\HousePostRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(HousePostRequest $request)
     {
@@ -70,7 +67,6 @@ class HouseController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Data\Models\House  $house
-     * @return \Illuminate\Http\Response
      */
     public function show(House $house)
     {
@@ -87,7 +83,6 @@ class HouseController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Data\Models\House  $house
-     * @return \Illuminate\Http\Response
      */
     public function edit(House $house)
     {
@@ -102,7 +97,6 @@ class HouseController extends Controller
      *
      * @param  \App\Http\Requests\HousePostRequest  $request
      * @param  \App\Data\Models\House  $house
-     * @return \Illuminate\Http\Response
      */
     public function update(HousePostRequest $request, House $house)
     {
@@ -120,7 +114,6 @@ class HouseController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Data\Models\House  $house
-     * @return \Illuminate\Http\Response
      */
     public function destroy(House $house)
     {
